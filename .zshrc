@@ -17,11 +17,10 @@ setopt MENUCOMPLETE
 setopt ALL_EXPORT
 setopt appendhistory autocd extendedglob nomatch
 setopt notify globdots correct pushdtohome cdablevars autolist
-setopt correctall autocd recexact longlistjobs
+setopt correctall recexact longlistjobs
 setopt autoresume histignoredups pushdsilent
-setopt autopushd pushdminus rcquotes mailwarning
+setopt autopushd pushdminus rcquotes
 setopt listtypes
-setopt recexact
 setopt noshwordsplit
 setopt printexitvalue
 setopt hist_ignore_all_dups
@@ -37,8 +36,8 @@ zstyle ':completion:*' file-sort 'time'
 
 # Autoload zsh modules when they are referenced
 #zmodload -a zsh/stat stat
-zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
+#zmodload -a zsh/zpty zpty
+#zmodload -a zsh/zprof zprof
 #zmodload -ap zsh/mapfile mapfile
 
 HOSTNAME="`hostname`"
@@ -81,7 +80,6 @@ alias gww='cd /Users/coornail/localhost/htdocs/'
 
 alias drush='~/shellscript/drush/drush'
 
-
 # correcting some keys
 autoload zkbd
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
@@ -108,7 +106,6 @@ zstyle ':completion:*:*:*:*:processes' menu yes select
 zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*' ignored-patterns '*.sw*'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:urls' local /var/www/localhost/htdocs/
 
 # formatting and messages
@@ -118,6 +115,7 @@ zstyle ':completion:*:messages' format '%d'
 #zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 #zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors 'ExFxCxDxBxegedabagacad'
 
 # for cd, only list dirs
 compctl -/ cd
@@ -188,10 +186,8 @@ translate() {
 unset http_proxy
 
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
-
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-zstyle ':completion:*' list-colors 'ExFxCxDxBxegedabagacad'
 
 # macports
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
