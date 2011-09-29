@@ -131,4 +131,3 @@ if $VIM_CRONTAB == "true"
 endif
 
 set backupskip=/tmp/*,/private/tmp/*
-source ~/.zsrhc_private

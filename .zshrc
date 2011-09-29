@@ -221,3 +221,5 @@ export NODE_PATH="/usr/local/lib/node"
 export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 
 export ECO="lp:~economist-magic/economist-magic"
+
+source ~/.zsrhc_private
