@@ -1,18 +1,17 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
 bindkey -v
-# End of lines configured by zsh-newuser-install
-#
 
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
 
+# Autoload zsh modules
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
+autoload zmv
 
+setopt no_hup hist_verify
 setopt CORRECT      # command CORRECTION
 setopt MENUCOMPLETE
 setopt ALL_EXPORT
@@ -27,10 +26,12 @@ setopt noshwordsplit
 setopt printexitvalue
 setopt hist_ignore_all_dups
 setopt sharehistory
+setopt prompt_subst  # show git branch if in a git repo
 
 unsetopt menucomplete
 unsetopt beep notify
 unsetopt bgnice autoparamslash
+unsetopt ALL_EXPORT
 
 zstyle ':completion:*' file-sort 'time'
 
@@ -55,20 +56,14 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
   (( count = $count + 1 ))
 done
 
-unsetopt ALL_EXPORT
+# aliases
 
 # dircolors
-#if [ -x /usr/bin/dircolors ]; then
-#  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+alias ls='ls -G -A'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
-  alias ls='ls -G -A'
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-#fi
-
-# my old bash aliases
-#
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
 alias la='ls -lAHh'
@@ -78,15 +73,14 @@ alias webserv='python -m SimpleHTTPServer'
 alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
 
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias gww='cd /Users/coornail/localhost/htdocs/'
 
-# awesome zsh modules
-autoload zmv
+alias drush='~/shellscript/drush/drush'
 
-# some handy options
-setopt no_hup hist_verify
 
 # correcting some keys
 autoload zkbd
@@ -136,15 +130,6 @@ _force_rehash() {
 zstyle ':completion:*' completer \
     _oldlist _expand _force_rehash _complete
 
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias gww='cd /Users/coornail/localhost/htdocs/'
-
-alias drush='~/shellscript/drush/drush'
-
 # page up and down
 bindkey '\e[A' history-beginning-search-backward
 bindkey '\e[B' history-beginning-search-forward
@@ -157,9 +142,6 @@ bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
 bindkey "^R" history-incremental-search-backward
-
-# show git branch if in a git repo
-setopt prompt_subst
 
 function git-branch-name () {
   git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
@@ -222,4 +204,5 @@ export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 
 export ECO="lp:~economist-magic/economist-magic"
 
+# Private zshrc
 source ~/.zshrc_private
