@@ -1,0 +1,46 @@
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+    showbranch = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+    color = true
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color "diff"]
+    whitespace = red reverse
+[core]
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager = less -FRSX
+    symlinks = false
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+    pushom = push origin master
+    pullom = pull origin master
+    pushall = push --all
+    pullall = pull --all
+    loggraph = log --graph --all --full-history --color --branches --decorate
+    pul = pull
+    tags = tag
+[user]
+	name = Kornel Lugosi
+  email = coornail@gmail.com
