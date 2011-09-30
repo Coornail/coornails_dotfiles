@@ -124,7 +124,7 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 
 # file colors
-S_COLORS=`gdircolors`
+LS_COLORS=`gdircolors`
 export LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
