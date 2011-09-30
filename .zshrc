@@ -108,6 +108,11 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*' ignored-patterns '*.sw*'
 zstyle ':completion:*:urls' local /var/www/localhost/htdocs/
 
+# case-insensitive (all),partial-word and then substring completion
+# http://www.rlazo.org/2010/11/18/zsh-case-insensitive-completion/
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
+      'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # formatting and messages
 #zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B%d%b'
