@@ -3,6 +3,11 @@ HISTSIZE=100000
 SAVEHIST=100000
 bindkey -v
 
+# macports
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=$PATH:/Applications/MAMP/Library/bin/
+export MANPATH=/opt/local/share/man:$MANPATH
+
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
 
@@ -194,11 +199,6 @@ unset http_proxy
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-
-# macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=$PATH:/Applications/MAMP/Library/bin/
-export MANPATH=/opt/local/share/man:$MANPATH
 
 #node.js
 export NODE_PATH="/usr/local/lib/node"
