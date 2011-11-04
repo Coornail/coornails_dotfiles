@@ -206,4 +206,8 @@ export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 export ECO="lp:~economist-magic/economist-magic"
 
 # Private zshrc
-source ~/.zshrc_private
+if [ -f ~/.zshrc_private ]
+  then
+    source ~/.zshrc_private
+fi
+
