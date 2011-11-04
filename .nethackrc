@@ -1,0 +1,8 @@
+OPTIONS=name:Coornail
+
+OPTIONS=pettype:cat,hilite_pet,showrace
+OPTIONS=autopickup,pickup_types:$!/="?
+OPTIONS=lit_corridor,color,DECgraphics
+OPTIONS=showexp,showscore,time
+OPTIONS=monsters:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@X'&;:~]
+
