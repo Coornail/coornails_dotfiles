@@ -135,13 +135,13 @@ _force_rehash() {
 
 # file colors
 GDIRCOLORS=`which gdircolors`
-if [ $? ]; then
+if [ $? -eq 0 ]; then
   eval "`gdircolors`"
 fi
 
 DIRCOLORS=`which dircolors`
-if [ $? ]; then
-  eval "`gdircolors`"
+if [ $? -eq 0 ]; then
+  eval "`dircolors`"
 fi
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
