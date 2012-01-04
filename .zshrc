@@ -16,6 +16,8 @@ autoload -Uz compinit
 compinit
 autoload zmv
 
+export TERM=xterm-color
+
 setopt no_hup hist_verify
 setopt CORRECT      # command CORRECTION
 setopt MENUCOMPLETE
@@ -132,11 +134,17 @@ _force_rehash() {
 }
 
 # file colors
-if [ -f `which gdircolors` ]; then
-  LS_COLORS=`gdircolors`
-  export LS_COLORS
-  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+GDIRCOLORS=`which gdircolors`
+if [ $? ]; then
+  eval "`gdircolors`"
 fi
+
+DIRCOLORS=`which dircolors`
+if [ $? ]; then
+  eval "`gdircolors`"
+fi
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # page up and down
 bindkey '\e[A' history-beginning-search-backward
