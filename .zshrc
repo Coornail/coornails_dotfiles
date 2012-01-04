@@ -134,12 +134,12 @@ _force_rehash() {
 }
 
 # file colors
-GDIRCOLORS=`which gdircolors >> /dev/null`
+GDIRCOLORS=`which gdircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
   eval "`gdircolors`"
 fi
 
-DIRCOLORS=`which dircolors >> /dev/null`
+DIRCOLORS=`which dircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
   eval "`dircolors`"
 fi
