@@ -112,6 +112,7 @@ zstyle ':completion:*:*:*:*:processes' force-list always
 zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*' ignored-patterns '*.sw*'
 zstyle ':completion:*:urls' local /var/www/localhost/htdocs/
+zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete
 
 # case-insensitive (all),partial-word and then substring completion
 # http://www.rlazo.org/2010/11/18/zsh-case-insensitive-completion/
@@ -122,12 +123,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
-
-# file colors
-LS_COLORS=`gdircolors`
-export LS_COLORS
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 # for cd, only list dirs
 compctl -/ cd
 
@@ -136,8 +131,12 @@ _force_rehash() {
   return 1  # Because we didn't really complete anything
 }
 
-zstyle ':completion:*' completer \
-    _oldlist _expand _force_rehash _complete
+# file colors
+if [ -f `which gdircolors` ]; then
+  LS_COLORS=`gdircolors`
+  export LS_COLORS
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
 
 # page up and down
 bindkey '\e[A' history-beginning-search-backward
