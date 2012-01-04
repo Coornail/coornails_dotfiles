@@ -58,9 +58,10 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
   eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
   (( count = $count + 1 ))
 done
+PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # aliases
-
+#
 # dircolors
 alias ls='ls -G -A'
 alias grep='grep --color=auto'
@@ -160,6 +161,9 @@ function git-dirty () {
   echo $?
 }
 
+# I don't use it most of the time
+export no_git_prompt=true
+
 function git-prompt() {
   if [ $no_git_prompt ]; then
     return
@@ -178,14 +182,16 @@ function git-scoreboard () {
   git log | grep Author | sort | uniq -ci | sort -r
 }
 
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
-PS1="$PR_GREEN%n@%m%u$PR_NO_COLOR:$PR_BLUE%~$PR_NO_COLOR%(!.#.$) "
-#PS1="$PR_GREEN%n@%m%u$PR_NO_COLOR:$PR_BLUE%~`git-prompt`$PR_NO_COLOR%(!.#.$) "
-#PROMPT='%{$reset_color%}%B%n%b@%m %~`git-prompt`%(!.#.>) '
-PROMPT='%{$PR_GREEN%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
+# Set terminal color
+HOSTNAME=`hostname -s`
 
-# I don't use it most of the time
-export no_git_prompt=true
+case "$HOSTNAME" in
+  "pris")    TERM_COLOR=$PR_GREEN ;;
+  "li66-97") TERM_COLOR=$PR_MAGENTA ;;
+  *)         TERM_COLOR=$PR_BLUE ;;
+esac
+
+PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
 
 translate() {
   wget -qO- "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=${2:-en}|${3:-hu}" | sed -E -n 's/[[:alnum:]": {}]+"translatedText":"([^"]+)".*/\1/p';
