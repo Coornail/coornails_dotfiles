@@ -63,9 +63,11 @@ done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # aliases
-#
-# dircolors
-alias ls='ls -G -A'
+KERNEL=`uname`
+case "$KERNEL" in
+  "Darwin") alias ls='gls --color=always -A' ;;
+  "Linux")  alias ls='ls --color=always -A' ;;
+esac
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
