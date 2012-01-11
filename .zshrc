@@ -3,10 +3,14 @@ HISTSIZE=100000
 SAVEHIST=100000
 bindkey -v
 
+KERNEL=`uname`
+
 # macports
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=$PATH:/Applications/MAMP/Library/bin/
-export MANPATH=/opt/local/share/man:$MANPATH
+if [ $KERNEL = "Darwin" ]; then
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  export PATH=$PATH:/Applications/MAMP/Library/bin/
+  export MANPATH=/opt/local/share/man:$MANPATH
+fi
 
 # locale
 export LC_ALL=C
@@ -66,7 +70,6 @@ done
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # aliases
-KERNEL=`uname`
 case "$KERNEL" in
   "Darwin") alias ls='gls --color=always -A' ;;
   "Linux")  alias ls='ls --color=always -A' ;;
