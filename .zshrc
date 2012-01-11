@@ -8,6 +8,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$PATH:/Applications/MAMP/Library/bin/
 export MANPATH=/opt/local/share/man:$MANPATH
 
+# locale
+export LC_ALL=C
+
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
 
