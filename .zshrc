@@ -1,29 +1,58 @@
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-bindkey -v
-
 KERNEL=`uname`
+HOSTNAME=`hostname -s`
+PAGER='less'
+EDITOR='vim'
 
-# macports
+# exports
 if [ $KERNEL = "Darwin" ]; then
+  # macports
   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   export PATH=$PATH:/Applications/MAMP/Library/bin/
   export MANPATH=/opt/local/share/man:$MANPATH
 fi
 
-# locale
 export LC_ALL=C
+export TERM=xterm-color
+# I don't use it most of the time
+export no_git_prompt=true
 
+export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+# node.js
+export NODE_PATH="/usr/local/lib/node"
+export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
+
+export ECO="lp:~economist-magic/economist-magic"
+
+
+# Keyboard bindings
+bindkey -v
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
+
+# page up and down
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+bindkey '^[[5~' history-beginning-search-backward
+bindkey '^[[6~' history-beginning-search-forward
+
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+
+bindkey "^R" history-incremental-search-backward
+
 
 # Autoload zsh modules
 autoload -Uz compinit
 compinit
 autoload zmv
-
-export TERM=xterm-color
 
 setopt no_hup hist_verify
 setopt CORRECT      # command CORRECTION
@@ -47,16 +76,6 @@ unsetopt bgnice autoparamslash
 unsetopt ALL_EXPORT
 
 zstyle ':completion:*' file-sort 'time'
-
-# Autoload zsh modules when they are referenced
-#zmodload -a zsh/stat stat
-#zmodload -a zsh/zpty zpty
-#zmodload -a zsh/zprof zprof
-#zmodload -ap zsh/mapfile mapfile
-
-HOSTNAME="`hostname`"
-PAGER='less'
-EDITOR='vim'
 
 # Color support
 autoload colors zsh/terminfo
@@ -154,18 +173,6 @@ fi
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# page up and down
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
-bindkey '^[[5~' history-beginning-search-backward
-bindkey '^[[6~' history-beginning-search-forward
-
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
-
-bindkey "^R" history-incremental-search-backward
 
 function git-branch-name () {
   git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
@@ -175,9 +182,6 @@ function git-dirty () {
   git status 2> /dev/null | grep "nothing to commit (working directory clean)"
   echo $?
 }
-
-# I don't use it most of the time
-export no_git_prompt=true
 
 function git-prompt() {
   if [ $no_git_prompt ]; then
@@ -197,9 +201,8 @@ function git-scoreboard () {
   git log | grep Author | sort | uniq -ci | sort -r
 }
 
-# Set terminal color
-HOSTNAME=`hostname -s`
 
+# Set terminal color
 case "$HOSTNAME" in
   "pris")    TERM_COLOR=$PR_GREEN ;;
   "li66-97") TERM_COLOR=$PR_MAGENTA ;;
@@ -215,16 +218,6 @@ translate() {
 }
 
 unset http_proxy
-
-export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
-export CLICOLOR=1
-export LSCOLORS=ExFxCxDxBxegedabagacad
-
-#node.js
-export NODE_PATH="/usr/local/lib/node"
-export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
-
-export ECO="lp:~economist-magic/economist-magic"
 
 # Private zshrc
 if [ -f ~/.zshrc_private ]
