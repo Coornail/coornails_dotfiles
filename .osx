@@ -18,3 +18,12 @@ defaults write com.apple.iTunes disablePing -bool true
 
 # Show hidden files
 defaults write com.apple.finder AppleShowAllFiles TRUE
+
+# Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+
+# Disable warning on newly downloaded files
+defaults write com.apple.LaunchServices LSQuarantine -bool NO
