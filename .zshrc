@@ -30,7 +30,6 @@ export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 
 export ECO="lp:~economist-magic/economist-magic"
 
-
 # Keyboard bindings
 bindkey -v
 bindkey "^[OD" backward-word
@@ -52,7 +51,7 @@ bindkey "^R" history-incremental-search-backward
 
 # Autoload zsh modules
 autoload -Uz compinit
-compinit
+compinit -d $TMPDIR/zsh_compinit
 autoload zmv
 
 setopt no_hup hist_verify
