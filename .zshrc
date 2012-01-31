@@ -90,7 +90,15 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # aliases
 case "$KERNEL" in
-  "Darwin") alias ls='gls --color=always -A' ;;
+  "Darwin")
+    GLS=`which gls >> /dev/null &> /dev/null`
+    if [ $? -eq 0 ]; then
+      alias ls='gls --color=always -A'
+    else
+      alias ls='ls -G'
+    fi
+  ;;
+
   "Linux")  alias ls='ls --color=always -A' ;;
 esac
 alias grep='grep --color=auto'
