@@ -214,6 +214,7 @@ function git-scoreboard () {
 case "$HOSTNAME" in
   "pris")    TERM_COLOR=$PR_GREEN ;;
   "li66-97") TERM_COLOR=$PR_MAGENTA ;;
+  "centosvm" TERM_COLOR=$PR_YELLOW ;;
   *)         TERM_COLOR=$PR_BLUE ;;
 esac
 
