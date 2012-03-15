@@ -212,10 +212,10 @@ function git-scoreboard () {
 
 # Set terminal color
 case "$HOSTNAME" in
-  "pris")    TERM_COLOR=$PR_GREEN ;;
-  "li66-97") TERM_COLOR=$PR_MAGENTA ;;
-  "centosvm" TERM_COLOR=$PR_YELLOW ;;
-  *)         TERM_COLOR=$PR_BLUE ;;
+  "pris")     TERM_COLOR=$PR_GREEN ;;
+  "li66-97")  TERM_COLOR=$PR_MAGENTA ;;
+  "centosvm") TERM_COLOR=$PR_YELLOW ;;
+  *)          TERM_COLOR=$PR_BLUE ;;
 esac
 
 PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
