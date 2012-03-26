@@ -1,0 +1,3 @@
+[submodule "shellscript/ievms"]
+	path = shellscript/ievms
+	url = https://github.com/xdissent/ievms.git
