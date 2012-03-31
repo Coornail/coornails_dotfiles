@@ -1,8 +1,9 @@
 # Install script for Coornail's dotfiles
 
 INSTALL_DIR=${HOME}
+OS=`uname -s`
 
-all: zsh git nethack osx screen tmux vim shellscript
+all: zsh git nethack screen tmux vim shellscript osx
 
 zsh:
 	cp .zshrc ${INSTALL_DIR}
@@ -15,7 +16,10 @@ nethack:
 	cp .nethackrc ${INSTALL_DIR}
 
 osx:
-	if [ `uname -s` = "Darwin" ]; then sh .osx; fi
+ifeq (${OS},Darwin)
+	sh .osx
+else
+endif
 
 screen:
 	cp .screenrc ${INSTALL_DIR}
