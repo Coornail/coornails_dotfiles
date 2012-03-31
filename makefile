@@ -14,7 +14,7 @@ nethack:
 	cp .nethackrc ${INSTALL_DIR}
 
 osx:
-	sh .osx
+	if [ `uname -s` = "Darwin" ]; then sh .osx; fi
 
 screen:
 	cp .screenrc ${INSTALL_DIR}
