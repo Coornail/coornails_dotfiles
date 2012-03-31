@@ -46,7 +46,7 @@ vim:
 	$(Q)cp .vimrc ${INSTALL_DIR}
 	$(Q)cp -r .vim ${INSTALL_DIR}
 
-shellscript:
+shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
 
@@ -54,4 +54,3 @@ checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
 	$(Q)git submodule init
 	$(Q)git submodule update
-
