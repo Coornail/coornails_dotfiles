@@ -26,4 +26,5 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
 # Disable warning on newly downloaded files
-defaults write com.apple.LaunchServices LSQuarantine -bool NO
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
