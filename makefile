@@ -12,7 +12,7 @@ else
 endif
 
 
-all: zsh git nethack screen tmux vim shellscript osx
+all: checkout_git_submodules zsh git nethack screen tmux vim shellscript osx
 
 zsh:
 	$(TITLE) "Installing zsh"
@@ -49,4 +49,9 @@ vim:
 shellscript:
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
+
+checkout_git_submodules:
+	$(TITLE) "Checking out git submodules"
+	$(Q)git submodule init
+	$(Q)git submodule update
 
