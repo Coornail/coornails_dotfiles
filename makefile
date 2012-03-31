@@ -1,29 +1,31 @@
 # Install script for Coornail's dotfiles
 
+INSTALL_DIR=${HOME}
+
 all: zsh git nethack osx screen tmux vim shellscript
 
 zsh:
-	cp .zshrc ~/
+	cp .zshrc ${INSTALL_DIR}
 
 git:
-	cp .gitconfig ~/
+	cp .gitconfig ${INSTALL_DIR}
 
 nethack:
-	cp .nethackrc ~/
+	cp .nethackrc ${INSTALL_DIR}
 
 osx:
 	sh .osx
 
 screen:
-	cp .screenrc ~/
+	cp .screenrc ${INSTALL_DIR}
 
 tmux:
-	cp .tmux.conf ~/
+	cp .tmux.conf ${INSTALL_DIR}
 
 vim:
-	cp .vimrc ~/
-	cp -r .vim ~/
+	cp .vimrc ${INSTALL_DIR}
+	cp -r .vim ${INSTALL_DIR}
 
 shellscript:
-	cp -r shellscript ~/
+	cp -r shellscript ${INSTALL_DIR}
 
