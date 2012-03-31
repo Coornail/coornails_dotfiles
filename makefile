@@ -3,34 +3,50 @@
 INSTALL_DIR=${HOME}
 OS=`uname -s`
 
+# Output formatting
+TITLE = @echo '[+]'
+ifndef VERBOSE
+	Q = @
+else
+	Q = @echo '  '
+endif
+
+
 all: zsh git nethack screen tmux vim shellscript osx
 
 zsh:
-	cp .zshrc ${INSTALL_DIR}
-	chsh -s `which zsh` || echo 'Failed to set zsh as default shell, install it and make zsh'
+	$(TITLE) "Installing zsh"
+	$(Q)cp .zshrc ${INSTALL_DIR}
+	$(Q)chsh -s `which zsh` || echo 'Failed to set zsh as default shell, install it and make zsh'
 
 git:
-	cp .gitconfig ${INSTALL_DIR}
+	$(TITLE) "Installing git config"
+	$(Q)cp .gitconfig ${INSTALL_DIR}
 
 nethack:
-	cp .nethackrc ${INSTALL_DIR}
+	$(TITLE) "Installing nethack config"
+	$(Q)cp .nethackrc ${INSTALL_DIR}
 
 osx:
 ifeq (${OS},Darwin)
-	sh .osx
-else
+	$(TITLE) "Setting up osx variables"
+	$(Q)sh .osx
 endif
 
 screen:
-	cp .screenrc ${INSTALL_DIR}
+	$(TITLE) "Installing screen config"
+	$(Q)cp .screenrc ${INSTALL_DIR}
 
 tmux:
-	cp .tmux.conf ${INSTALL_DIR}
+	$(TITLE) "Installing tmux config"
+	$(Q)cp .tmux.conf ${INSTALL_DIR}
 
 vim:
-	cp .vimrc ${INSTALL_DIR}
-	cp -r .vim ${INSTALL_DIR}
+	$(TITLE) "Vim config"
+	$(Q)cp .vimrc ${INSTALL_DIR}
+	$(Q)cp -r .vim ${INSTALL_DIR}
 
 shellscript:
-	cp -r shellscript ${INSTALL_DIR}
+	$(TITLE) "Installing shellscripts"
+	$(Q)cp -r shellscript ${INSTALL_DIR}
 
