@@ -11,8 +11,12 @@ else
 	Q = @echo '  '
 endif
 
+general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript
+# My desktop is currently osx
+desktop_modules = osx
 
-all: checkout_git_submodules zsh git nethack screen tmux vim shellscript osx
+# Main make target, installs everything
+all: $(general_modules) $(desktop_modules)
 
 zsh:
 	$(TITLE) "Installing zsh"
@@ -54,3 +58,4 @@ checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
 	$(Q)git submodule init
 	$(Q)git submodule update
+
