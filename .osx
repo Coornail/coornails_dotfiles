@@ -32,3 +32,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Change shell to zsh
+chsh -s /bin/zsh
