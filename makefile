@@ -6,6 +6,7 @@ all: zsh git nethack osx screen tmux vim shellscript
 
 zsh:
 	cp .zshrc ${INSTALL_DIR}
+	chsh -s `which zsh` || echo 'Failed to set zsh as default shell, install it and make zsh'
 
 git:
 	cp .gitconfig ${INSTALL_DIR}
