@@ -14,9 +14,10 @@ endif
 general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript
 # My desktop is currently osx
 desktop_modules = osx
+drupal = drush
 
 # Main make target, installs everything
-all: $(general_modules) $(desktop_modules)
+all: $(general_modules) $(desktop_modules) $(drupal)
 
 zsh:
 	$(TITLE) "Installing zsh"
@@ -56,6 +57,13 @@ shellscript: checkout_git_submodules
 
 checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
-	$(Q)git submodule init
-	$(Q)git submodule update
+# Todo fix me:
+	$(Q)git submodule init || true
+	$(Q)git submodule update || true
+# Remove .git directories from submodules as we don't want to copy those
+	$(Q)for i in `git submodule | awk {'print $2'}`; do rm -rf $i/.git; done
+
+drush: checkout_git_submodules
+	$(TITLE) "Installing drush"
+	$(Q)cp -r shellscript/drush/ ${INSTALL_DIR}/shellscript/drush
 
