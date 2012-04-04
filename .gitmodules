@@ -1,3 +1,6 @@
 [submodule "shellscript/ievms"]
 	path = shellscript/ievms
 	url = https://github.com/xdissent/ievms.git
+[submodule "shellscript/drush"]
+	path = shellscript/drush
+	url = http://git.drupal.org/project/drush.git
