@@ -32,3 +32,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+# Disable the File Extension Change Warning
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
