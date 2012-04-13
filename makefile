@@ -27,6 +27,7 @@ zsh:
 git:
 	$(TITLE) "Installing git config"
 	$(Q)cp .gitconfig ${INSTALL_DIR}
+	$(Q)cp .gitignore_global ${INSTALL_DIR}
 
 nethack:
 	$(TITLE) "Installing nethack config"
