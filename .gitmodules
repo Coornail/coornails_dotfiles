@@ -4,3 +4,6 @@
 [submodule "shellscript/drush"]
 	path = shellscript/drush
 	url = http://git.drupal.org/project/drush.git
+[submodule "solarized"]
+	path = solarized
+	url = https://github.com/altercation/solarized.git
