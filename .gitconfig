@@ -41,6 +41,7 @@
   loggraph = log --graph --all --full-history --color --branches --decorate
   pul = pull
   tags = tag
+  psuh = push
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
