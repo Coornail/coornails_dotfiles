@@ -27,6 +27,7 @@
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
   pager = less -FRSX
   symlinks = false
+  excludesfile = ~/.gitignore_global
 [alias]
   st = status
   ci = commit
