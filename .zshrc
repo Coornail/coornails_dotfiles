@@ -9,7 +9,7 @@ EDITOR='vim'
 # exports
 if [ $KERNEL = "Darwin" ]; then
   # macports
-  export PATH=$PATH:/opt/local/bin:/opt/local/sbin/
+  export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
   # mamp
   export PATH=$PATH:/Applications/MAMP/Library/bin/
