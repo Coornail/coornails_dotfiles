@@ -13,6 +13,8 @@ if [ $KERNEL = "Darwin" ]; then
   export MANPATH=/opt/local/share/man:$MANPATH
   # mamp
   export PATH=$PATH:/Applications/MAMP/Library/bin/
+
+  alias sleep=osascript -e 'tell application "System Events" to sleep'
 fi
 
 export LC_ALL=C
