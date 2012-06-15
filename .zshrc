@@ -6,7 +6,7 @@ HOSTNAME=`hostname -s`
 PAGER='less'
 EDITOR='vim'
 
-# exports
+# OsX specific stuff
 if [ $KERNEL = "Darwin" ]; then
   # macports
   export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
@@ -18,6 +18,8 @@ if [ $KERNEL = "Darwin" ]; then
   if [ $? -eq 0 ]; then
     alias sleep='gsleep'
   fi
+
+  alias hibernate=osascript -e 'tell application "System Events" to sleep'
 fi
 
 export LC_ALL=C
