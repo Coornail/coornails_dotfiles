@@ -14,7 +14,10 @@ if [ $KERNEL = "Darwin" ]; then
   # mamp
   export PATH=$PATH:/Applications/MAMP/Library/bin/
 
-  alias sleep=osascript -e 'tell application "System Events" to sleep'
+  GLSEEP=`which gls >> /dev/null &> /dev/null`
+  if [ $? -eq 0 ]; then
+    alias sleep='gsleep'
+  fi
 fi
 
 export LC_ALL=C
