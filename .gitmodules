@@ -10,3 +10,6 @@
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/solarized.git
+[submodule "shellscript/mysqlDbExporter"]
+	path = shellscript/mysqlDbExporter
+	url = git@github.com:hosszukalman/mysqlDbExporter.git
