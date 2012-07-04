@@ -15,3 +15,6 @@ Session.vim
 
 # PHPStorm project file
 .idea
+
+# Merge garbage file
+*.rej
