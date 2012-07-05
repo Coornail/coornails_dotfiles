@@ -212,11 +212,6 @@ function git-prompt() {
   fi
 }
 
-function git-scoreboard () {
-  git log | grep Author | sort | uniq -ci | sort -r
-}
-
-
 # Set terminal color
 case "$HOSTNAME" in
   "pris")     TERM_COLOR=$PR_GREEN ;;
