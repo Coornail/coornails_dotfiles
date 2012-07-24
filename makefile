@@ -68,3 +68,8 @@ drush: checkout_git_submodules
 	$(TITLE) "Installing drush"
 	$(Q)cp -r shellscript/drush/ ${INSTALL_DIR}/shellscript/drush
 
+# @todo: Solve if VERBOSE=true
+clean:
+	$(TITLE)Deleting temporary files
+	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i; done
+
