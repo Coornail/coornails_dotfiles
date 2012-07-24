@@ -62,7 +62,7 @@ checkout_git_submodules:
 	$(Q)git submodule init || true
 	$(Q)git submodule update || true
 # Remove .git directories from submodules as we don't want to copy those
-	$(Q)for i in `git submodule | awk {'print $2'}`; do rm -rf $i/.git; done
+	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i/.git; done
 
 drush: checkout_git_submodules
 	$(TITLE) "Installing drush"
