@@ -43,7 +43,7 @@
   pul = pull
   tags = tag
   psuh = push
-  scoreboard = !sh -c 'git log | grep Author | sort | uniq -ci | sort -r'
+  scoreboard = !sh -c 'git log | grep "^Author" | sort | uniq -ci | sort -r'
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
