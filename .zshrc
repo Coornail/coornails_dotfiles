@@ -20,6 +20,7 @@ if [ $KERNEL = "Darwin" ]; then
   fi
 
   alias hibernate=osascript -e 'tell application "System Events" to sleep'
+  alias startftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
 fi
 
 export LC_ALL=C
@@ -187,7 +188,6 @@ if [ $? -eq 0 ]; then
 fi
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 
 function git-branch-name () {
   git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
