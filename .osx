@@ -42,3 +42,6 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
 # Show battery percentage, but not time
 defaults write com.apple.menuextra.battery ShowPercent -string "Yes"
 defaults write com.apple.menuextra.battery ShowTime -string "No"
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
