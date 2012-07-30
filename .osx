@@ -38,3 +38,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
+
+# Show battery percentage, but not time
+defaults write com.apple.menuextra.battery ShowPercent -string "Yes"
+defaults write com.apple.menuextra.battery ShowTime -string "No"
