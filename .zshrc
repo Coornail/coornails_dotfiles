@@ -21,6 +21,8 @@ if [ $KERNEL = "Darwin" ]; then
 
   alias hibernate=osascript -e 'tell application "System Events" to sleep'
   alias startftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
+  alias c='pbcopy'
+  alias p='pbpaste'
 fi
 
 export LC_ALL=C
