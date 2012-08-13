@@ -47,3 +47,5 @@
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
+[rerere]
+	enabled = 1
