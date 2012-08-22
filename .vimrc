@@ -31,6 +31,8 @@ au BufRead,BufNewFile *.js set ft=javascript.jquery
 " For drupal modules
 au BufRead,BufNewFile *.module set syn=php
 au BufRead,BufNewFile *.module set omnifunc=phpcomplete#CompletePHP
+au BufRead,BufNewFile *.install set syn=php
+au BufRead,BufNewFile *.install set omnifunc=phpcomplete#CompletePHP
 
 "remove whitespaces from the end of all lines at saving
 autocmd BufWritePre * :%s/\s\+$//e
