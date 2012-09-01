@@ -13,3 +13,6 @@
 [submodule "shellscript/mysqlDbExporter"]
 	path = shellscript/mysqlDbExporter
 	url = git@github.com:hosszukalman/mysqlDbExporter.git
+[submodule ".zsh/z.sh"]
+	path = .zsh/z.sh
+	url = git://github.com/rupa/z.git

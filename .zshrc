@@ -119,7 +119,6 @@ alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
 alias la='ls -lAHh'
 alias l='ls'
-alias z='7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on'
 alias webserv='python -m SimpleHTTPServer'
 alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
@@ -232,3 +231,6 @@ translate() {
 
 unset http_proxy
 
+# Z command for frequently used directories
+source ~/.zsh/z.sh/z.sh
+export _Z_DATA=~/.zsh/.z_cache
