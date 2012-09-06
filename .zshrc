@@ -123,6 +123,10 @@ alias webserv='python -m SimpleHTTPServer'
 alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
 
+# I want the downloaded file to be the newest in the directory
+# Zsh completes it easier
+alias wget='wget --no-use-server-timestamps '
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
