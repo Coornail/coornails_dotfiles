@@ -122,6 +122,7 @@ alias l='ls'
 alias webserv='python -m SimpleHTTPServer'
 alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
+alias json_pretty_print='python -m json.tool'
 
 # I want the downloaded file to be the newest in the directory
 # Zsh completes it easier
