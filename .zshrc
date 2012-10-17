@@ -3,8 +3,9 @@ HISTSIZE=100000
 SAVEHIST=100000
 KERNEL=`uname`
 HOSTNAME=`hostname -s`
-PAGER='less'
-EDITOR=`which vim`
+
+export PAGER=`which less`
+export EDITOR=`which vim`
 
 # OsX specific stuff
 if [ $KERNEL = "Darwin" ]; then
