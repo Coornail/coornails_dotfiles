@@ -4,7 +4,7 @@ SAVEHIST=100000
 KERNEL=`uname`
 HOSTNAME=`hostname -s`
 PAGER='less'
-EDITOR='vim'
+EDITOR=`which vim`
 
 # OsX specific stuff
 if [ $KERNEL = "Darwin" ]; then
