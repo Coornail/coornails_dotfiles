@@ -125,6 +125,9 @@ alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
 alias json_pretty_print='python -m json.tool'
 
+# Generate longer passwords
+alias pwgen='pwgen 16'
+
 # I want the downloaded file to be the newest in the directory
 # Zsh completes it easier
 alias wget='wget --no-use-server-timestamps '
