@@ -224,10 +224,11 @@ function git-prompt() {
 
 # Set terminal color
 case "$HOSTNAME" in
-  "pris")     TERM_COLOR=$PR_GREEN ;;
-  "li66-97")  TERM_COLOR=$PR_MAGENTA ;;
-  "centosvm") TERM_COLOR=$PR_YELLOW ;;
-  *)          TERM_COLOR=$PR_BLUE ;;
+  "centosvm")  TERM_COLOR=$PR_YELLOW ;;
+  "li66-97")   TERM_COLOR=$PR_MAGENTA ;;
+  "li501-135") TERM_COLOR=$PR_RED ;;
+  "pris")      TERM_COLOR=$PR_GREEN ;;
+  *)           TERM_COLOR=$PR_BLUE ;;
 esac
 
 PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
