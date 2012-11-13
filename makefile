@@ -68,10 +68,15 @@ checkout_git_submodules:
 
 drush: checkout_git_submodules
 	$(TITLE) "Installing drush"
-	$(Q)cp -r shellscript/drush/ ${INSTALL_DIR}/shellscript/drush
+	$(Q)cp -rf shellscript/drush/ ${INSTALL_DIR}/shellscript/drush
 
 # @todo: Solve if VERBOSE=true
 clean:
 	$(TITLE)Deleting temporary files
 	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i; done
 
+todo.txt: checkout_git_submodules
+	$(TITLE) "Installing todo.txt"
+	$(Q)cp todo.txt-cli/todo.sh ${INSTALL_DIR}/shellscript/
+	$(Q)mkdir ${INSTALL_DIR}/.todo
+	$(Q)cp todo.cfg ${INSTALL_DIR}/.todo

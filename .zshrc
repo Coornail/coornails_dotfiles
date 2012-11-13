@@ -244,3 +244,4 @@ unset http_proxy
 # Z command for frequently used directories
 source ~/.zsh/z.sh/z.sh
 export _Z_DATA=~/.zsh/.z_cache
+alias t="~/shellscript/todo.sh -d ~/.todo/todo.cfg"

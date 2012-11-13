@@ -13,3 +13,6 @@
 [submodule ".zsh/z.sh"]
 	path = .zsh/z.sh
 	url = git://github.com/rupa/z.git
+[submodule "todo.txt-cli"]
+	path = todo.txt-cli
+	url = git://github.com/ginatrapani/todo.txt-cli.git
