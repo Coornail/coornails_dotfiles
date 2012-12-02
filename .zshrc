@@ -25,6 +25,7 @@ if [ $KERNEL = "Darwin" ]; then
   alias c='pbcopy'
   alias p='pbpaste'
 fi
+export PATH=$PATH:/usr/local/bin/
 
 export LC_ALL=C
 export TERM=xterm-color
@@ -34,10 +35,6 @@ export no_git_prompt=true
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
-
-# node.js
-export NODE_PATH="/usr/local/lib/node"
-export PATH=$PATH:~/.npm/less/1.1.2/package/bin/
 
 export ECO="lp:~economist-magic/economist-magic"
 
