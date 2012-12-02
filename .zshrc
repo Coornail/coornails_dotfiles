@@ -36,8 +36,6 @@ export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, s
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-export ECO="lp:~economist-magic/economist-magic"
-
 # Keyboard bindings
 bindkey -v
 bindkey "^[OD" backward-word
