@@ -241,4 +241,4 @@ source ~/.zsh/z.sh/z.sh
 export _Z_DATA=~/.zsh/.z_cache
 
 # todo.sh
-alias t="~/shellscript/todo.sh -d ~/.todo/todo.cfg"
+alias t="~/shellscript/todo.sh -a -d ~/.todo/todo.cfg"
