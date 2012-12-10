@@ -19,6 +19,7 @@ drupal = drush
 # Main make target, installs everything
 all: $(general_modules) $(desktop_modules) $(drupal)
 
+# @Todo: fix chsh
 zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
