@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/coornail/localhost/htdocs/blag4/sites/all/themes'
-let g:netrw_dirhist_2='/Users/coornail/localhost/htdocs/blag4/sites/all'
-let g:netrw_dirhist_3='/Users/coornail/localhost/htdocs/blag4/sites'
-let g:netrw_dirhist_4='/Users/coornail/localhost/htdocs/blag4'
-let g:netrw_dirhist_5='/Users/coornail/localhost/htdocs/blag4/themes'
-let g:netrw_dirhist_6='/Users/coornail/localhost/htdocs/blag4/themes/stark'
-let g:netrw_dirhist_7='/Users/coornail'
