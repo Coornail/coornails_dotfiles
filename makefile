@@ -69,7 +69,8 @@ checkout_git_submodules:
 
 drush: checkout_git_submodules
 	$(TITLE) "Installing drush"
-	$(Q)cp -rf shellscript/drush/ ${INSTALL_DIR}/shellscript/drush
+	$(Q)rm -rf ${INSTALL_DIR}/shellscript/drush
+	$(Q)cp -rf shellscript/drush ${INSTALL_DIR}/shellscript/drush
 
 # @todo: Solve if VERBOSE=true
 clean:
