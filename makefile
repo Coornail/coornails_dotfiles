@@ -13,7 +13,7 @@ endif
 
 general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript
 # My desktop is currently osx
-desktop_modules = osx
+desktop_modules = osx todo.txt
 drupal = drush
 
 # Main make target, installs everything
