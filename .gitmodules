@@ -22,3 +22,6 @@
 [submodule ".vim/autoload"]
 	path = .vim/autoload
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
