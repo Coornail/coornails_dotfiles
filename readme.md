@@ -8,6 +8,7 @@ I'd be happy if you would create a merge request if I missed something or if I m
 # Dependencies:
 * chsh
 * git
+* curl
 
 # Usage
 `make [all|zsh|git|nethack|osx|screen|tmux|vim|shellscript|drush|clean]`
