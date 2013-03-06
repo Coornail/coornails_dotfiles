@@ -136,3 +136,5 @@ set backupskip=/tmp/*,/private/tmp/*
 
 " Show the git diff in vim when commiting
 autocmd FileType gitcommit DiffGitCached | wincmd p
+
+execute pathogen#infect()
