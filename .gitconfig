@@ -47,6 +47,7 @@
   alias = !git config --list | grep -E 'alias\\.' | sed -E 's/alias\\.([^=]*)=(.*)/\\1 = \\2/' | sort
   dif = diff
   difff = diff
+  bdate = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short)%09%(refname:short)'
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
