@@ -63,7 +63,6 @@ if has("gui_running")
 	set tbis=tiny
 	colorscheme solarized
   set guifont=Monaco:h13.00
-  colorscheme xoria256
   set guioptions-=T  " Noo toolbar
 else
 	colorscheme solarized
