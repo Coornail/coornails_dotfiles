@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/visual-star-search"]
 	path = .vim/bundle/visual-star-search
 	url = git://github.com/bronson/vim-visual-star-search.git
+[submodule ".vim/bundle/todo.txt-vim"]
+	path = .vim/bundle/todo.txt-vim
+	url = git://github.com/davidoc/todo.txt-vim.git
