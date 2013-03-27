@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/vim-gitgutter"]
 	path = .vim/bundle/vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
+[submodule ".vim/bundle/visual-star-search"]
+	path = .vim/bundle/visual-star-search
+	url = git://github.com/bronson/vim-visual-star-search.git
