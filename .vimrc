@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set nocompatible
 set nobackup		" do not keep a backup file
 set history=50		" keep 50 lines of command line history
@@ -59,12 +61,12 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 if has("gui_running")
 	" modify toolbar
 	set tbis=tiny
-	"colorscheme solarized
+	colorscheme solarized
   set guifont=Monaco:h13.00
   colorscheme xoria256
   set guioptions-=T  " Noo toolbar
 else
-	"colorscheme solarized
+	colorscheme solarized
 endif
 
 " autocomplete
@@ -136,5 +138,3 @@ set backupskip=/tmp/*,/private/tmp/*
 
 " Show the git diff in vim when commiting
 autocmd FileType gitcommit DiffGitCached | wincmd p
-
-execute pathogen#infect()
