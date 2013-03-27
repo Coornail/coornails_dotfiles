@@ -51,11 +51,12 @@ tmux:
 	$(Q)cp .tmux.conf ${INSTALL_DIR}
 
 vim:
-	$(TITLE) "Downloading pathogen"
-	$(Q)curl -Sso ./.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 	$(TITLE) "Installing vim config"
 	$(Q)cp .vimrc ${INSTALL_DIR}
 	$(Q)cp -r .vim ${INSTALL_DIR}
+	$(TITLE) "Downloading pathogen"
+	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload/
+	$(Q)curl -Sso ${INSTALL_DIR}/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
