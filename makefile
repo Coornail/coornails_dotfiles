@@ -84,4 +84,4 @@ todo.txt: checkout_git_submodules
 	$(TITLE) "Installing todo.txt"
 	$(Q)cp todo.txt-cli/todo.sh ${INSTALL_DIR}/shellscript/
 	$(Q)mkdir -p ${INSTALL_DIR}/.todo
-	$(Q)cp -f todo.cfg ${INSTALL_DIR}/config
+	$(Q)cp -f todo.cfg ${INSTALL_DIR}/.todo/config
