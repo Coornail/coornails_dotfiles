@@ -52,7 +52,11 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.Dock autohide-delay -float 0.05
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
-killall Dock
 
 # Disable mouse aceleration
 defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+# Make Mission control animations faster
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+killall Dock
