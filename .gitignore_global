@@ -5,6 +5,7 @@ Session.vim
 
 # OsX
 .DS_Store
+.localized
 
 # Thumbnails
 ._*
