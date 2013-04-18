@@ -74,6 +74,10 @@ drush: checkout_git_submodules
 	$(TITLE) "Installing drush"
 	$(Q)rm -rf ${INSTALL_DIR}/shellscript/drush
 	$(Q)cp -rf shellscript/drush ${INSTALL_DIR}/shellscript/drush
+	$(Q)mkdir -p ${INSTALL_DIR}/.drush
+	$(Q)cp -r drush/* ${INSTALL_DIR}/.drush/
+# Clear cache, to make sure new commands are picked up right away
+	$(Q)rm -rf ${INSTALL_DIR}/.drush/cache
 
 # @todo: Solve if VERBOSE=true
 clean:
