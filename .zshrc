@@ -12,8 +12,6 @@ if [ $KERNEL = "Darwin" ]; then
   # macports
   export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
-  # mamp
-  export PATH=$PATH:/Applications/MAMP/Library/bin/
 
   GLSEEP=`which gls >> /dev/null &> /dev/null`
   if [ $? -eq 0 ]; then
