@@ -58,14 +58,14 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+colorscheme solarized
+set background=dark
+
 if has("gui_running")
 	" modify toolbar
 	set tbis=tiny
-	colorscheme solarized
   set guifont=Monaco:h13.00
   set guioptions-=T  " Noo toolbar
-else
-	colorscheme solarized
 endif
 
 " autocomplete
