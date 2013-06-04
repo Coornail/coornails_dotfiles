@@ -21,3 +21,11 @@ Thumbs.db
 # Merge garbage file
 *.rej
 *.orig
+
+# Latex temporary files
+*.aux
+*.dvi
+*.log
+*.ps
+*.toc
+*.out
