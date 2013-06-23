@@ -59,5 +59,8 @@ defaults write .GlobalPreferences com.apple.mouse.scaling -1
 # Make Mission control animations faster
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
+# Disable memory copy to disk on hibernate
+sudo pmset -a hibernatemode 0
+
 killall Dock
 killall Finder
