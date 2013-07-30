@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/PIV"]
 	path = .vim/bundle/PIV
 	url = https://github.com/spf13/PIV.git
+[submodule ".vim/bundle/neocomplcache"]
+	path = .vim/bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.vim.git
