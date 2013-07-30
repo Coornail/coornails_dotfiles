@@ -31,3 +31,6 @@
 [submodule ".drush/drush_ctex_bonus"]
 	path = .drush/drush_ctex_bonus
 	url = http://git.drupal.org/project/drush_ctex_bonus.git
+[submodule ".vim/bundle/PIV"]
+	path = .vim/bundle/PIV
+	url = https://github.com/spf13/PIV.git
