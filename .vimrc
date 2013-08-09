@@ -209,3 +209,7 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 let g:DisableAutoPHPFolding = 1
+
+" Disable arrows in NERDTree
+" https://github.com/scrooloose/nerdtree/issues/108
+let g:NERDTreeDirArrows=0
