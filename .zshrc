@@ -241,10 +241,3 @@ export _Z_DATA=~/.zsh/.z_cache
 # todo.sh
 alias t="~/shellscript/todo.sh"
 export TODOTXT_DEFAULT_ACTION=ls
-
-# Don't look up remote files in git.
-# http://stackoverflow.com/questions/9810327/git-tab-autocompletion-is-useless-can-i-turn-it-off-or-optimize-it/9810485#9810485
-__git_files () {
-  _wanted files expl 'local files' _files
-}
-
