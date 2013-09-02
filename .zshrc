@@ -241,3 +241,8 @@ export _Z_DATA=~/.zsh/.z_cache
 # todo.sh
 alias t="~/shellscript/todo.sh"
 export TODOTXT_DEFAULT_ACTION=ls
+
+# Command line edit for ESC-v
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
