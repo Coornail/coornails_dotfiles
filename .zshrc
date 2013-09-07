@@ -246,3 +246,6 @@ export TODOTXT_DEFAULT_ACTION=ls
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+
+# Add default emacs keybindings.
+bindkey -e
