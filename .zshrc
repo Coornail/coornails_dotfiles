@@ -26,7 +26,7 @@ fi
 export PATH=$PATH:/usr/local/bin/
 
 export LC_ALL=C
-export TERM=xterm-color
+export TERM=xterm-256color
 # I don't use it most of the time
 export no_git_prompt=true
 
