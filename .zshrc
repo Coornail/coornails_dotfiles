@@ -247,9 +247,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 
-# Add default emacs keybindings.
-bindkey -e
-
 # Set locale.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
