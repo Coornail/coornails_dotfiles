@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/lightline"]
 	path = .vim/bundle/lightline
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "shellscript/rsync-time-backup"]
+	path = shellscript/rsync-time-backup
+	url = https://github.com/laurent22/rsync-time-backup.git
