@@ -123,7 +123,7 @@ alias pwgen='pwgen 16'
 
 # I want the downloaded file to be the newest in the directory
 # Zsh completes it easier
-alias wget='wget --no-use-server-timestamps '
+alias wget='wget --no-use-server-timestamps --no-check-certificate '
 
 alias ..='cd ..'
 alias ...='cd ../..'
