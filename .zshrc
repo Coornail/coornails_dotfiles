@@ -250,3 +250,6 @@ bindkey -M vicmd v edit-command-line
 # Set locale.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# Decrease autossh poll delay.
+export AUTOSSH_POLL=60
