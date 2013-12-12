@@ -29,3 +29,5 @@ Thumbs.db
 *.ps
 *.toc
 *.out
+
+composer.phar
