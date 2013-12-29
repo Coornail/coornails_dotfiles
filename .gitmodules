@@ -52,3 +52,6 @@
 [submodule "shellscript/rsync-time-backup"]
 	path = shellscript/rsync-time-backup
 	url = https://github.com/laurent22/rsync-time-backup.git
+[submodule ".vim/bundle/vim-zenroom"]
+	path = .vim/bundle/vim-zenroom
+	url = git@github.com:amix/vim-zenroom.git
