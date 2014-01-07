@@ -35,7 +35,6 @@ export LC_ALL=C
 export TERM=xterm-256color
 
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
-export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Keyboard bindings
@@ -55,62 +54,39 @@ bindkey '\e[4~' end-of-line
 
 bindkey "^R" history-incremental-search-backward
 
-
 # Autoload zsh modules
 autoload -Uz compinit
 compinit -d $TMPDIR/zsh_compinit
 autoload zmv
 
 setopt no_hup hist_verify
-setopt CORRECT      # command CORRECTION
-setopt MENUCOMPLETE
 setopt ALL_EXPORT
-setopt appendhistory autocd extendedglob nomatch
+setopt nomatch
 setopt notify globdots correct pushdtohome cdablevars autolist
 setopt correctall recexact longlistjobs
-setopt autoresume histignoredups pushdsilent
-setopt autopushd pushdminus rcquotes
+setopt autoresume pushdsilent
+setopt autopushd rcquotes
 setopt listtypes
 setopt noshwordsplit
 setopt printexitvalue
-setopt hist_ignore_all_dups
-setopt sharehistory
-setopt prompt_subst  # show git branch if in a git repo
 
-unsetopt menucomplete
 unsetopt beep notify
 unsetopt bgnice autoparamslash
 unsetopt ALL_EXPORT
+
+setopt menu_complete   # autoselect the first completion entry
 
 zstyle ':completion:*' file-sort 'time'
 
 # Color support
 autoload colors zsh/terminfo
-colors
 
+colors
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
   eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
   (( count = $count + 1 ))
 done
-PR_NO_COLOR="%{$terminfo[sgr0]%}"
-
-# aliases
-case "$KERNEL" in
-  "Darwin")
-    GLS=`which gls >> /dev/null &> /dev/null`
-    if [ $? -eq 0 ]; then
-      alias ls='gls --color=always -A'
-    else
-      alias ls='ls -G'
-    fi
-  ;;
-
-  "Linux")  alias ls='ls --color=always -A' ;;
-esac
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
@@ -128,11 +104,8 @@ alias pwgen='pwgen 16'
 # Zsh completes it easier
 alias wget='wget --no-use-server-timestamps --no-check-certificate '
 
-alias ..='cd ..'
-alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias gww='cd /Users/coornail/localhost/htdocs/'
 
 alias drush='~/shellscript/drush/drush'
 
@@ -151,8 +124,6 @@ autoload zkbd
 [[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
 # completion stuff
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' menu yes select
 xdvi() { command xdvi ${*:-*.dvi(om[1])} }
 zstyle ':completion:*:*:xdvi:*' menu yes select
