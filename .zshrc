@@ -26,20 +26,19 @@ if [ $KERNEL = "Darwin" ]; then
   alias startftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
   alias c='pbcopy'
   alias p='pbpaste'
+
+  plugins+=(macports osx)
 fi
 export PATH=$PATH:/usr/local/bin/
 
 export LC_ALL=C
 export TERM=xterm-256color
-# I don't use it most of the time
-export no_git_prompt=true
 
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 # Keyboard bindings
-bindkey -v
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
 
