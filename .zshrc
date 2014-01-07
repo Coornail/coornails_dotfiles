@@ -1,9 +1,10 @@
 # Oh my zsh
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
+ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT=true
 
-plugins=(git colorize)
+plugins=(git colorize composer docker github tmux torrent)
 source $ZSH/oh-my-zsh.sh
 
 HISTFILE=~/.histfile
