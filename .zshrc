@@ -2,9 +2,9 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
-DISABLE_UPDATE_PROMPT=true
+DISABLE_UPDATE_PROMPT="true"
 
-plugins=(git colorize composer docker github tmux torrent)
+plugins=(git colorize composer docker github gnu-utils tmux torrent z)
 source $ZSH/oh-my-zsh.sh
 
 HISTFILE=~/.histfile
@@ -21,11 +21,6 @@ if [ $KERNEL = "Darwin" ]; then
   # macports
   export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
-
-  GLSEEP=`which gls >> /dev/null &> /dev/null`
-  if [ $? -eq 0 ]; then
-    alias sleep='gsleep'
-  fi
 
   alias hibernate=osascript -e 'tell application "System Events" to sleep'
   alias startftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
@@ -201,29 +196,6 @@ fi
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-function git-branch-name () {
-  git branch 2> /dev/null | grep '^\*' | sed 's/^\*\ //'
-}
-
-function git-dirty () {
-  git status 2> /dev/null | grep "nothing to commit (working directory clean)"
-  echo $?
-}
-
-function git-prompt() {
-  if [ $no_git_prompt ]; then
-    return
-  fi
-  gstatus=$(git status 2> /dev/null)
-  branch=$(echo $gstatus | head -1 | sed 's/^# On branch //')
-  dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)'; echo $?)
-  if [[ x$branch != x ]]; then
-    dirty_color=$fg[green]
-    if [[ $dirty = 1 ]] { dirty_color=$fg[red] }
-    [ x$branch != x ] && echo "%{$PR_BLUE%}[%{$dirty_color%}$branch%{$reset_color%}%{$PR_BLUE%}]"
-  fi
-}
-
 # Set terminal color
 case "$HOSTNAME" in
   "centosvm")  TERM_COLOR=$PR_YELLOW ;;
@@ -232,8 +204,6 @@ case "$HOSTNAME" in
   "pris")      TERM_COLOR=$PR_GREEN ;;
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
-
-#PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
 
 translate() {
   wget -qO- "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=${2:-en}|${3:-hu}" | sed -E -n 's/[[:alnum:]": {}]+"translatedText":"([^"]+)".*/\1/p';
@@ -244,7 +214,6 @@ translate() {
 unset http_proxy
 
 # Z command for frequently used directories
-source ~/.zsh/z.sh/z.sh
 export _Z_DATA=~/.zsh/.z_cache
 
 # todo.sh
