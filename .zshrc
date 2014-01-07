@@ -4,7 +4,7 @@ ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 
-plugins=(git colorize composer docker github gnu-utils tmux torrent z)
+plugins=(colored-man colorize composer docker git github gnu-utils tmux torrent vi-mode web-search z)
 source $ZSH/oh-my-zsh.sh
 
 HISTFILE=~/.histfile
