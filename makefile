@@ -24,6 +24,7 @@ zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp -r .zsh ${INSTALL_DIR}
+	$(Q)cp -r .oh-my-zsh ${INSTALL_DIR}
 	$(Q)touch ${INSTALL_DIR}/.z_cache
 	$(Q)chsh -s `which zsh` || echo 'Failed to set zsh as default shell, install it and make zsh'
 

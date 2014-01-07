@@ -1,3 +1,11 @@
+# Oh my zsh
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+DISABLE_AUTO_UPDATE="true"
+
+plugins=(git colorize)
+source $ZSH/oh-my-zsh.sh
+
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
@@ -224,7 +232,7 @@ case "$HOSTNAME" in
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
 
-PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
+#PROMPT='%{$TERM_COLOR%}%n@%m%u%{$PR_NO_COLOR%}:%{$PR_BLUE%}%~`git-prompt`%{$reset_color%}%(!.#.$) '
 
 translate() {
   wget -qO- "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=${2:-en}|${3:-hu}" | sed -E -n 's/[[:alnum:]": {}]+"translatedText":"([^"]+)".*/\1/p';
