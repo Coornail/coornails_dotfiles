@@ -72,7 +72,7 @@ checkout_git_submodules:
 # Remove .git directories from submodules as we don't want to copy those
 	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i/.git; done
 
-drush: checkout_git_submodules
+drush: checkout_git_submodules shellscript
 	$(TITLE) "Installing drush"
 	$(Q)rm -rf ${INSTALL_DIR}/shellscript/drush
 	$(Q)cp -rf shellscript/drush ${INSTALL_DIR}/shellscript/drush
