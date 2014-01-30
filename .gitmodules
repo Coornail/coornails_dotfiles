@@ -7,9 +7,6 @@
 [submodule "shellscript/mysqlDbExporter"]
 	path = shellscript/mysqlDbExporter
 	url = git://github.com/hosszukalman/mysqlDbExporter.git
-[submodule "todo.txt-cli"]
-	path = todo.txt-cli
-	url = git://github.com/ginatrapani/todo.txt-cli.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git

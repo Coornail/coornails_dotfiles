@@ -13,7 +13,7 @@ endif
 
 general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript
 # My desktop is currently osx
-desktop_modules = osx todo.txt
+desktop_modules = osx
 drupal = drush
 
 # Main make target, installs everything
@@ -85,8 +85,3 @@ clean:
 	$(TITLE)Deleting temporary files
 	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i; done
 
-todo.txt: checkout_git_submodules
-	$(TITLE) "Installing todo.txt"
-	$(Q)cp todo.txt-cli/todo.sh ${INSTALL_DIR}/shellscript/
-	$(Q)mkdir -p ${INSTALL_DIR}/.todo
-	$(Q)cp -f todo.cfg ${INSTALL_DIR}/.todo/config
