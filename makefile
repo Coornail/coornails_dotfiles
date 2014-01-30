@@ -50,7 +50,7 @@ tmux:
 	$(TITLE) "Installing tmux config"
 	$(Q)cp .tmux.conf ${INSTALL_DIR}
 
-vim:
+vim: checkout_git_submodules
 	$(TITLE) "Installing vim config"
 	$(Q)cp .vimrc ${INSTALL_DIR}
 	$(Q)cp -r .vim ${INSTALL_DIR}
