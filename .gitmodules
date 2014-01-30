@@ -10,6 +10,9 @@
 [submodule ".zsh/z.sh"]
 	path = .zsh/z.sh
 	url = git://github.com/rupa/z.git
+[submodule "todo.txt-cli"]
+	path = todo.txt-cli
+	url = git://github.com/ginatrapani/todo.txt-cli.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -19,6 +22,9 @@
 [submodule ".vim/bundle/visual-star-search"]
 	path = .vim/bundle/visual-star-search
 	url = git://github.com/bronson/vim-visual-star-search.git
+[submodule ".vim/bundle/todo.txt-vim"]
+	path = .vim/bundle/todo.txt-vim
+	url = git://github.com/davidoc/todo.txt-vim.git
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
