@@ -6,6 +6,7 @@ DISABLE_UPDATE_PROMPT="true"
 
 plugins=(colored-man colorize composer docker git github gnu-utils tmux torrent vi-mode web-search z)
 source $ZSH/oh-my-zsh.sh
+source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
