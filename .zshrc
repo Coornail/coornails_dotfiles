@@ -39,21 +39,6 @@ export TERM=xterm-256color
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# Keyboard bindings
-bindkey "^[OD" backward-word
-bindkey "^[OC" forward-word
-
-# page up and down
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
-bindkey '^[[5~' history-beginning-search-backward
-bindkey '^[[6~' history-beginning-search-forward
-
-bindkey '\e[1~' beginning-of-line
-bindkey '\e[4~' end-of-line
-
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 
@@ -115,17 +100,6 @@ alias drush='~/shellscript/drush/drush'
 
 # correcting some keys
 autoload zkbd
-[[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
-[[ -n ${key[Insert]} ]] && bindkey "${key[Insert]}" overwrite-mode
-[[ -n ${key[Home]} ]] && bindkey "${key[Home]}" beginning-of-line
-[[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
-[[ -n ${key[Delete]} ]] && bindkey "${key[Delete]}" delete-char
-[[ -n ${key[End]} ]] && bindkey "${key[End]}" end-of-line
-[[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
-[[ -n ${key[Up]} ]] && bindkey "${key[Up]}" up-line-or-search
-[[ -n ${key[Left]} ]] && bindkey "${key[Left]}" backward-char
-[[ -n ${key[Down]} ]] && bindkey "${key[Down]}" down-line-or-search
-[[ -n ${key[Right]} ]] && bindkey "${key[Right]}" forward-char
 
 # completion stuff
 zstyle ':completion:*' menu yes select
@@ -189,15 +163,6 @@ unset http_proxy
 
 # Z command for frequently used directories
 export _Z_DATA=~/.zsh/.z_cache
-
-# todo.sh
-alias t="~/shellscript/todo.sh"
-export TODOTXT_DEFAULT_ACTION=ls
-
-# Command line edit for ESC-v
-#autoload -U edit-command-line
-#zle -N edit-command-line
-#bindkey -M vicmd v edit-command-line
 
 # Set locale.
 export LC_ALL=en_US.UTF-8
