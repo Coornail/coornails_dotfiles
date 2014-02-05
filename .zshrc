@@ -126,11 +126,6 @@ zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 # for cd, only list dirs
 compctl -/ cd
 
-_force_rehash() {
-  (( CURRENT == 1 )) && rehash
-  return 1  # Because we didn't really complete anything
-}
-
 # file colors
 GDIRCOLORS=`which gdircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
