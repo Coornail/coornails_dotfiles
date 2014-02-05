@@ -141,12 +141,14 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Set terminal color
 case "$HOSTNAME" in
-  "centosvm")  TERM_COLOR=$PR_YELLOW ;;
+  "pris")      TERM_COLOR=$PR_GREEN ;;
+  "debian")    TERM_COLOR=$PR_YELLOW ;;
   "li66-97")   TERM_COLOR=$PR_MAGENTA ;;
   "li501-135") TERM_COLOR=$PR_RED ;;
-  "pris")      TERM_COLOR=$PR_GREEN ;;
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
+
+PROMPT="%(!.%{$fg_bold[red]%}.%{$TERM_COLOR%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%_$(prompt_char)%{$reset_color%} "
 
 translate() {
   wget -qO- "http://ajax.googleapis.com/ajax/services/language/translate?v=1.0&q=$1&langpair=${2:-en}|${3:-hu}" | sed -E -n 's/[[:alnum:]": {}]+"translatedText":"([^"]+)".*/\1/p';
