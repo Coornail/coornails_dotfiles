@@ -133,9 +133,6 @@ translate() {
 
 unset http_proxy
 
-# Z command for frequently used directories
-export _Z_DATA=~/.zsh/.z_cache
-
 # Set locale.
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
