@@ -4,9 +4,10 @@ ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 
-plugins=(colored-man colorize composer docker git github gnu-utils tmux torrent vi-mode web-search z)
+plugins=(colored-man colorize composer docker git github gnu-utils history-substring-search tmux torrent vi-mode web-search z)
 source $ZSH/oh-my-zsh.sh
 source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zaw/zaw.zsh
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -53,7 +54,7 @@ bindkey '^[[6~' history-beginning-search-forward
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
-bindkey "^R" history-incremental-search-backward
+bindkey '^R' zaw-history
 
 # Autoload zsh modules
 autoload -Uz compinit
@@ -70,6 +71,7 @@ setopt autopushd rcquotes
 setopt listtypes
 setopt noshwordsplit
 setopt printexitvalue
+setopt hist_ignore_dups
 
 unsetopt beep notify
 unsetopt bgnice autoparamslash
@@ -192,9 +194,9 @@ alias t="~/shellscript/todo.sh"
 export TODOTXT_DEFAULT_ACTION=ls
 
 # Command line edit for ESC-v
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+#autoload -U edit-command-line
+#zle -N edit-command-line
+#bindkey -M vicmd v edit-command-line
 
 # Set locale.
 export LC_ALL=en_US.UTF-8
