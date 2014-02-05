@@ -55,6 +55,7 @@ bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
 bindkey '^R' zaw-history
+bindkey '^B' zaw-git-branches
 
 # Autoload zsh modules
 autoload -Uz compinit
