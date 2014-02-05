@@ -42,9 +42,6 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 
-# Autoload zsh modules
-autoload -Uz compinit
-compinit -d $TMPDIR/zsh_compinit
 autoload zmv
 
 setopt no_hup hist_verify
@@ -101,28 +98,6 @@ alias drush='~/shellscript/drush/drush'
 # correcting some keys
 autoload zkbd
 
-# completion stuff
-zstyle ':completion:*' menu yes select
-xdvi() { command xdvi ${*:-*.dvi(om[1])} }
-zstyle ':completion:*:*:xdvi:*' menu yes select
-zstyle ':completion:*:*:xdvi:*' file-sort time
-zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:kill:*' force-list always
-zstyle ':completion:*:*' ignored-patterns '*.sw*'
-zstyle ':completion:*:urls' local /var/www/localhost/htdocs/
-zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete
-
-# case-insensitive (all),partial-word and then substring completion
-# http://www.rlazo.org/2010/11/18/zsh-case-insensitive-completion/
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
-      'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-# formatting and messages
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 # for cd, only list dirs
 compctl -/ cd
 
