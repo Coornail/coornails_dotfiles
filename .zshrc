@@ -55,6 +55,8 @@ setopt listtypes
 setopt noshwordsplit
 setopt printexitvalue
 setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
 
 unsetopt beep notify
 unsetopt bgnice autoparamslash
@@ -123,8 +125,8 @@ case "$HOSTNAME" in
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}!%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
