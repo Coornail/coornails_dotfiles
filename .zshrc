@@ -32,6 +32,7 @@ if [ $KERNEL = "Darwin" ]; then
   plugins+=(macports osx)
 fi
 export PATH=$PATH:/usr/local/bin/
+export PATH=$PATH:~/bin/
 
 export LC_ALL=C
 export TERM=xterm-256color
@@ -94,8 +95,6 @@ alias wget='wget --no-use-server-timestamps --no-check-certificate '
 
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-
-alias drush='~/shellscript/drush/drush'
 
 # correcting some keys
 autoload zkbd
