@@ -11,7 +11,7 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript
+general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript inst_bin
 # My desktop is currently osx
 desktop_modules = osx
 drupal = drush
@@ -64,6 +64,12 @@ vim: checkout_git_submodules
 shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
+
+inst_bin: shellscript
+	$(TITLE) "Installing bin"
+	$(Q)cp -r bin ${INSTALL_DIR}
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/drush/drush ${INSTALL_DIR}/bin/drush
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/ievms/ievms.sh ${INSTALL_DIR}/bin/ievms
 
 checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
