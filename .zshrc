@@ -77,10 +77,25 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
   (( count = $count + 1 ))
 done
 
+if [ $KERNEL = "Darwin" ]; then
+  LS_ARGUMENTS="-G"
+else
+  LS_ARGUMENTS="--color=auto"
+fi
+
+# Try to use coreutils ls if possible.
+gls --color -d . &>/dev/null 2>&1 && LS="gls" || LS="ls"
+if [ "$LS" = "gls" ]; then
+  LS_ARGUMENTS="--color=auto"
+fi
+
+LS="$LS $LS_ARGUMENTS"
+alias la="$LS -lAHh"
+alias ls=$LS
+alias l=$LS
+
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
-alias la='ls -lAHh'
-alias l='ls'
 alias webserv='python -m SimpleHTTPServer'
 alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
