@@ -20,10 +20,6 @@ export EDITOR=`which vim`
 
 # OsX specific stuff
 if [ $KERNEL = "Darwin" ]; then
-  # macports
-  export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
-  export MANPATH=/opt/local/share/man:$MANPATH
-
   alias hibernate=osascript -e 'tell application "System Events" to sleep'
   alias startftp='sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist'
   alias c='pbcopy'
@@ -31,8 +27,6 @@ if [ $KERNEL = "Darwin" ]; then
 
   plugins+=(macports osx)
 fi
-export PATH=$PATH:/usr/local/bin/
-export PATH=$PATH:~/bin/
 
 export LC_ALL=C
 export TERM=xterm-256color

@@ -23,6 +23,7 @@ all: $(general_modules) $(desktop_modules) $(drupal)
 zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
+	$(Q)cp .zshenv ${INSTALL_DIR}
 	$(Q)cp -r .zsh ${INSTALL_DIR}
 	$(Q)cp -r .oh-my-zsh ${INSTALL_DIR}
 	$(Q)touch ${INSTALL_DIR}/.z_cache
