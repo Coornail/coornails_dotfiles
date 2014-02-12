@@ -36,6 +36,8 @@
   lg = log -p
   pushom = push origin master
   pullom = pull origin master
+  pushgm = push github master
+  pullgm = pull github master
   pushall = push --all
   pullall = pull --all
   loggraph = log --graph --all --full-history --color --branches --decorate
