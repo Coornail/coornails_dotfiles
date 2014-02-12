@@ -58,3 +58,6 @@
 [submodule ".zsh/zaw"]
 	path = .zsh/zaw
 	url = https://github.com/zsh-users/zaw.git
+[submodule "shellscript/hr"]
+	path = shellscript/hr
+	url = https://github.com/LuRsT/hr.git
