@@ -40,7 +40,7 @@
   pullgm = pull github master
   pushall = push --all
   pullall = pull --all
-  loggraph = log --graph --all --full-history --color --branches --decorate
+  loggraph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
   pul = pull
   tags = tag
   psuh = push
