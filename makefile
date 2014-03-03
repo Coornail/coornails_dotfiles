@@ -24,8 +24,6 @@ composer: inst_bin
 	$(Q)curl -sS https://getcomposer.org/installer | php -- --install-dir=${INSTALL_DIR}/bin
 	$(Q)mv ${INSTALL_DIR}/bin/composer.phar ${INSTALL_DIR}/bin/composer
 
-
-# @Todo: fix chsh
 zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
