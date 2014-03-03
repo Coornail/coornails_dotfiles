@@ -73,9 +73,9 @@ shellscript: checkout_git_submodules
 inst_bin: shellscript
 	$(TITLE) "Installing bin"
 	$(Q)cp -r bin ${INSTALL_DIR}
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/drush/drush ${INSTALL_DIR}/bin/drush
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/ievms/ievms.sh ${INSTALL_DIR}/bin/ievms
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/hr/hr ${INSTALL_DIR}/bin/hr
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/drush/drush ${INSTALL_DIR}/bin/drush || true
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/ievms/ievms.sh ${INSTALL_DIR}/bin/ievms || true
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/hr/hr ${INSTALL_DIR}/bin/hr || true
 
 checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
