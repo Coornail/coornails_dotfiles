@@ -14,10 +14,16 @@ endif
 general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript inst_bin
 # My desktop is currently osx
 desktop_modules = osx
-drupal = drush
+drupal = drush composer
 
 # Main make target, installs everything
 all: $(general_modules) $(desktop_modules) $(drupal)
+
+composer: inst_bin
+	$(TITLE) "Installing Composer"
+	$(Q)curl -sS https://getcomposer.org/installer | php -- --install-dir=${INSTALL_DIR}/bin
+	$(Q)mv ${INSTALL_DIR}/bin/composer.phar ${INSTALL_DIR}/bin/composer
+
 
 # @Todo: fix chsh
 zsh:
