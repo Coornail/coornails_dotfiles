@@ -76,6 +76,8 @@ inst_bin: shellscript
 	$(Q)ln -s ${INSTALL_DIR}/shellscript/drush/drush ${INSTALL_DIR}/bin/drush || true
 	$(Q)ln -s ${INSTALL_DIR}/shellscript/ievms/ievms.sh ${INSTALL_DIR}/bin/ievms || true
 	$(Q)ln -s ${INSTALL_DIR}/shellscript/hr/hr ${INSTALL_DIR}/bin/hr || true
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/catimg/catimg ${INSTALL_DIR}/bin/catimg || true
+	$(Q)ln -s ${INSTALL_DIR}/shellscript/catimg/colors.png ${INSTALL_DIR}/bin/colors.png || true
 
 checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
