@@ -30,7 +30,6 @@ if [ $KERNEL = "Darwin" ]; then
   plugins+=(macports osx)
 fi
 
-export LC_ALL=C
 export TERM=xterm-256color
 
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
