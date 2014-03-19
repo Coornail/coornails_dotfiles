@@ -130,6 +130,7 @@ case "$HOSTNAME" in
   "pris")      TERM_COLOR=$PR_GREEN ;;
   "debian")    TERM_COLOR=$PR_YELLOW ;;
   "li66-97")   TERM_COLOR=$PR_MAGENTA ;;
+  "li624-36")  TERM_COLOR=$PR_RED ;;
   "li501-135") TERM_COLOR=$PR_RED ;;
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
