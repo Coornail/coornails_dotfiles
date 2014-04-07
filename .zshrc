@@ -20,6 +20,11 @@ HOSTNAME=`hostname -s`
 export PAGER=`which less`
 export EDITOR=`which vim`
 
+# Linux specifi stuff
+if [ $KERNEL = "Linux" ]; then
+  export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+fi
+
 # OsX specific stuff
 if [ $KERNEL = "Darwin" ]; then
   alias hibernate=osascript -e 'tell application "System Events" to sleep'
