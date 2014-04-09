@@ -64,3 +64,6 @@
 [submodule "shellscript/catimg"]
 	path = shellscript/catimg
 	url = git@github.com:posva/catimg.git
+[submodule ".vim/bundle/ack"]
+	path = .vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
