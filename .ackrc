@@ -12,8 +12,8 @@
 --type-add=css=scss
 --type-add=css=sass
 --type-add=ruby=.haml,.rselm,.feature,.ru,.lock
---type-add=php.=module,.install
 
 --type-set=coffeescript=.coffee
 --type-set=coffee=.coffee
 --type-set=json=.json
+--type-set=php=.php.,module,.install
