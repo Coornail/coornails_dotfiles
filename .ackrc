@@ -1,0 +1,16 @@
+# Always sort the files.
+#--sort−files
+
+# Always color, even if piping to a another program.
+--color
+
+# Ignores.
+--ignore-dir=.idea/
+--ignore-dir=node_modules/
+
+# Extend types.
+--type-add=css=scss
+--type-add=ruby=.haml,.rselm,.feature,.ru,.lock
+--type-set=coffeescript=.coffee
+--type-set=coffee=.coffee
+--type-set=json=.json

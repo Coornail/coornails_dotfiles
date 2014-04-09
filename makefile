@@ -19,6 +19,10 @@ drupal = drush composer
 # Main make target, installs everything
 all: $(general_modules) $(desktop_modules) $(drupal)
 
+ack:
+	$(TITLE) "Installing .ackrc"
+	$(Q)cp .ackrc ${INSTALL_DIR}/.ackrc
+
 composer: inst_bin
 	$(TITLE) "Installing Composer"
 	$(Q)curl -sS https://getcomposer.org/installer | php -- --install-dir=${INSTALL_DIR}/bin
