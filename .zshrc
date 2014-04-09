@@ -32,6 +32,9 @@ if [ $KERNEL = "Darwin" ]; then
   alias c='pbcopy'
   alias p='pbpaste'
 
+  # Ack is installed to a separate path than debian.
+  unalias ack
+
   plugins+=(macports osx)
 fi
 
