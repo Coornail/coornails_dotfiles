@@ -11,7 +11,7 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = checkout_git_submodules zsh git nethack screen tmux vim shellscript inst_bin
+general_modules = ack checkout_git_submodules zsh git nethack screen tmux vim shellscript inst_bin
 # My desktop is currently osx
 desktop_modules = osx
 drupal = drush composer
