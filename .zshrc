@@ -5,6 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
+COMPLETION_WAITING_DOTS="true"
 
 plugins=(compleat colored-man colorize composer docker git gitignore github gnu-utils history-substring-search tmux torrent vi-mode web-search z)
 source $ZSH/oh-my-zsh.sh
