@@ -33,9 +33,6 @@ if [ $KERNEL = "Darwin" ]; then
   alias c='pbcopy'
   alias p='pbpaste'
 
-  # Ack is installed to a separate path than debian.
-  unalias ack
-
   plugins+=(macports osx)
 fi
 
@@ -101,7 +98,6 @@ alias l=$LS
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
 alias webserv='python -m SimpleHTTPServer'
-alias ack='ack-grep'
 alias rsyncssh="rsync -avz --progress -e ssh "
 alias json_pretty_print='python -m json.tool'
 
