@@ -24,6 +24,7 @@ export EDITOR=`which vim`
 # Linux specifi stuff
 if [ $KERNEL = "Linux" ]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+  alias ack="ack-grep"
 fi
 
 # OsX specific stuff
