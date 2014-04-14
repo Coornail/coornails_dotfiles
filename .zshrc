@@ -44,6 +44,8 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 
 autoload zmv
 
