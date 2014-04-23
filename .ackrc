@@ -7,6 +7,8 @@
 # Ignores.
 --ignore-dir=.idea/
 --ignore-dir=node_modules/
+--ignore-dir=sites/default/files/js/
+--ignore-dir=sites/default/files/css/
 
 # Extend types.
 --type-add=css=scss
