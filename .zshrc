@@ -165,3 +165,8 @@ export LANG=en_US.UTF-8
 
 # Decrease autossh poll delay.
 export AUTOSSH_POLL=60
+
+# Use the "screen" TERM inside tmux.
+if [ -n "$TMUX" ]; then
+  export TERM="screen"
+fi
