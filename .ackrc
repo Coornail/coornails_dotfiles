@@ -1,6 +1,8 @@
 # Always sort the files.
 #--sort−files
 
+--smart-case
+
 # Always color, even if piping to a another program.
 --color
 
