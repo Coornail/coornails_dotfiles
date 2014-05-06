@@ -18,4 +18,4 @@
 --type-set=coffeescript=.coffee
 --type-set=coffee=.coffee
 --type-set=json=.json
---type-set=php=.php.,module,.install
+--type-set=php=.php.,module,.install,.profile
