@@ -113,6 +113,7 @@ alias wget='wget --no-use-server-timestamps --no-check-certificate '
 
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias more="less"
 
 # correcting some keys
 autoload zkbd
