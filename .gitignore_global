@@ -4,8 +4,10 @@
 Session.vim
 
 # OsX
-.DS_Store
+.DS_Store*
 .localized
+.Trashes
+Icon?
 
 # Thumbnails
 ._*
@@ -30,4 +32,29 @@ Thumbs.db
 *.toc
 *.out
 
+# Databases
+*.sql
+*.sqlite
+
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Nodejs packages
+node_modules
+bower_components
+*.beam
+
+# Compiled object files
+*.o
+*.so
+
 composer.phar
+
+.sass-cache
