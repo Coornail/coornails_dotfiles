@@ -7,7 +7,7 @@ Session.vim
 .DS_Store*
 .localized
 .Trashes
-Icon?
+!Icon?/
 
 # Thumbnails
 ._*
