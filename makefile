@@ -66,7 +66,7 @@ vim: checkout_git_submodules
 	$(Q)cp -r .vim ${INSTALL_DIR}
 	$(TITLE) "Downloading pathogen"
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload/
-	$(Q)curl -Sso ${INSTALL_DIR}/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+	$(Q)curl -Sso ${INSTALL_DIR}/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 	$(TITLE) "Disabling NERDTree plugin (conflict)"
 	$(Q)rm -rf ${INSTALL_DIR}/.vim/bundle/nerdtree
 
