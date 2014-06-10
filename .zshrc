@@ -171,3 +171,18 @@ export AUTOSSH_POLL=60
 if [ -n "$TMUX" ]; then
   export TERM="screen"
 fi
+
+# Vi mode customization
+# Based on: http://dougblack.io/words/zsh-vi-mode.html
+
+# Backspace and ^h working even after returning from command mode.
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# Ctrl-w removed word backwards.
+bindkey '^w' backward-kill-word
+
+# By default, there is a 0.4 second delay after you hit the <ESC> key and when
+# the mode change is registered. This results in a very jarring and
+# frustrating transition between modes. Let's reduce this delay to 0.1 seconds.
+export KEYTIMEOUT=1
