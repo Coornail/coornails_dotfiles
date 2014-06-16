@@ -104,3 +104,8 @@ clean:
 	$(TITLE)Deleting temporary files
 	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i; done
 
+ssh:
+	$(TITLE)Adding ssh public keys
+	$(Q)mkdir ${INSTALL_DIR}.ssh || true
+	$(Q)curl https://github.com/coornail.keys >> ${INSTALL_DIR}/.ssh/authorized_keys
+
