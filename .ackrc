@@ -13,8 +13,8 @@
 --ignore-dir=sites/default/files/css/
 
 # Extend types.
---type-add=css=scss
---type-add=css=sass
+--type-add=css=.scss
+--type-add=css=.sass
 --type-add=ruby=.haml,.rselm,.feature,.ru,.lock
 
 --type-set=coffeescript=.coffee
