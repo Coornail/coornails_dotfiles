@@ -90,7 +90,7 @@ fi
 # Try to use coreutils ls if possible.
 gls --color -d . &>/dev/null 2>&1 && LS="gls" || LS="ls"
 if [ "$LS" = "gls" ]; then
-  LS_ARGUMENTS="--color=auto"
+  LS_ARGUMENTS="--color=auto --classify"
 fi
 
 LS="$LS $LS_ARGUMENTS"
