@@ -89,7 +89,9 @@ fi
 
 # Try to use coreutils ls if possible.
 gls --color -d . &>/dev/null 2>&1 && LS="gls" || LS="ls"
-if [ "$LS" = "gls" ]; then
+
+$LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
+if [ "$LS_VERSION" = "gnu" ]; then
   LS_ARGUMENTS="--color=auto --classify"
 fi
 
