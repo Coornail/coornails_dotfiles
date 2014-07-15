@@ -59,7 +59,7 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 colorscheme solarized
-set background=dark
+set background=light
 
 if has("gui_running")
 	" modify toolbar
