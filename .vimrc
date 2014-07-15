@@ -58,6 +58,10 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+let g:lightline = {
+  \ 'colorscheme': 'default',
+  \ }
+
 colorscheme solarized
 set background=light
 
@@ -213,10 +217,6 @@ let g:DisableAutoPHPFolding = 1
 " Disable arrows in NERDTree
 " https://github.com/scrooloose/nerdtree/issues/108
 set encoding=utf-8
-
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ }
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
