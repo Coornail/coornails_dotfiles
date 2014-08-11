@@ -46,9 +46,6 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".oh-my-zsh-custom/zsh-syntax-highlighting"]
-	path = .oh-my-zsh-custom/plugins/zsh-syntax-highlighting
-	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule ".zsh/zaw"]
 	path = .zsh/zaw
 	url = https://github.com/zsh-users/zaw.git
