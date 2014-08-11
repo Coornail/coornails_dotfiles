@@ -13,14 +13,15 @@ antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
   catimg
-  compleat
   colored-man
   colorize
+  compleat
   composer
   docker
   git
-  gitignore
+  git-extras
   github
+  gitignore
   gnu-utils
   history-substring-search
   jsontools
