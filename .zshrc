@@ -33,6 +33,9 @@ antigen bundles <<EOBUNDLES
   vi-mode
   web-search
   z
+
+  # Non oh-my-zsh plugins:
+  rummik/zsh-isup
   zsh-users/zaw
   zsh-users/zsh-syntax-highlighting
 EOBUNDLES
