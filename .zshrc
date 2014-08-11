@@ -33,11 +33,11 @@ antigen bundles <<EOBUNDLES
   vi-mode
   web-search
   z
+  zsh-users/zaw
+  zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
 antigen theme gentoo
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zaw
 antigen apply
 
 HISTFILE=~/.histfile
