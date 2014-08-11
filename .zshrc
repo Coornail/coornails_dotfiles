@@ -37,6 +37,10 @@ antigen bundles <<EOBUNDLES
   zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
+# Hack around command not found when including .plugin.zsh files
+source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
+source ~/.antigen/repos/*zaw.git/zaw.zsh
+
 antigen theme gentoo
 antigen apply
 
