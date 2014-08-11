@@ -104,14 +104,6 @@ setopt menu_complete   # autoselect the first completion entry
 
 zstyle ':completion:*' file-sort 'time'
 
-# Color support
-colors
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-  (( count = $count + 1 ))
-done
-
 if [ $KERNEL = "Darwin" ]; then
   LS_ARGUMENTS="-G"
 else
@@ -169,12 +161,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Set terminal color
 case "$HOSTNAME" in
-  "pris")      TERM_COLOR=$PR_GREEN ;;
-  "debian")    TERM_COLOR=$PR_YELLOW ;;
-  "li66-97")   TERM_COLOR=$PR_MAGENTA ;;
-  "li624-36")  TERM_COLOR=$PR_RED ;;
-  "li501-135") TERM_COLOR=$PR_RED ;;
-  *)           TERM_COLOR=$PR_BLUE ;;
+  "pris")      TERM_COLOR=$fg_no_bold[green] ;;
+  "debian")    TERM_COLOR=$fg_no_bold[yellow] ;;
+  "li66-97")   TERM_COLOR=$fg_no_bold[magenta] ;;
+  "li624-36")  TERM_COLOR=$fg_bold[red] ;;
+  "li501-135") TERM_COLOR=$fg_bold[red] ;;
+  *)           TERM_COLOR=$fg_no_bold[blue] ;;
 esac
 
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[magenta]%}"
