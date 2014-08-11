@@ -46,9 +46,6 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
-[submodule ".zsh/zaw"]
-	path = .zsh/zaw
-	url = https://github.com/zsh-users/zaw.git
 [submodule "shellscript/hr"]
 	path = shellscript/hr
 	url = https://github.com/LuRsT/hr.git
