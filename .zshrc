@@ -1,6 +1,5 @@
 [ -z "$PS1" ] && return
 
-ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
@@ -106,8 +105,6 @@ setopt menu_complete   # autoselect the first completion entry
 zstyle ':completion:*' file-sort 'time'
 
 # Color support
-autoload colors zsh/terminfo
-
 colors
 for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
@@ -179,10 +176,6 @@ case "$HOSTNAME" in
   "li501-135") TERM_COLOR=$PR_RED ;;
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
-
-#function prompt_char {
-#	if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
-#}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})"
