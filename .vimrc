@@ -63,7 +63,7 @@ let g:lightline = {
   \ }
 
 colorscheme solarized
-set background=light
+set background=dark
 
 if has("gui_running")
 	" modify toolbar
