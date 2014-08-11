@@ -43,9 +43,6 @@
 [submodule "shellscript/rsync-time-backup"]
 	path = shellscript/rsync-time-backup
 	url = https://github.com/laurent22/rsync-time-backup.git
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
