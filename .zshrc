@@ -1,16 +1,44 @@
 [ -z "$PS1" ] && return
 
-# Oh my zsh
+# Antigen
+ZSHA_BASE=$HOME/.zsh-antigen
+source $ZSHA_BASE/antigen.zsh
+
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(catimg compleat colored-man colorize composer docker git gitignore github gnu-utils history-substring-search jsontools node npm tmux torrent vagrant vi-mode web-search z)
-source $ZSH/oh-my-zsh.sh
-source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zaw/zaw.zsh
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+  catimg
+  compleat
+  colored-man
+  colorize
+  composer
+  docker
+  git
+  gitignore
+  github
+  gnu-utils
+  history-substring-search
+  jsontools
+  node
+  npm
+  tmux
+  torrent
+  vagrant
+  vi-mode
+  web-search
+  z
+EOBUNDLES
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zaw
+antigen apply
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
