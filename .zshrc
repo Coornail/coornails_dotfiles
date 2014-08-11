@@ -1,14 +1,13 @@
 [ -z "$PS1" ] && return
 
-# Antigen
-ZSHA_BASE=$HOME/.zsh-antigen
-source $ZSHA_BASE/antigen.zsh
-
-ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UPDATE_PROMPT="true"
 COMPLETION_WAITING_DOTS="true"
+
+# Antigen
+ZSHA_BASE=$HOME/.zsh-antigen
+source $ZSHA_BASE/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -36,6 +35,7 @@ antigen bundles <<EOBUNDLES
   z
 EOBUNDLES
 
+antigen theme gentoo
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zaw
 antigen apply
@@ -62,7 +62,9 @@ if [ $KERNEL = "Darwin" ]; then
   alias c='pbcopy'
   alias p='pbpaste'
 
-  plugins+=(macports osx)
+  antigen bundle macports
+  antigen bundle osx
+  antigen apply
 fi
 
 export TERM=xterm-256color
@@ -173,6 +175,10 @@ case "$HOSTNAME" in
   "li501-135") TERM_COLOR=$PR_RED ;;
   *)           TERM_COLOR=$PR_BLUE ;;
 esac
+
+#function prompt_char {
+#	if [ $UID -eq 0 ]; then echo "#"; else echo $; fi
+#}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})"
