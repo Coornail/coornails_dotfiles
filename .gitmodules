@@ -55,3 +55,6 @@
 [submodule ".zsh-antigen"]
 	path = .zsh-antigen
 	url = git@github.com:zsh-users/antigen.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
