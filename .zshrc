@@ -45,7 +45,6 @@ source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source ~/.antigen/repos/*zaw.git/zaw.zsh
 
 antigen theme gentoo
-antigen apply
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -71,8 +70,9 @@ if [ $KERNEL = "Darwin" ]; then
 
   antigen bundle macports
   antigen bundle osx
-  antigen apply
+  export PATH="/opt/local/libexec/gnubin/:$PATH"
 fi
+antigen apply
 
 export TERM=xterm-256color
 
@@ -110,19 +110,14 @@ zstyle ':completion:*' file-sort 'time'
 
 if [ $KERNEL = "Darwin" ]; then
   LS_ARGUMENTS="-G"
-else
-  LS_ARGUMENTS="--color=auto"
 fi
 
-# Try to use coreutils ls if possible.
-gls --color -d . &>/dev/null 2>&1 && LS="gls" || LS="ls"
-
-$LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
+ls --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
 if [ "$LS_VERSION" = "gnu" ]; then
   LS_ARGUMENTS="--color=auto --classify"
 fi
 
-LS="$LS $LS_ARGUMENTS"
+LS="ls $LS_ARGUMENTS"
 alias la="$LS -lAHh"
 alias ls=$LS
 alias l=$LS
