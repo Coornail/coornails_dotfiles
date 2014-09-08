@@ -210,3 +210,6 @@ bindkey '^w' backward-kill-word
 # the mode change is registered. This results in a very jarring and
 # frustrating transition between modes. Let's reduce this delay to 0.1 seconds.
 export KEYTIMEOUT=1
+
+# Lesspipe support.
+eval `lesspipe 2>/dev/null || lesspipe.sh 2>/dev/null`
