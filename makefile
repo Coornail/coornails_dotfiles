@@ -61,9 +61,10 @@ tmux:
 vim:
 	$(TITLE) "Installing vim config"
 	$(Q)cp .vimrc ${INSTALL_DIR}
+	$(Q)cp -r .vim/ ${INSTALL_DIR}/.vim
 	$(TITLE) "Downloading Vim-plug"
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
-	$(Q)curl -fLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	$(Q)curl -sfLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
