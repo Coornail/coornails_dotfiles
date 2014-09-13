@@ -32,13 +32,7 @@ set expandtab
 set shiftwidth=2
 set nu
 
-" colors
-"hi Comment ctermfg=DarkGreen
-"hi String ctermfg=DarkMagenta
-"hi pythonPreCondit ctermfg=Green
-
-
-" For jquey
+" For jQuery
 au BufRead,BufNewFile *.js set ft=javascript.jquery
 
 " For drupal modules
@@ -46,6 +40,11 @@ au BufRead,BufNewFile *.module set syn=php
 au BufRead,BufNewFile *.module set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.install set syn=php
 au BufRead,BufNewFile *.install set omnifunc=phpcomplete#CompletePHP
+au BufRead,BufNewFile *.profile set syn=php
+au BufRead,BufNewFile *.profile set omnifunc=phpcomplete#CompletePHP
+
+" Set filetype for less
+au BufNewFile,BufRead *.less set filetype=less
 
 "remove whitespaces from the end of all lines at saving
 autocmd BufWritePre * :%s/\s\+$//e
@@ -54,20 +53,18 @@ autocmd BufWritePre * :%s/\s\+$//e
 map + :pta <C-R><C-W><CR>
 map - :pc<CR>
 
-set tags+=~/.vim/drupal_include
-set tags+=~/.vim/drual_modules
-
 let SVNCommandEnableBufferSetup=1
 let SVNCommandEdit='split'
 
 " Set code completion on
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml setomnifunc=xmlcomplete#CompleteTags
 
 let g:lightline = {
   \ 'colorscheme': 'default',
@@ -92,15 +89,6 @@ ab pst $_POST['']<LEFT><LEFT>
 
 " highlight cursor more
 set cursorline
-"highlight CursorLine guibg=lightblue ctermbg=136 cterm=bold
-"hi CursorLine guibg=#252525 ctermbg=236 cterm=none
-" TODO: Set colors right
-"
-
-" baloons
-"@set ballooneval
-"et balloondelay=400
-"set balloonexpr="test"
 
 " visualize tabs
 set list
@@ -113,14 +101,11 @@ set tf
 
 " for smart code competition
 set showfulltag
-"set path=/var/www/d6/includes/*.php
 
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [%p%%]\ [LEN=%L]\ [POS=%l,%v]
 set laststatus=2
-
-set showcmd
 
 imap <C-BS> <C-W>
 
@@ -134,8 +119,6 @@ nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
 set backupdir=/tmp
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F2> :TlistToggle<CR>
-
-au BufNewFile,BufRead *.less set filetype=less
 
 " swapfiles
 set directory=/tmp
@@ -202,14 +185,7 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -219,10 +195,6 @@ let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
 let g:DisableAutoPHPFolding = 1
 
 " Disable arrows in NERDTree
@@ -231,8 +203,8 @@ set encoding=utf-8
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
-  "   " render properly when inside 256-color tmux and GNU screen.
-  "     " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
 
