@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
   Plug 'vim-scripts/taglist.vim', {'on': 'TlistToggle'}
+  Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 set nocompatible
