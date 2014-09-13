@@ -62,5 +62,10 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # Disable memory copy to disk on hibernate
 sudo pmset -a hibernatemode 0
 
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
 killall Dock
 killall Finder
+
+
