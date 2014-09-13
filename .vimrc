@@ -1,4 +1,14 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+  Plug 'itchyny/lightline.vim'
+  Plug 'spf13/PIV'
+  Plug 'mileszs/ack.vim'
+  Plug 'Shougo/neocomplcache.vim'
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'scrooloose/syntastic'
+  Plug 'altercation/vim-colors-solarized', { 'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/' }
+  Plug 'airblade/vim-gitgutter'
+  Plug 'bronson/vim-visual-star-search'
+call plug#end()
 
 set nocompatible
 set nobackup		" do not keep a backup file

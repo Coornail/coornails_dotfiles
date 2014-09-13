@@ -7,51 +7,15 @@
 [submodule "shellscript/mysqlDbExporter"]
 	path = shellscript/mysqlDbExporter
 	url = git://github.com/hosszukalman/mysqlDbExporter.git
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
-	url = git://github.com/airblade/vim-gitgutter.git
-[submodule ".vim/bundle/visual-star-search"]
-	path = .vim/bundle/visual-star-search
-	url = git://github.com/bronson/vim-visual-star-search.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule ".drush/drush_ctex_bonus"]
 	path = .drush/drush_ctex_bonus
 	url = http://git.drupal.org/project/drush_ctex_bonus.git
-[submodule ".vim/bundle/PIV"]
-	path = .vim/bundle/PIV
-	url = https://github.com/spf13/PIV.git
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = https://github.com/Shougo/neocomplcache.vim.git
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/vim-easymotion"]
-	path = .vim/bundle/vim-easymotion
-	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule ".vim/bundle/lightline"]
-	path = .vim/bundle/lightline
-	url = https://github.com/itchyny/lightline.vim.git
 [submodule "shellscript/rsync-time-backup"]
 	path = shellscript/rsync-time-backup
 	url = https://github.com/laurent22/rsync-time-backup.git
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
 [submodule "shellscript/hr"]
 	path = shellscript/hr
 	url = https://github.com/LuRsT/hr.git
-[submodule ".vim/bundle/ack"]
-	path = .vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule ".zsh-antigen"]
 	path = .zsh-antigen
 	url = git@github.com:zsh-users/antigen.git

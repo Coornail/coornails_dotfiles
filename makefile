@@ -58,15 +58,12 @@ tmux:
 	$(TITLE) "Installing tmux config"
 	$(Q)cp .tmux.conf ${INSTALL_DIR}
 
-vim: checkout_git_submodules
+vim:
 	$(TITLE) "Installing vim config"
 	$(Q)cp .vimrc ${INSTALL_DIR}
-	$(Q)cp -r .vim ${INSTALL_DIR}
-	$(TITLE) "Downloading pathogen"
-	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload/
-	$(Q)curl -Sso ${INSTALL_DIR}/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-	$(TITLE) "Disabling NERDTree plugin (conflict)"
-	$(Q)rm -rf ${INSTALL_DIR}/.vim/bundle/nerdtree
+	$(TITLE) "Downloading Vim-plug"
+	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
+	$(Q)curl -fLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
