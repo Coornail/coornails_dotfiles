@@ -1,13 +1,14 @@
 call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
-  Plug 'spf13/PIV', { 'for': 'php'}
+  Plug 'spf13/PIV', {'for': 'php'}
   Plug 'mileszs/ack.vim'
   Plug 'Shougo/neocomplcache.vim'
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
   Plug 'scrooloose/syntastic'
-  Plug 'altercation/vim-colors-solarized', { 'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/' }
+  Plug 'altercation/vim-colors-solarized', {'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/'}
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
+  Plug 'vim-scripts/taglist.vim', {'on': 'TlistToggle'}
 call plug#end()
 
 set nocompatible
