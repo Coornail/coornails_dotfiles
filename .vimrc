@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
-  Plug 'spf13/PIV'
+  Plug 'spf13/PIV', { 'for': 'php'}
   Plug 'mileszs/ack.vim'
   Plug 'Shougo/neocomplcache.vim'
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
