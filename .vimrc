@@ -2,7 +2,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'spf13/PIV', {'for': 'php'}
   Plug 'mileszs/ack.vim'
-  Plug 'Shougo/neocomplcache.vim'
+"  Disable it for now until I find out why is it messing up hitting space.
+"  Plug 'Shougo/neocomplcache.vim'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
   Plug 'scrooloose/syntastic'
   Plug 'altercation/vim-colors-solarized', {'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/'}
