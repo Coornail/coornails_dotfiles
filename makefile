@@ -48,6 +48,7 @@ osx:
 ifeq (${OS},Darwin)
 	$(TITLE) "Setting up osx variables"
 	$(Q)sh .osx
+	$(Q)/usr/bin/python ./osx/fix-macosx.py
 endif
 
 screen:
