@@ -149,12 +149,12 @@ compctl -/ cd
 # file colors
 GDIRCOLORS=`which gdircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
-  eval "`gdircolors`"
+  eval "`gdircolors ~/dircolors.ansi-dark`"
 fi
 
 DIRCOLORS=`which dircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
-  eval "`dircolors`"
+  eval "`dircolors ~/dircolors.ansi-dark`"
 fi
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

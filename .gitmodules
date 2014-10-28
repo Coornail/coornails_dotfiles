@@ -25,3 +25,6 @@
 [submodule "shellscript/spark"]
 	path = shellscript/spark
 	url = git@github.com:holman/spark.git
+[submodule "dircolors-solarized"]
+	path = dircolors-solarized
+	url = git@github.com:seebi/dircolors-solarized.git
