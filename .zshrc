@@ -194,7 +194,7 @@ export AUTOSSH_POLL=60
 
 # Use the "screen" TERM inside tmux.
 if [ -n "$TMUX" ]; then
-  export TERM="screen"
+  export TERM="screen-256color"
 fi
 
 # Vi mode customization
