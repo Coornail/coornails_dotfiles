@@ -101,7 +101,7 @@ setopt hist_find_no_dups
 setopt hist_ignore_all_dups
 
 unsetopt beep notify
-unsetopt bgnice autoparamslash
+unsetopt autoparamslash
 unsetopt ALL_EXPORT
 
 setopt menu_complete   # autoselect the first completion entry
