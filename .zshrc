@@ -18,7 +18,7 @@ antigen bundles <<EOBUNDLES
   compleat
   composer
   docker
-  git
+  gitfast
   git-extras
   github
   gitignore
