@@ -214,3 +214,6 @@ export KEYTIMEOUT=1
 
 # Lesspipe support.
 eval `lesspipe 2>/dev/null || lesspipe.sh 2>/dev/null`
+
+# Increase maximum open files
+ulimit -S -n 4096
