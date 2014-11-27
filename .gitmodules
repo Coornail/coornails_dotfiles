@@ -6,7 +6,7 @@
 	url = http://git.drupal.org/project/drush.git
 [submodule "shellscript/mysqlDbExporter"]
 	path = shellscript/mysqlDbExporter
-	url = git://github.com/hosszukalman/mysqlDbExporter.git
+	url = https://github.com/hosszukalman/mysqlDbExporter.git
 [submodule ".drush/drush_ctex_bonus"]
 	path = .drush/drush_ctex_bonus
 	url = http://git.drupal.org/project/drush_ctex_bonus.git
@@ -18,13 +18,13 @@
 	url = https://github.com/LuRsT/hr.git
 [submodule ".zsh-antigen"]
 	path = .zsh-antigen
-	url = git@github.com:zsh-users/antigen.git
+	url = https://github.com/zsh-users/antigen.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "shellscript/spark"]
 	path = shellscript/spark
-	url = git@github.com:holman/spark.git
+	url = https://github.com/holman/spark.git
 [submodule "dircolors-solarized"]
 	path = dircolors-solarized
-	url = git@github.com:seebi/dircolors-solarized.git
+	url = https://github.com/seebi/dircolors-solarized.git
