@@ -125,7 +125,7 @@ alias l=$LS
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
 alias webserv='python -m SimpleHTTPServer'
-alias rsyncssh="rsync -avz --progress -e ssh "
+alias rsyncssh="rsync -avz --partial --progress -e ssh "
 alias json_pretty_print='python -m json.tool'
 
 # Generate longer passwords
