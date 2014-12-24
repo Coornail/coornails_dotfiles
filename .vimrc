@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'spf13/PIV', {'for': 'php'}
+  Plug 'fatih/vim-go', {'for': 'go'}
   Plug 'mileszs/ack.vim'
 "  Disable it for now until I find out why is it messing up hitting space.
 "  Plug 'Shougo/neocomplcache.vim'
