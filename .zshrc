@@ -8,6 +8,10 @@ COMPLETION_WAITING_DOTS="true"
 ZSHA_BASE=$HOME/.zsh-antigen
 source $ZSHA_BASE/antigen.zsh
 
+if [[ -f $HOME/.zshrc_private ]] then
+  source $HOME/.zshrc_private
+fi
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -160,13 +164,11 @@ fi
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Set terminal color
-case "$HOSTNAME" in
-  "pris")      TERM_COLOR=$fg_no_bold[green] ;;
-  "debian")    TERM_COLOR=$fg_no_bold[yellow] ;;
-  "li66-97")   TERM_COLOR=$fg_no_bold[magenta] ;;
-  "li624-36")  TERM_COLOR=$fg_bold[red] ;;
-  "li501-135") TERM_COLOR=$fg_bold[red] ;;
-  *)           TERM_COLOR=$fg_no_bold[blue] ;;
+case "$COMPUTER_TYPE" in
+  "desktop") TERM_COLOR=$fg_no_bold[green] ;;
+  "dev")     TERM_COLOR=$fg_no_bold[yellow] ;;
+  "live")    TERM_COLOR=$fg_bold[red] ;;
+  *)         TERM_COLOR=$fg_no_bold[blue] ;;
 esac
 
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[magenta]%}"
