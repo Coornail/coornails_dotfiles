@@ -8,7 +8,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSHA_BASE=$HOME/.zsh-antigen
 source $ZSHA_BASE/antigen.zsh
 
-if [[ -f $HOME/.zshrc_private ]] then
+if [[ -f $HOME/.zshrc_private ]]; then
   source $HOME/.zshrc_private
 fi
 
@@ -34,7 +34,7 @@ antigen bundles <<EOBUNDLES
   tmux
   torrent
   vagrant
-  vi-mode
+#  vi-mode
   web-search
   z
 
@@ -43,6 +43,9 @@ antigen bundles <<EOBUNDLES
   zsh-users/zaw
   zsh-users/zsh-syntax-highlighting
 EOBUNDLES
+
+# Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
+set -o vi
 
 # Hack around command not found when including .plugin.zsh files
 source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
