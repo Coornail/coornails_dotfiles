@@ -170,6 +170,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 case "$COMPUTER_TYPE" in
   "desktop") TERM_COLOR=$fg_no_bold[green] ;;
   "dev")     TERM_COLOR=$fg_no_bold[yellow] ;;
+  "vm")      TERM_COLOR=$fg_no_bold[gray] ;;
   "live")    TERM_COLOR=$fg_bold[red] ;;
   *)         TERM_COLOR=$fg_no_bold[blue] ;;
 esac
