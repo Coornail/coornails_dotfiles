@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'altercation/vim-colors-solarized', {'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/'}
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
-  Plug 'vim-scripts/taglist.vim', {'on': 'TlistToggle'}
+  Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
   Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
