@@ -105,6 +105,6 @@ clean:
 
 ssh:
 	$(TITLE)Adding ssh public keys
-	$(Q)mkdir ${INSTALL_DIR}.ssh || true
+	$(Q)mkdir ${INSTALL_DIR}/.ssh || true
 	$(Q)curl https://github.com/coornail.keys >> ${INSTALL_DIR}/.ssh/authorized_keys
 
