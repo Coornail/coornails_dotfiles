@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'kien/ctrlp.vim'
   Plug 'tpope/vim-sensible/'
+  Plug 'justinmk/vim-sneak'
 call plug#end()
 
 let mapleader=" "
