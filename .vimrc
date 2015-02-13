@@ -15,10 +15,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'kien/ctrlp.vim'
   Plug 'tpope/vim-sensible/'
   Plug 'justinmk/vim-sneak'
+  Plug 'Shougo/vimproc.vim'
+  Plug 'Shougo/unite.vim'
+  Plug 'Shougo/neomru.vim'
 call plug#end()
 
 let mapleader=" "
-nmap <leader>s :Ack <c-r>=expand("<cword>")<cr><cr>
+nmap <leader>s :Unite -buffer-name=grep grep:.::<C-r><C-w><CR>
 
 set backspace=2
 set backupdir=/tmp
@@ -129,5 +132,16 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+" Use Unite to navigate between buffers
+"nnoremap <space>b :Unite -quick-match buffer<cr>
+nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer bookmark<CR>
+nnoremap <leader>/ :Unite grep:.<cr>
+
+" Use the fuzzy matcher for everything
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" Use the rank sorter for everything
+call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
