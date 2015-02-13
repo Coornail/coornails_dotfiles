@@ -19,23 +19,38 @@ call plug#end()
 let mapleader=" "
 nmap <leader>s :Ack <c-r>=expand("<cword>")<cr><cr>
 
-set nocompatible
-set nobackup		" do not keep a backup file
-set history=50		" keep 50 lines of command line history
-set incsearch		" do incremental searching
+set backspace=2
+set backupdir=/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set cursorline
+set directory=/tmp
+set expandtab
 set hlsearch
+set incsearch
 set lazyredraw
+set mouse=a
+set nobackup
+set nocompatible
+set nu
+set shiftwidth=2
+set showfulltag
+set smartcase
+set spell
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [%p%%]\ [LEN=%L]\ [POS=%l,%v]
+set tabstop=2
+set tf
+
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif
+
 
 " Jump to the last known line
 autocmd BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe "normal g`\"" |
 \ endif
-
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set nu
 
 " For jQuery
 au BufRead,BufNewFile *.js set ft=javascript.jquery
@@ -92,50 +107,15 @@ let g:AutoComplPop_BehaviorKeywordLength=4
 ab fnc function() {<CR><CR>}<ESC>kk$3hi
 ab pst $_POST['']<LEFT><LEFT>
 
-" highlight cursor more
-set cursorline
-
 " visualize tabs
 set list
 exe "set listchars=tab:>-,trail:\xb7,eol:$,nbsp:\xb7"
 map <C-TAB> :set invlist<CR>
 set invlist
 
-" fast terminal
-set tf
-
-" for smart code competition
-set showfulltag
-
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [%p%%]\ [LEN=%L]\ [POS=%l,%v]
-
 imap <C-BS> <C-W>
-
-" enable spellcheck
-set spell
-
-set smartcase
-
-" delete all trailing whitespaces for \w
-nnoremap <leader>w :%s/\s\+$//<cr>:let @/=''<CR>
-set backupdir=/tmp
-nnoremap <F5> :GundoToggle<CR>
-nnoremap <F2> :TlistToggle<CR>
-
-" swapfiles
-set directory=/tmp
-
-" backspace fix
-set backspace=2
-
-if $VIM_CRONTAB == "true"
-  set nobackup
-  set nowritebackup
-endif
-
-set backupskip=/tmp/*,/private/tmp/*
 
 " Show the git diff in vim when commiting
 autocmd FileType gitcommit DiffGitCached | wincmd p
@@ -149,6 +129,4 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-" Enable mouse support
-set mouse=a
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
