@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-  Plug 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdcommenter',
+  Plug 'kien/ctrlp.vim'
 call plug#end()
 
 set nocompatible
