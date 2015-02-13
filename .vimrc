@@ -110,7 +110,7 @@ ab pst $_POST['']<LEFT><LEFT>
 " visualize tabs
 set list
 exe "set listchars=tab:>-,trail:\xb7,eol:$,nbsp:\xb7"
-map <C-TAB> :set invlist<CR>
+map <leader>t :set invlist<CR>
 set invlist
 
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
