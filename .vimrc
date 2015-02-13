@@ -15,6 +15,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'kien/ctrlp.vim'
 call plug#end()
 
+let mapleader=" "
+nmap <leader>s :Ack <c-r>=expand("<cword>")<cr><cr>
+
 set nocompatible
 set nobackup		" do not keep a backup file
 set history=50		" keep 50 lines of command line history
