@@ -11,8 +11,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-  Plug 'scrooloose/nerdcommenter',
+  Plug 'scrooloose/nerdcommenter'
   Plug 'kien/ctrlp.vim'
+  Plug 'tpope/vim-sensible/'
 call plug#end()
 
 let mapleader=" "
@@ -21,11 +22,9 @@ nmap <leader>s :Ack <c-r>=expand("<cword>")<cr><cr>
 set nocompatible
 set nobackup		" do not keep a backup file
 set history=50		" keep 50 lines of command line history
-set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set hlsearch
-syntax on
-filetype plugin indent on
+set lazyredraw
 
 " Jump to the last known line
 autocmd BufReadPost *
@@ -33,7 +32,6 @@ autocmd BufReadPost *
 \   exe "normal g`\"" |
 \ endif
 
-set autoindent
 set tabstop=2
 set expandtab
 set shiftwidth=2
@@ -112,7 +110,6 @@ set showfulltag
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [%p%%]\ [LEN=%L]\ [POS=%l,%v]
-set laststatus=2
 
 imap <C-BS> <C-W>
 
@@ -145,10 +142,6 @@ autocmd FileType gitcommit DiffGitCached | wincmd p
 
 let g:DisableAutoPHPFolding = 1
 
-" Disable arrows in NERDTree
-" https://github.com/scrooloose/nerdtree/issues/108
-set encoding=utf-8
-
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
@@ -158,3 +151,4 @@ endif
 
 " Enable mouse support
 set mouse=a
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
