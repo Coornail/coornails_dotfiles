@@ -86,6 +86,7 @@ export TERM=xterm-256color
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
+zstyle ':filter-select' max-lines 5
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 bindkey '^[[A' up-line-or-search
