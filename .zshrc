@@ -89,8 +89,11 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 zstyle ':filter-select' max-lines 5
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 autoload zmv
 
