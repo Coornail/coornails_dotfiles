@@ -20,6 +20,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/neomru.vim'
   Plug 'ervandew/supertab'
   Plug 'deris/vim-shot-f'
+  Plug 'mxw/vim-jsx'
+  Plug 'pangloss/vim-javascript'
 call plug#end()
 
 let mapleader=" "
