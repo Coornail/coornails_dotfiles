@@ -18,6 +18,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/vimproc.vim'
   Plug 'Shougo/unite.vim'
   Plug 'Shougo/neomru.vim'
+  Plug 'ervandew/supertab'
+  Plug 'deris/vim-shot-f'
 call plug#end()
 
 let mapleader=" "
@@ -100,7 +102,7 @@ set background=dark
 if has("gui_running")
 	" modify toolbar
 	set tbis=tiny
-  set guifont=Monaco:h13.00
+  set guifont=Monaco:h12.00
   set guioptions-=T  " Noo toolbar
 endif
 
@@ -145,3 +147,5 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
