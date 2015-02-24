@@ -27,6 +27,7 @@ antigen bundles <<EOBUNDLES
   github
   gitignore
   gnu-utils
+  grunt
   history-substring-search
   jsontools
   node
