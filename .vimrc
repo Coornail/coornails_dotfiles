@@ -22,6 +22,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'deris/vim-shot-f'
   Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript'
+  Plug 'SirVer/ultisnips'
 call plug#end()
 
 let mapleader=" "
