@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript'
   Plug 'SirVer/ultisnips'
+  Plug 'Raimondi/delimitMate'
 call plug#end()
 
 let mapleader=" "
