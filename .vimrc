@@ -153,3 +153,11 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
