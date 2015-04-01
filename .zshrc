@@ -41,8 +41,8 @@ antigen bundles <<EOBUNDLES
 
   # Non oh-my-zsh plugins:
   rummik/zsh-isup
-#  zsh-users/zaw
-#  zsh-users/zsh-syntax-highlighting
+  zsh-users/zaw
+  zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
 # Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
