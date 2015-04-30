@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'pangloss/vim-javascript'
   Plug 'SirVer/ultisnips'
   Plug 'Raimondi/delimitMate'
+  Plug 'ihacklog/HiCursorWords'
 call plug#end()
 
 let mapleader=" "
