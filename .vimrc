@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'SirVer/ultisnips'
   Plug 'Raimondi/delimitMate'
   Plug 'ihacklog/HiCursorWords'
+  Plug 'ap/vim-css-color'
 call plug#end()
 
 let mapleader=" "
