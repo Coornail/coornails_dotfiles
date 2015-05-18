@@ -7,7 +7,6 @@ call plug#begin('~/.vim/plugged')
 "  Plug 'Shougo/neocomplcache.vim'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
   Plug 'scrooloose/syntastic'
-  Plug 'altercation/vim-colors-solarized', {'dir': '~/.vim/plugged/vim-colors-solarized', 'do': 'cp solarized.vim ~/.vim/colors/'}
   Plug 'airblade/vim-gitgutter'
   Plug 'bronson/vim-visual-star-search'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
@@ -26,6 +25,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Raimondi/delimitMate'
   Plug 'ihacklog/HiCursorWords'
   Plug 'ap/vim-css-color'
+  Plug 'chriskempson/base16-vim'
 call plug#end()
 
 let mapleader=" "
@@ -102,7 +102,8 @@ let g:lightline = {
   \ 'colorscheme': 'default',
   \ }
 
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-mocha
 set background=dark
 
 if has("gui_running")
