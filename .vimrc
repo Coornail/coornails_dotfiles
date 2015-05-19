@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ihacklog/HiCursorWords'
   Plug 'ap/vim-css-color'
   Plug 'chriskempson/base16-vim'
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 let mapleader=" "
