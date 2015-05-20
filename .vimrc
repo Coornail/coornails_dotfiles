@@ -28,6 +28,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'chriskempson/base16-vim'
   Plug 'wakatime/vim-wakatime'
   Plug 'Coornail/vim-go-conceal', {'for': 'go'}
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
 call plug#end()
 
 let mapleader=" "
