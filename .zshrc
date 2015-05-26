@@ -27,7 +27,7 @@ antigen bundles <<EOBUNDLES
   github
   gitignore
   gnu-utils
-  go
+  golang
   grunt
   history-substring-search
   jsontools
