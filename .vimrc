@@ -29,6 +29,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'wakatime/vim-wakatime'
   Plug 'Coornail/vim-go-conceal', {'for': 'go'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'rhysd/committia.vim'
 call plug#end()
 
 let mapleader=" "
@@ -132,9 +133,6 @@ set invlist
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
 imap <C-BS> <C-W>
-
-" Show the git diff in vim when commiting
-autocmd FileType gitcommit DiffGitCached | wincmd p
 
 let g:DisableAutoPHPFolding = 1
 
