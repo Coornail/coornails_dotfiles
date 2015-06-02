@@ -31,6 +31,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'jaxbot/syntastic-react'
   Plug 'rhysd/committia.vim'
+  Plug 'terryma/vim-expand-region'
 call plug#end()
 
 let mapleader=" "
@@ -172,6 +173,9 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
