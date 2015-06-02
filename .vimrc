@@ -29,20 +29,19 @@ call plug#begin('~/.vim/plugged')
   Plug 'wakatime/vim-wakatime'
   Plug 'Coornail/vim-go-conceal', {'for': 'go'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'jaxbot/syntastic-react'
   Plug 'rhysd/committia.vim'
 call plug#end()
 
 let mapleader=" "
 nmap <leader>s :Unite -buffer-name=grep grep:.::<C-r><C-w><CR>
 
-set backspace=2
 set backupdir=/tmp
 set backupskip=/tmp/*,/private/tmp/*
 set cursorline
 set directory=/tmp
 set expandtab
 set hlsearch
-set incsearch
 set lazyredraw
 set mouse=a
 set nobackup
@@ -119,10 +118,6 @@ endif
 
 " autocomplete
 let g:AutoComplPop_BehaviorKeywordLength=4
-
-" php abbrevs
-ab fnc function() {<CR><CR>}<ESC>kk$3hi
-ab pst $_POST['']<LEFT><LEFT>
 
 " visualize tabs
 set list
