@@ -34,6 +34,7 @@
   co = checkout
   df = diff
   lg = log -p
+  pr = "!hub pull-request"
   pushom = push origin master
   pullom = pull origin master
   pushgm = push github master
