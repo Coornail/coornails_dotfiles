@@ -41,6 +41,7 @@ antigen bundles <<EOBUNDLES
   z
 
   # Non oh-my-zsh plugins:
+  rimraf/k
   rummik/zsh-isup
   zsh-users/zaw
   zsh-users/zsh-syntax-highlighting
@@ -52,6 +53,7 @@ set -o vi
 # Hack around command not found when including .plugin.zsh files
 source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source ~/.antigen/repos/*zaw.git/zaw.zsh
+source ~/.antigen/repos/*k.git/k.sh
 
 antigen theme gentoo
 
@@ -134,6 +136,7 @@ LS="ls $LS_ARGUMENTS"
 alias la="$LS -lAHh"
 alias ls=$LS
 alias l=$LS
+alias k="k -h"
 
 alias vimremote='mvim --remote'
 alias vimremoteall="find . -type f \( -name '*.module' -o -name '*.inc' \) | xargs vim --servername GVIM --remote-silent"
