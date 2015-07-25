@@ -81,7 +81,7 @@ if [ $KERNEL = "Darwin" ]; then
 
   antigen bundle macports
   antigen bundle osx
-  export PATH="/opt/local/libexec/gnubin/:$PATH"
+  export PATH="/opt/local/libexec/gnubin/:$HOME/go/bin/:$PATH"
 fi
 antigen apply
 
