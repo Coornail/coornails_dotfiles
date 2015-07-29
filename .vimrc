@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-visual-star-search'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
   Plug 'scrooloose/nerdcommenter'
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'tpope/vim-sensible/'
   Plug 'justinmk/vim-sneak'
   Plug 'Shougo/vimproc.vim'
