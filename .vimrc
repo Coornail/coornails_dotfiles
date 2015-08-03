@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/unite.vim'
   Plug 'Shougo/neomru.vim'
   Plug 'ervandew/supertab'
-  Plug 'deris/vim-shot-f'
+  Plug 'unblevable/quick-scope'
   Plug 'mxw/vim-jsx'
   Plug 'pangloss/vim-javascript'
   Plug 'SirVer/ultisnips'
@@ -218,4 +218,5 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-let g:syntastic_go_checkers = ['go', 'golint', 'gotype', 'govet']
+nmap <leader>q <plug>(QuickScopeToggle)
+vmap <leader>q <plug>(QuickScopeToggle)
