@@ -32,6 +32,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'jaxbot/syntastic-react'
   Plug 'rhysd/committia.vim'
   Plug 'terryma/vim-expand-region'
+  Plug 'vim-scripts/Indent-Highlight'
+  Plug 'romainl/vim-qf'
 call plug#end()
 
 let mapleader=" "
@@ -218,8 +220,7 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-nmap <leader>q <plug>(QuickScopeToggle)
-vmap <leader>q <plug>(QuickScopeToggle)
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 if exists('$ITERM_PROFILE')
   if exists('$TMUX')
