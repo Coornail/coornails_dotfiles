@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'romainl/vim-qf'
   Plug 'kshenoy/vim-signature'
+  Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 let mapleader=" "
