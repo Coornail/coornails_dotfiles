@@ -93,9 +93,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 map + :pta <C-R><C-W><CR>
 map - :pc<CR>
 
-let SVNCommandEnableBufferSetup=1
-let SVNCommandEdit='split'
-
 " Set code completion on
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -156,6 +153,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
+let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
