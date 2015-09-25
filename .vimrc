@@ -194,6 +194,7 @@ let g:syntastic_check_on_wq = 0
 let g:UltiSnipsUsePythonVersion = 3
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['gometalinter']
+let g:syntastic_go_gometalinter_args = "-D gotype"
 
 " Gotags support
 " Requires https://github.com/jstemmer/gotags
