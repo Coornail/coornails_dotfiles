@@ -36,7 +36,7 @@ antigen bundles <<EOBUNDLES
   tmux
   torrent
   vagrant
-#  vi-mode
+  # vi-mode
   web-search
   z
 
