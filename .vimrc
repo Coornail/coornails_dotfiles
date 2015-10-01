@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'fatih/vim-go', {'for': 'go'}
   Plug 'mileszs/ack.vim'
 "  Disable it for now until I find out why is it messing up hitting space.
-"  Plug 'Shougo/neocomplcache.vim'
+  Plug 'Shougo/neocomplete.vim'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
   Plug 'scrooloose/syntastic'
   Plug 'airblade/vim-gitgutter'
