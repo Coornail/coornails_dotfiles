@@ -104,18 +104,24 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType xml setomnifunc=xmlcomplete#CompleteTags
 
 let g:lightline = {
-  \ 'colorscheme': 'default',
-  \ }
+\ 'colorscheme': 'default',
+\ 'component': {
+\   'readonly': '%{&readonly?"🔒":""}',
+\   }
+\ }
 
 let base16colorspace=256
 colorscheme base16-mocha
 set background=dark
 
 if has("gui_running")
-	" modify toolbar
 	set tbis=tiny
-  set guifont=Monaco:h12.00
-  set guioptions-=T  " Noo toolbar
+  set guioptions-=T  " No toolbar
+  set guioptions-=R  " No Right scrollbar
+  set guioptions-=L  " No Left scrollbar
+  set cole=0 " No conceal
+  set noantialias
+set guifont=ProggySquareTT:h16
 endif
 
 " autocomplete
