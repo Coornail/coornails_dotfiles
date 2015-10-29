@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'romainl/vim-qf'
   Plug 'kshenoy/vim-signature'
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'mephux/vim-jsfmt'
 call plug#end()
 
 let mapleader=" "
@@ -116,12 +117,12 @@ set background=dark
 
 if has("gui_running")
 	set tbis=tiny
-  set guioptions-=T  " No toolbar
-  set guioptions-=R  " No Right scrollbar
-  set guioptions-=L  " No Left scrollbar
   set cole=0 " No conceal
+  set guifont=ProggySquareTT:h16
+  set guioptions-=L  " No Left scrollbar
+  set guioptions-=R  " No Right scrollbar
+  set guioptions-=T  " No toolbar
   set noantialias
-set guifont=ProggySquareTT:h16
 endif
 
 " autocomplete
@@ -159,7 +160,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -169,6 +170,9 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
+
+map <leader>o :CtrlPTag<CR>
+map <leader>l :CtrlPLine<CR>
 
 let g:go_fmt_command = "goimports"
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -199,11 +203,26 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['go', 'gometalinter']
-let g:syntastic_go_gometalinter_args = "-D gotype"
+let g:syntastic_go_gometalinter_args = "-D gotype --fast"
 let g:syntastic_error_symbol = "✖"
 let g:syntastic_warning_symbol = "✕"
 let g:syntastic_style_error_symbol = "△"
 let g:syntastic_style_warning_symbol = "△"
+
+" Toggle -fast flag for gometalinter.
+nnoremap <leader>f :call FastGoLint()<cr>
+let g:golintfast = 1
+function! FastGoLint()
+  if g:golintfast
+    let g:golintfast = 0
+    let g:syntastic_go_gometalinter_args = "-D gotype"
+    echo "Gometalinter: Slow"
+  else
+    let g:golintfast = 1
+    let g:syntastic_go_gometalinter_args = "-D gotype --fast"
+    echo "Gometalinter: Fast"
+  endif
+endfunction
 
 " Gotags support
 " Requires https://github.com/jstemmer/gotags
@@ -246,3 +265,11 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
+
+" autocomplete
+let g:AutoComplPop_BehaviorKeywordLength=4
+"
+let g:neocomplete#enable_at_startup = 1
+
+let g:js_fmt_autosave = 0
+

@@ -22,6 +22,7 @@ antigen bundles <<EOBUNDLES
   compleat
   composer
   docker
+  emoji
   gitfast
   git-extras
   github
@@ -48,7 +49,7 @@ antigen bundles <<EOBUNDLES
 EOBUNDLES
 
 # Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
-set -o vi
+# set -o vi
 
 # Hack around command not found when including .plugin.zsh files
 source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
@@ -90,9 +91,10 @@ export TERM=xterm-256color
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-zstyle ':filter-select' max-lines 5
+#zstyle ':filter-select' max-lines 5
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
+zstyle ':filter-select:highlight' selected bg=red
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
@@ -232,3 +234,5 @@ eval `lesspipe 2>/dev/null || lesspipe.sh 2>/dev/null`
 
 # Increase maximum open files
 ulimit -S -n 4096
+
+export _Z_DATA="$HOME/.z"
