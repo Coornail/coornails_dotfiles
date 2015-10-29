@@ -215,7 +215,7 @@ let g:golintfast = 1
 function! FastGoLint()
   if g:golintfast
     let g:golintfast = 0
-    let g:syntastic_go_gometalinter_args = "-D gotype"
+    let g:syntastic_go_gometalinter_args = "-D gotype --deadline=30s"
     echo "Gometalinter: Slow"
   else
     let g:golintfast = 1
