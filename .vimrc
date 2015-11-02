@@ -1,42 +1,42 @@
 call plug#begin('~/.vim/plugged')
-  Plug 'itchyny/lightline.vim'
-  Plug 'spf13/PIV', {'for': 'php'}
-  Plug 'fatih/vim-go', {'for': 'go'}
-  Plug 'mileszs/ack.vim'
-"  Disable it for now until I find out why is it messing up hitting space.
+  Plug 'Coornail/vim-go-conceal', {'for': 'go'}
+
+  Plug 'Raimondi/delimitMate'
   Plug 'Shougo/neocomplete.vim'
+  "Plug 'Shougo/neomru.vim'
+  Plug 'Shougo/unite.vim'
+  "Plug 'Shougo/vimproc.vim'
+  Plug 'SirVer/ultisnips'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'ap/vim-css-color'
+  Plug 'bronson/vim-visual-star-search'
+  Plug 'chriskempson/base16-vim'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'ervandew/supertab'
+  Plug 'fatih/vim-go', {'for': 'go'}
+  Plug 'ihacklog/HiCursorWords'
+  Plug 'itchyny/lightline.vim'
+  Plug 'jaxbot/syntastic-react'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'justinmk/vim-sneak'
+  Plug 'kshenoy/vim-signature'
+  Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
+  Plug 'mephux/vim-jsfmt', {'for': 'javascript'}
+  Plug 'mileszs/ack.vim'
+  Plug 'mxw/vim-jsx', {'for': 'javascript'}
+  Plug 'pangloss/vim-javascript'
+  Plug 'rhysd/committia.vim'
+  Plug 'romainl/vim-qf'
+  Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
   Plug 'scrooloose/syntastic'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'bronson/vim-visual-star-search'
-  Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'tpope/vim-sensible/'
-  Plug 'justinmk/vim-sneak'
-  Plug 'Shougo/vimproc.vim'
-  Plug 'Shougo/unite.vim'
-  Plug 'Shougo/neomru.vim'
-  Plug 'ervandew/supertab'
-  Plug 'unblevable/quick-scope'
-  Plug 'mxw/vim-jsx'
-  Plug 'pangloss/vim-javascript'
-  Plug 'SirVer/ultisnips'
-  Plug 'Raimondi/delimitMate'
-  Plug 'ihacklog/HiCursorWords'
-  Plug 'ap/vim-css-color'
-  Plug 'chriskempson/base16-vim'
-  Plug 'wakatime/vim-wakatime'
-  Plug 'Coornail/vim-go-conceal', {'for': 'go'}
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'
-  Plug 'jaxbot/syntastic-react'
-  Plug 'rhysd/committia.vim'
+  Plug 'spf13/PIV', {'for': 'php'}
   Plug 'terryma/vim-expand-region'
-  Plug 'vim-scripts/Indent-Highlight'
-  Plug 'romainl/vim-qf'
-  Plug 'kshenoy/vim-signature'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'mephux/vim-jsfmt'
+  Plug 'tpope/vim-sensible/'
+  Plug 'unblevable/quick-scope'
+  Plug 'vim-scripts/Indent-Highlight'
+  Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 let mapleader=" "
