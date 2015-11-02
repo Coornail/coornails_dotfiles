@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'fatih/vim-go', {'for': 'go'}
   Plug 'ihacklog/HiCursorWords'
   Plug 'itchyny/lightline.vim'
-  Plug 'jaxbot/syntastic-react'
+  Plug 'jaxbot/syntastic-react', {'for': 'javascript'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'justinmk/vim-sneak'
   Plug 'kshenoy/vim-signature'
