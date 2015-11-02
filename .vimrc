@@ -199,7 +199,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['go', 'gometalinter']
@@ -217,10 +217,12 @@ function! FastGoLint()
     let g:golintfast = 0
     let g:syntastic_go_gometalinter_args = "-D gotype --deadline=30s -j 3"
     echo "Gometalinter: Slow"
+    SyntasticCheck
   else
     let g:golintfast = 1
     let g:syntastic_go_gometalinter_args = "-D gotype --fast -j 3"
     echo "Gometalinter: Fast"
+    SyntasticCheck
   endif
 endfunction
 
