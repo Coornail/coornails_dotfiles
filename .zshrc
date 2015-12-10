@@ -101,6 +101,8 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+bindkey '^X^H' run-help
+
 autoload zmv
 
 setopt no_hup hist_verify
