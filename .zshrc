@@ -91,7 +91,7 @@ export TERM=xterm-256color
 export SLASHEMOPTIONS="boulder:0, color, autodig, !cmdassist, norest_on_space, showexp"
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-#zstyle ':filter-select' max-lines 5
+zstyle ':filter-select' max-lines 5
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 zstyle ':filter-select:highlight' selected bg=red
