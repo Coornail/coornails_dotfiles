@@ -16,9 +16,6 @@
 [submodule "shellscript/hr"]
 	path = shellscript/hr
 	url = https://github.com/LuRsT/hr.git
-[submodule ".zsh-antigen"]
-	path = .zsh-antigen
-	url = https://github.com/zsh-users/antigen.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
