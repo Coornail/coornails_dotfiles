@@ -1,62 +1,59 @@
 [ -z "$PS1" ] && return
 
-DISABLE_AUTO_UPDATE="true"
-DISABLE_UPDATE_PROMPT="true"
-COMPLETION_WAITING_DOTS="true"
-
-# Antigen
-ZSHA_BASE=$HOME/.zsh-antigen
-source $ZSHA_BASE/antigen.zsh
+source ~/.zplug/zplug
 
 if [[ -f $HOME/.zshrc_private ]]; then
   source $HOME/.zshrc_private
 fi
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+zplug "plugins/catimg", from:oh-my-zsh
+zplug "plugins/colored-man", from:oh-my-zsh
+zplug "plugins/colorize", from:oh-my-zsh
+zplug "plugins/compleat", from:oh-my-zsh
+zplug "plugins/composer", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/emoji", from:oh-my-zsh
+zplug "plugins/gitfast", from:oh-my-zsh
+zplug "plugins/git-extras", from:oh-my-zsh
+zplug "plugins/github", from:oh-my-zsh
+zplug "plugins/gitignore", from:oh-my-zsh
+zplug "plugins/gnu-utils", from:oh-my-zsh
+zplug "plugins/golang", from:oh-my-zsh
+zplug "plugins/grunt", from:oh-my-zsh
+zplug "plugins/history-substring-search", from:oh-my-zsh
+zplug "plugins/jsontools", from:oh-my-zsh
+zplug "plugins/node", from:oh-my-zsh
+zplug "plugins/npm", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/torrent", from:oh-my-zsh
+zplug "plugins/vagrant", from:oh-my-zsh
+#zplug "plugins/ vi-mode", from:oh-my-zsh
+zplug "plugins/web-search", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+zplug "themes/gentoo", from:oh-my-zsh
 
-antigen bundles <<EOBUNDLES
-  catimg
-  colored-man
-  colorize
-  compleat
-  composer
-  docker
-  emoji
-  gitfast
-  git-extras
-  github
-  gitignore
-  gnu-utils
-  golang
-  grunt
-  history-substring-search
-  jsontools
-  node
-  npm
-  tmux
-  torrent
-  vagrant
-  # vi-mode
-  web-search
-  z
+# Non oh-my-zsh plugins:
+zplug "rimraf/k"
+zplug "rummik/zsh-isup"
+zplug "zsh-users/zaw"
+zplug "zsh-users/zsh-syntax-highlighting"
 
-  # Non oh-my-zsh plugins:
-  rimraf/k
-  rummik/zsh-isup
-  zsh-users/zaw
-  zsh-users/zsh-syntax-highlighting
-EOBUNDLES
+zplug "plugins/macports", from:oh-my-zsh, if:"[ $kernel == *darwin* ]"
+zplug "plugins/osx", from:oh-my-zsh, if:"[ $kernel == *darwin* ]"
+
+zplug load
+
+source ~/.zplug/repos/zsh-users/zaw/zaw.zsh
+source ~/.zplug/repos/rimraf/k/k.sh
+source ~/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
 # set -o vi
 
 # Hack around command not found when including .plugin.zsh files
-source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
-source ~/.antigen/repos/*zaw.git/zaw.zsh
-source ~/.antigen/repos/*k.git/k.sh
-
-antigen theme gentoo
+#source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
+#source ~/.antigen/repos/*zaw.git/zaw.zsh
+#source ~/.antigen/repos/*k.git/k.sh
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -80,11 +77,8 @@ if [ $KERNEL = "Darwin" ]; then
   alias c='pbcopy'
   alias p='pbpaste'
 
-  antigen bundle macports
-  antigen bundle osx
   export PATH="/opt/local/bin/:/opt/local/libexec/gnubin/:$HOME/go/bin/:$PATH"
 fi
-antigen apply
 
 export TERM=xterm-256color
 
