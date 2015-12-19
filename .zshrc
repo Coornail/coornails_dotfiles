@@ -37,15 +37,17 @@ zplug "rimraf/k"
 zplug "rummik/zsh-isup"
 zplug "zsh-users/zaw"
 zplug "zsh-users/zsh-syntax-highlighting"
+zplug "hlissner/zsh-autopair"
 
 zplug "plugins/macports", from:oh-my-zsh, if:"[ $kernel == *darwin* ]"
 zplug "plugins/osx", from:oh-my-zsh, if:"[ $kernel == *darwin* ]"
 
-zplug load
+zplug load --verbose
 
 source ~/.zplug/repos/zsh-users/zaw/zaw.zsh
 source ~/.zplug/repos/rimraf/k/k.sh
 source ~/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zplug/repos/hlissner/zsh-autopair/autopair.zsh
 
 # Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
 # set -o vi
@@ -246,3 +248,18 @@ function zaw-src-history() {
 }
 
 zaw-register-src -n history zaw-src-history
+#
+#bindkey '`' autopair-insert-or-skip
+#bindkey '"' autopair-insert-or-skip
+#bindkey "'" autopair-insert-or-skip
+#bindkey '(' autopair-insert
+#bindkey '[' autopair-insert
+#bindkey '{' autopair-insert
+#bindkey '<' autopair-insert
+#
+#bindkey ')' autopair-skip
+#bindkey ']' autopair-skip
+#bindkey '}' autopair-skip
+#bindkey '>' autopair-skip
+#
+#bindkey '^?' autopair-delete   # backspace

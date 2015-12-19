@@ -20,6 +20,9 @@ Thumbs.db
 # PHPStorm project file
 .idea
 
+# Visual studio code
+.vscode
+
 # Merge garbage file
 *.rej
 *.orig
