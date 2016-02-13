@@ -48,7 +48,6 @@ set cursorline
 set directory=/tmp
 set expandtab
 set hlsearch
-set lazyredraw
 set mouse=a
 set nobackup
 set nocompatible
