@@ -105,7 +105,7 @@ autocmd FileType xml setomnifunc=xmlcomplete#CompleteTags
 
 " Replace things in selection.
 " From http://howivim.com/2016/damian-conway/
-nmap <expr>  M  ':%s/' . @/ . '//g<LEFT><LEFT>'
+nmap <expr>  <leader>m  ':%s/' . @/ . '//g<LEFT><LEFT>'
 
 let g:lightline = {
 \ 'colorscheme': 'default',
