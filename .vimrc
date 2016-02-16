@@ -2,11 +2,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'Coornail/vim-go-conceal', {'for': 'go'}
 
   Plug 'Raimondi/delimitMate'
-  Plug 'Shougo/neocomplete.vim'
+  "Plug 'Shougo/neocomplete.vim'
   "Plug 'Shougo/neomru.vim'
   Plug 'Shougo/unite.vim'
   "Plug 'Shougo/vimproc.vim'
-  Plug 'SirVer/ultisnips'
   Plug 'airblade/vim-gitgutter'
   Plug 'ap/vim-css-color'
   Plug 'bronson/vim-visual-star-search'
@@ -29,7 +28,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'romainl/vim-qf'
   Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
-  Plug 'scrooloose/syntastic'
   Plug 'spf13/PIV', {'for': 'php'}
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
@@ -37,6 +35,22 @@ call plug#begin('~/.vim/plugged')
   Plug 'unblevable/quick-scope'
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'wakatime/vim-wakatime'
+  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+
+  if has('nvim')
+    Plug 'benekastah/neomake'
+  else
+    Plug 'scrooloose/syntastic'
+    if has('lua')
+      Plug 'Shougo/neocomplete.vim'
+    endif
+  endif
+
+  if v:version > 703
+    Plug 'SirVer/ultisnips'
+  endif
+
+
 call plug#end()
 
 let mapleader=" "
