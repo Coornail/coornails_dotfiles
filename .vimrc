@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ervandew/supertab'
   Plug 'fatih/vim-go', {'for': 'go'}
-  Plug 'ihacklog/HiCursorWords'
+  "Plug 'ihacklog/HiCursorWords'
   Plug 'itchyny/lightline.vim'
   Plug 'jaxbot/syntastic-react', {'for': 'javascript'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -36,6 +36,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'wakatime/vim-wakatime'
   Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+  Plug 'itchyny/vim-cursorword'
 
   if has('nvim')
     Plug 'benekastah/neomake'
