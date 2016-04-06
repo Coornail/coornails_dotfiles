@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kshenoy/vim-signature'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
   Plug 'mephux/vim-jsfmt', {'for': 'javascript'}
-  Plug 'mileszs/ack.vim'
+  Plug 'mileszs/ack.vim', {'on': 'Ack'}
   Plug 'mxw/vim-jsx', {'for': 'javascript'}
   Plug 'pangloss/vim-javascript'
   Plug 'rhysd/committia.vim'
