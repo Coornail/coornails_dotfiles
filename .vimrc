@@ -23,8 +23,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'mephux/vim-jsfmt', {'for': 'javascript'}
   Plug 'mileszs/ack.vim', {'on': 'Ack'}
   Plug 'mxw/vim-jsx', {'for': 'javascript'}
-  Plug 'pangloss/vim-javascript'
-  Plug 'rhysd/committia.vim'
+  Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+  Plug 'rhysd/committia.vim',
   Plug 'romainl/vim-qf'
   Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
