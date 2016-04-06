@@ -56,9 +56,12 @@
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
+  signingkey = 2BF08790
 [rerere]
   enabled = 1
 [diff]
   algorithm = patience
 [push]
   default = matching
+[commit]
+  gpgsign = true
