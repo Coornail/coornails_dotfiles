@@ -9,21 +9,20 @@ fi
 zplug "plugins/colored-man", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/compleat", from:oh-my-zsh
-zplug "plugins/composer", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/git-extras", from:oh-my-zsh
+zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/gitignore", from:oh-my-zsh
 zplug "plugins/gnu-utils", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
+zplug "plugins/gulp", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "plugins/jsontools", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/torrent", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
 #zplug "plugins/ vi-mode", from:oh-my-zsh
 zplug "plugins/web-search", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
