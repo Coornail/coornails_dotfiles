@@ -6,20 +6,17 @@ if [[ -f $HOME/.zshrc_private ]]; then
   source $HOME/.zshrc_private
 fi
 
-zplug "plugins/catimg", from:oh-my-zsh
 zplug "plugins/colored-man", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/compleat", from:oh-my-zsh
 zplug "plugins/composer", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/emoji", from:oh-my-zsh
 zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/gitignore", from:oh-my-zsh
 zplug "plugins/gnu-utils", from:oh-my-zsh
 zplug "plugins/golang", from:oh-my-zsh
-zplug "plugins/grunt", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "plugins/jsontools", from:oh-my-zsh
 zplug "plugins/node", from:oh-my-zsh
@@ -46,16 +43,11 @@ zplug load --verbose
 
 source ~/.zplug/repos/zsh-users/zaw/zaw.zsh
 source ~/.zplug/repos/rimraf/k/k.sh
+#source ~/.zplug/repos/hlissner/zsh-autopair/autopair.zsh
 source ~/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zplug/repos/hlissner/zsh-autopair/autopair.zsh
 
 # Vi mode is broken: https://github.com/robbyrussell/oh-my-zsh/issues/2815
 # set -o vi
-
-# Hack around command not found when including .plugin.zsh files
-#source ~/.antigen/repos/*zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
-#source ~/.antigen/repos/*zaw.git/zaw.zsh
-#source ~/.antigen/repos/*k.git/k.sh
 
 HISTFILE=~/.histfile
 HISTSIZE=100000
@@ -248,18 +240,3 @@ function zaw-src-history() {
 }
 
 zaw-register-src -n history zaw-src-history
-#
-#bindkey '`' autopair-insert-or-skip
-#bindkey '"' autopair-insert-or-skip
-#bindkey "'" autopair-insert-or-skip
-#bindkey '(' autopair-insert
-#bindkey '[' autopair-insert
-#bindkey '{' autopair-insert
-#bindkey '<' autopair-insert
-#
-#bindkey ')' autopair-skip
-#bindkey ']' autopair-skip
-#bindkey '}' autopair-skip
-#bindkey '>' autopair-skip
-#
-#bindkey '^?' autopair-delete   # backspace
