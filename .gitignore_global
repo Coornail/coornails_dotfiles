@@ -61,3 +61,6 @@ bower_components
 composer.phar
 
 .sass-cache
+
+# Rust
+target/
