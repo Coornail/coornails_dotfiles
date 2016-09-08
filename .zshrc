@@ -65,6 +65,7 @@ setopt listtypes
 setopt menu_complete   # autoselect the first completion entry
 setopt printexitvalue
 setopt share_history
+setopt prompt_subst
 
 # History settings
 HISTFILE=~/.histfile
