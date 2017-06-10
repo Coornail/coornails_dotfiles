@@ -1,12 +1,8 @@
 call plug#begin('~/.vim/plugged')
-  Plug 'Coornail/vim-go-conceal', {'for': 'go'}
+ " Plug 'Coornail/vim-go-conceal', {'for': 'go'}
 
   Plug 'Raimondi/delimitMate'
-  "Plug 'Shougo/neocomplete.vim'
-  "Plug 'Shougo/neomru.vim'
   Plug 'Shougo/unite.vim'
-  "Plug 'Shougo/vimproc.vim'
-  "Plug 'airblade/vim-gitgutter'
   Plug 'mhinz/vim-signify'
   Plug 'ap/vim-css-color'
   Plug 'bronson/vim-visual-star-search'
@@ -14,7 +10,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ervandew/supertab'
   Plug 'fatih/vim-go', {'for': 'go'}
-  "Plug 'ihacklog/HiCursorWords'
   Plug 'itchyny/lightline.vim'
   Plug 'jaxbot/syntastic-react', {'for': 'javascript'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -26,32 +21,38 @@ call plug#begin('~/.vim/plugged')
   Plug 'mxw/vim-jsx', {'for': 'javascript'}
   Plug 'pangloss/vim-javascript', {'for': 'javascript'}
   Plug 'rhysd/committia.vim',
-  Plug 'romainl/vim-qf'
+  Plug 'romainl/vim-qf', {'for': 'qf'}
   Plug 'scrooloose/nerdcommenter'
-  Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle'}
+  Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
   Plug 'spf13/PIV', {'for': 'php'}
   Plug 'terryma/vim-expand-region'
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'tpope/vim-sensible/'
   Plug 'unblevable/quick-scope'
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'wakatime/vim-wakatime'
-  Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
   Plug 'itchyny/vim-cursorword'
+  Plug 'scrooloose/syntastic'
+  Plug 'rust-lang/rust.vim', {'for': 'rust'}
+  Plug 'wincent/loupe'
+  Plug 'lifepillar/vim-mucomplete'
 
   if has('nvim')
+    set inccommand=split
     Plug 'benekastah/neomake'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
-    Plug 'scrooloose/syntastic'
+    Plug 'tpope/vim-sensible'
     if has('lua')
       Plug 'Shougo/neocomplete.vim'
     endif
+    if v:version > 703
+      if has('python3')
+        Plug 'SirVer/ultisnips'
+      endif
+    endif
   endif
 
-  if v:version > 703
-    Plug 'SirVer/ultisnips'
-  endif
-
+  Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
 
@@ -137,11 +138,14 @@ set background=dark
 if has("gui_running")
 	set tbis=tiny
   set cole=0 " No conceal
-  set guifont=ProggySquareTT:h16
+  "set guifont=ProggySquareTT:h16
+  set macligatures
+  set guifont=Fira\ Code:h12
+  "set guifont=Fira \ Code\ Light:h12
   set guioptions-=L  " No Left scrollbar
   set guioptions-=R  " No Right scrollbar
   set guioptions-=T  " No toolbar
-  set noantialias
+  "set noantialias
 endif
 
 " autocomplete
@@ -163,7 +167,7 @@ if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+  " set t_ut=
 endif
 
 " Use Unite to navigate between buffers
@@ -193,7 +197,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 map <leader>o :CtrlPTag<CR>
 map <leader>l :CtrlPLine<CR>
 
-let g:go_fmt_command = "goimports"
+"let g:go_fmt_command = "goimports"
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
@@ -220,9 +224,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['go', 'gometalinter']
 let g:syntastic_go_gometalinter_args = "-D gotype --fast -j 3"
+let g:syntastic_rust_checkers = ['rustc']
 let g:syntastic_error_symbol = "✖"
 let g:syntastic_warning_symbol = "✕"
 let g:syntastic_style_error_symbol = "△"
@@ -294,3 +300,29 @@ let g:neocomplete#enable_at_startup = 1
 
 let g:js_fmt_autosave = 0
 
+set foldmethod=indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=2         "this is just what i use"
+let g:signify_vcs_list = [ "git" ]
+"let g:signify_line_highlight = 1
+
+let g:rustfmt_autosave = 1
+
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
+end
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+let g:netrw_banner=0
