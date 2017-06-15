@@ -2,12 +2,11 @@ source ~/.zplug/init.zsh
 
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh, nice:10
+zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/z", from:oh-my-zsh
 zplug "themes/gentoo", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zaw", nice:1
 
 zplug load --verbose
 
@@ -107,77 +106,16 @@ if [[ -f $HOME/.zshrc_private ]]; then
 fi
 
 # FZF specific stuff.
-# Based on https://github.com/junegunn/dotfiles/blob/master/bashrc
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
-  __fzfcmd() {
-    [ ${FZF_TMUX:-1} -eq 1 ] && echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
-  }
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-  # ^R reverse history
-  fzf-history-widget() {
-    local selected num
-    setopt localoptions noglobsubst pipefail 2> /dev/null
-    selected=( $(fc -l 1 | eval "$(__fzfcmd) +s --tac +m -n2..,.. --tiebreak=index --toggle-sort=ctrl-r $FZF_CTRL_R_OPTS -q ${(q)LBUFFER}") )
-    local ret=$?
-    if [ -n "$selected" ]; then
-      num=$selected[1]
-      if [ -n "$num" ]; then
-        zle vi-fetch-history -n $num
-      fi
-    fi
-    zle redisplay
-    typeset -f zle-line-init >/dev/null && zle zle-line-init
-    return $ret
-  }
-  zle     -N   fzf-history-widget
-  bindkey '^R' fzf-history-widget
-
-
-	# c - browse chrome history
-	c() {
-		local cols sep
-		export cols=$(( COLUMNS / 3 ))
-		export sep='{::}'
-
-		cp -f ~/Library/Application\ Support/Google/Chrome/Default/History /tmp/h
-		sqlite3 -separator $sep /tmp/h \
-			"select title, url from urls order by last_visit_time desc" |
-		ruby -ne '
-			cols = ENV["cols"].to_i
-			title, url = $_.split(ENV["sep"])
-			len = 0
-			puts "\x1b[36m" + title.each_char.take_while { |e|
-				if len < cols
-					len += e =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}/ ? 2 : 1
-				end
-			}.join + " " * (2 + cols - len) + "\x1b[m" + url' |
-		fzf --ansi --multi --no-hscroll --tiebreak=index |
-		sed 's#.*\(https*://\)#\1#' | xargs open
-	}
-
-#  # gb is aliases to git branch by oh-my-zsh
-#  unalias gb
-#
-#  is_in_git_repo() {
-#    git rev-parse HEAD > /dev/null 2>&1
-#  }
-#
-#  # Change git branch
-#  gb() {
-#    is_in_git_repo || return
-#    git branch -a --color=always | grep -v '/HEAD\s' | sort |
-#    fzf-tmux --ansi --multi --tac --preview-window right:70% \
-#        --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -200' |
-#    sed 's/^..//' | cut -d' ' -f1 |
-#    sed 's#^remotes/##'
-#  }
-#
+  # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
   fbr() {
     local branches branch
-    branches=$(git branch -vv) &&
-    branch=$(echo "$branches" | fzf +m) &&
-    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+    branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+      branch=$(echo "$branches" |
+    fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+      git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
   }
 fi
-
