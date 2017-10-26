@@ -17,7 +17,7 @@ desktop_modules = osx
 drupal = drush composer
 
 # Main make target, installs everything
-all: $(general_modules) $(desktop_modules) $(drupal)
+all: $(general_modules) $(desktop_modules)
 
 ack:
 	$(TITLE) "Installing .ackrc"
