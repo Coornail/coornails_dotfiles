@@ -28,11 +28,11 @@ composer: inst_bin
 	$(Q)curl -sS https://getcomposer.org/installer | php -- --install-dir=${INSTALL_DIR}/bin
 	$(Q)mv ${INSTALL_DIR}/bin/composer.phar ${INSTALL_DIR}/bin/composer
 
-zsh:
+zsh: checkout_git_submodules
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
-	$(Q)cp ./dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
+	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
 	$(Q)mkdir -p ${INSTALL_DIR}/.zplug
 	$(Q)curl https://raw.githubusercontent.com/b4b4r07/zplug/master/zplug > ${INSTALL_DIR}/.zplug/zplug
 	$(Q)touch ${INSTALL_DIR}/.z_cache
