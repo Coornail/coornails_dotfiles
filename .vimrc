@@ -1,8 +1,8 @@
+let base16colorspace=256
 call plug#begin('~/.vim/plugged')
  " Plug 'Coornail/vim-go-conceal', {'for': 'go'}
 
   Plug 'Raimondi/delimitMate'
-  Plug 'Shougo/unite.vim'
   Plug 'mhinz/vim-signify'
   Plug 'ap/vim-css-color'
   Plug 'bronson/vim-visual-star-search'
@@ -53,7 +53,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 let mapleader=" "
-nmap <leader>s :Unite -buffer-name=grep grep:.::<C-r><C-w><CR>
 
 set backupdir=/tmp
 set backupskip=/tmp/*,/private/tmp/*
@@ -173,17 +172,6 @@ if &term =~ '256color'
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   " set t_ut=
 endif
-
-" Use Unite to navigate between buffers
-"nnoremap <space>b :Unite -quick-match buffer<cr>
-nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer bookmark<CR>
-nnoremap <leader>/ :Unite grep:.<cr>
-
-" Use the fuzzy matcher for everything
-silent! call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Use the rank sorter for everything
-silent! call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
