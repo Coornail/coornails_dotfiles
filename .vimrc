@@ -28,7 +28,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'terryma/vim-multiple-cursors'
   Plug 'unblevable/quick-scope'
   Plug 'vim-scripts/Indent-Highlight'
-  Plug 'wakatime/vim-wakatime'
   Plug 'itchyny/vim-cursorword'
   Plug 'rust-lang/rust.vim', {'for': 'rust'}
   Plug 'wincent/loupe'
