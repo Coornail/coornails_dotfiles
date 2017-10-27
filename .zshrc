@@ -9,10 +9,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
 
-if ! zplug check; then
-  zplug install
-fi
-
+zplug check || zplug install
 zplug load --verbose
 
 ZSH_THEME="robbyrussell"
