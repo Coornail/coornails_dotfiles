@@ -10,15 +10,19 @@ RUN apt-get update \
         locales\
         python\
         gawk\
+        vim\
+        less\
       && rm -rf /var/lib/apt/lists/*
 
 # Configure locale
-RUN locale-gen en_US.UTF-8
-RUN update-locale LANG=en_US.UTF-8
+RUN locale-gen en_US.UTF-8 &&\
+  update-locale LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
 COPY . /root/dotfiles
 WORKDIR /root/dotfiles
+
 RUN make -j
+RUN vim +PlugInstall +qall
 
 ENTRYPOINT ["zsh"]
