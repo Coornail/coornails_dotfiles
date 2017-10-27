@@ -85,7 +85,6 @@ zstyle ':completion:*' file-sort 'time'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select
-zstyle :compinstall filename '/Users/coornail/.zshrc'
 autoload -Uz compinit
 compinit
 
