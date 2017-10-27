@@ -8,6 +8,10 @@ zplug "themes/gentoo", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 
+if ! zplug check; then
+  zplug install
+fi
+
 zplug load --verbose
 
 ZSH_THEME="robbyrussell"
