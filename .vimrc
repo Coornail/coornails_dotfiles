@@ -11,7 +11,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'ervandew/supertab'
   Plug 'fatih/vim-go', {'for': 'go'}
   Plug 'itchyny/lightline.vim'
-  Plug 'jaxbot/syntastic-react', {'for': 'javascript'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'justinmk/vim-sneak'
   Plug 'kshenoy/vim-signature'
@@ -31,10 +30,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'wakatime/vim-wakatime'
   Plug 'itchyny/vim-cursorword'
-  Plug 'scrooloose/syntastic'
   Plug 'rust-lang/rust.vim', {'for': 'rust'}
   Plug 'wincent/loupe'
-  Plug 'lifepillar/vim-mucomplete'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'w0rp/ale'
 
   if has('nvim')
     set inccommand=split
@@ -51,9 +50,6 @@ call plug#begin('~/.vim/plugged')
       endif
     endif
   endif
-
-  Plug 'nathanaelkane/vim-indent-guides'
-
 call plug#end()
 
 let mapleader=" "
