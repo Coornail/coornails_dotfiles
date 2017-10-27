@@ -28,11 +28,22 @@ if [ $KERNEL = "Linux" ]; then
   alias ack="ack-grep"
 fi
 
+# ls
+LS="ls"
+if [ -f "/usr/local/bin/gls" ]; then
+  LS="gls"
+fi
+
 LS_ARGUMENTS="-G"
-gls --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
+$LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
 if [ "$LS_VERSION" = "gnu" ]; then
   LS_ARGUMENTS="--color=auto --classify"
 fi
+
+LS="$LS $LS_ARGUMENTS"
+alias la="$LS -lAHh"
+alias ls=$LS
+alias l=$LS
 
 # file colors
 GDIRCOLORS=`which gdircolors >> /dev/null &> /dev/null`
@@ -42,14 +53,8 @@ fi
 
 DIRCOLORS=`which dircolors >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
-  eval "`dircolors ~/dircolors.ansi-dark`"
+  eval "`dircolors --sh ~/dircolors.ansi-dark`"
 fi
-
-# Directory aliases
-LS="gls $LS_ARGUMENTS"
-alias la="$LS -lAHh"
-alias ls=$LS
-alias l=$LS
 
 alias ..='cd ..'
 alias ...='cd ../..'
