@@ -7,6 +7,7 @@ zplug "plugins/z", from:oh-my-zsh
 zplug "themes/gentoo", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zaw", as:command
 
 if ! zplug check; then
   zplug install
@@ -15,7 +16,6 @@ fi
 zplug load --verbose
 
 ZSH_THEME="robbyrussell"
-
 
 source $ZPLUG_HOME/repos/zsh-users/zaw/zaw.zsh
 
@@ -57,7 +57,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 bindkey '^R' zaw-history
-#bindkey '^B' zaw-git-branches
+bindkey '^B' zaw-git-branches
 zstyle ':filter-select' max-lines 5
 zstyle ':filter-select:highlight' selected bg=red
 
