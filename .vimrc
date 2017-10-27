@@ -73,6 +73,14 @@ set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%0
 set tabstop=2
 set tf
 
+" Use persistent history.
+" From https://advancedweb.hu/2017/09/19/vim-persistent-undo/
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
+
 if $VIM_CRONTAB == "true"
   set nobackup
   set nowritebackup
