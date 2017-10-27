@@ -99,6 +99,9 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 # Make key repeat rate fast
 defaults write NSGlobalDomain KeyRepeat -int 0
 
+# Disable app nap
+defaults write NSGlobalDomain NSAppSleepDisabled -bool YES
+
 killall Dock
 killall Finder
 
