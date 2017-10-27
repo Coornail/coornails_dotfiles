@@ -128,7 +128,7 @@ let g:lightline = {
 \ }
 
 let base16colorspace=256
-colorscheme base16-mocha
+silent! colorscheme base16-mocha
 set background=dark
 
 if has("gui_running")
@@ -172,10 +172,10 @@ nnoremap <silent> <leader>b :<C-u>Unite -quick-match buffer bookmark<CR>
 nnoremap <leader>/ :Unite grep:.<cr>
 
 " Use the fuzzy matcher for everything
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+silent! call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " Use the rank sorter for everything
-call unite#filters#sorter_default#use(['sorter_rank'])
+silent! call unite#filters#sorter_default#use(['sorter_rank'])
 
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
