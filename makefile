@@ -33,8 +33,7 @@ zsh: checkout_git_submodules
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
 	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
-	$(Q)mkdir -p ${INSTALL_DIR}/.zplug
-	$(Q)curl https://raw.githubusercontent.com/b4b4r07/zplug/master/zplug > ${INSTALL_DIR}/.zplug/zplug
+	$(Q)git clone https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
 	$(Q)touch ${INSTALL_DIR}/.z_cache
 
 git:
