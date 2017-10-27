@@ -25,7 +25,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
   Plug 'spf13/PIV', {'for': 'php'}
   Plug 'terryma/vim-expand-region'
-  Plug 'terryma/vim-multiple-cursors'
   Plug 'unblevable/quick-scope'
   Plug 'vim-scripts/Indent-Highlight'
   Plug 'itchyny/vim-cursorword'
