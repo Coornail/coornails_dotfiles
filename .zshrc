@@ -10,7 +10,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
 
 zplug check || zplug install
-zplug load --verbose
+zplug load
 
 ZSH_THEME="robbyrussell"
 
