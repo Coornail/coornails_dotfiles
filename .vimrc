@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'Raimondi/delimitMate'
   Plug 'mhinz/vim-signify'
   Plug 'ap/vim-css-color'
-  Plug 'bronson/vim-visual-star-search'
+  Plug 'haya14busa/vim-asterisk'
   Plug 'chriskempson/base16-vim'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ervandew/supertab'
