@@ -60,7 +60,6 @@ set expandtab
 set hlsearch
 set mouse=a
 set nobackup
-set nocompatible
 set nu
 set shiftwidth=2
 set showfulltag
@@ -119,7 +118,7 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType xml setomnifunc=xmlcomplete#CompleteTags
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " Replace things in selection.
 " From http://howivim.com/2016/damian-conway/
