@@ -58,6 +58,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+bindkey -v
 bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 zstyle ':filter-select' max-lines 5
