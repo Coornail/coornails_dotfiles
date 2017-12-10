@@ -52,7 +52,7 @@ values."
      emacs-lisp
      shell
      react
-     ;; org
+     org
      ;;themes-megapack
      ;; (shell :variables
      ;;        shell-default-height 30
