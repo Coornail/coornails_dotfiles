@@ -104,6 +104,7 @@ _zsh_autosuggest_strategy_match_prev_cmd_and_cd() {
 
 ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd_and_cd"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=100'
 
 # https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
 export TZ=":/etc/localtime"
@@ -126,3 +127,5 @@ if [[ "$?" == "0" ]]; then
       git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
   }
 fi
+
+export TERM=xterm-256color
