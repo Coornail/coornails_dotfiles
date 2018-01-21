@@ -23,11 +23,6 @@ ack:
 	$(TITLE) "Installing .ackrc"
 	$(Q)cp .ackrc ${INSTALL_DIR}/.ackrc
 
-composer: inst_bin
-	$(TITLE) "Installing Composer"
-	$(Q)curl -sS https://getcomposer.org/installer | php -- --install-dir=${INSTALL_DIR}/bin
-	$(Q)mv ${INSTALL_DIR}/bin/composer.phar ${INSTALL_DIR}/bin/composer
-
 zsh: checkout_git_submodules
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
