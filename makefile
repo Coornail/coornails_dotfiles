@@ -11,7 +11,7 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = ack checkout_git_submodules zsh git nethack screen tmux vim shellscript inst_bin
+general_modules = ack checkout_git_submodules zsh git screen tmux vim shellscript
 # My desktop is currently osx
 desktop_modules = osx
 drupal = drush composer
@@ -108,3 +108,6 @@ ssh:
 	$(Q)mkdir ${INSTALL_DIR}/.ssh || true
 	$(Q)curl https://github.com/coornail.keys >> ${INSTALL_DIR}/.ssh/authorized_keys
 
+emacs:
+	$(Q)git clone https://github.com/syl20bnr/spacemacs ${INSTALL_DIR}/.emacs.d
+	$(Q)cp .spacemacs ${INSTALL_DIR}/.spacemacs

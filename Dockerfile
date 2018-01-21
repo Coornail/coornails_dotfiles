@@ -12,6 +12,7 @@ RUN apt-get update \
         gawk\
         vim\
         less\
+        emacs\
       && rm -rf /var/lib/apt/lists/*
 
 # Configure locale
@@ -22,7 +23,7 @@ ENV LC_ALL=en_US.UTF-8
 COPY . /root/dotfiles
 WORKDIR /root/dotfiles
 
-RUN make -j
-RUN vim +PlugInstall +qall
+RUN make -j emacs
+#RUN vim +PlugInstall +qall
 
 ENTRYPOINT ["zsh"]
