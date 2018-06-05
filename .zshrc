@@ -5,7 +5,7 @@ zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/z", from:oh-my-zsh
 zplug "themes/gentoo", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
 zplug "iam4x/zsh-iterm-touchbar", if:"[ $KERNEL = "Darwin" ]"
