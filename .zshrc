@@ -8,7 +8,6 @@ zplug "themes/gentoo", from:oh-my-zsh
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
-zplug "iam4x/zsh-iterm-touchbar", if:"[ $KERNEL = "Darwin" ]"
 
 zplug check || zplug install
 zplug load
