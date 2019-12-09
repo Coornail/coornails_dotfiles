@@ -60,6 +60,7 @@ set expandtab
 set hlsearch
 set mouse=a
 set nobackup
+set nocompatible
 set nu
 set shiftwidth=2
 set showfulltag
