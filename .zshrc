@@ -8,6 +8,7 @@ zplug "themes/gentoo", from:oh-my-zsh
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
+zplug "MichaelAquilina/zsh-you-should-use"
 
 zplug check || zplug install
 zplug load
@@ -138,3 +139,5 @@ export FZF_CTRL_T_OPTS="--preview 'cat {}'"
 if [[ -f "/usr/local/bin/highlight" ]]; then
   export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 fi
+
+export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
