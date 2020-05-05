@@ -9,18 +9,13 @@ RUN apt-get update \
         git\
         ca-certificates \
         curl \
-        locales\
-        python\
         gawk\
         vim\
         less\
         emacs\
       && rm -rf /var/lib/apt/lists/*
 
-# Configure locale
-RUN locale-gen en_US.UTF-8 &&\
-  update-locale LANG=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
+ENV LANG C.UTF-8
 
 COPY . /root/dotfiles
 WORKDIR /root/dotfiles
