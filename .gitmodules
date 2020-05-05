@@ -1,18 +1,3 @@
-[submodule "shellscript/ievms"]
-	path = shellscript/ievms
-	url = https://github.com/xdissent/ievms.git
-[submodule "shellscript/mysqlDbExporter"]
-	path = shellscript/mysqlDbExporter
-	url = https://github.com/hosszukalman/mysqlDbExporter.git
-[submodule ".drush/drush_ctex_bonus"]
-	path = .drush/drush_ctex_bonus
-	url = http://git.drupal.org/project/drush_ctex_bonus.git
-[submodule "shellscript/rsync-time-backup"]
-	path = shellscript/rsync-time-backup
-	url = https://github.com/laurent22/rsync-time-backup.git
-[submodule "shellscript/hr"]
-	path = shellscript/hr
-	url = https://github.com/LuRsT/hr.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
