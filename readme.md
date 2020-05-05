@@ -11,6 +11,6 @@ I'd be happy if you would create a merge request if I missed something or if I m
 * curl
 
 # Usage
-`make [all|zsh|git|nethack|osx|screen|tmux|vim|shellscript|drush|clean]`
+`make [all|zsh|git|nethack|osx|screen|tmux|vim|shellscript|clean]`
 
 @Coornail
