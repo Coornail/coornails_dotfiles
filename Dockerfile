@@ -1,7 +1,9 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-      && apt-get install -y --no-install-recommends \
+      && apt-get install -y -q --no-install-recommends \
         zsh\
         make\
         git\
@@ -23,7 +25,6 @@ ENV LC_ALL=en_US.UTF-8
 COPY . /root/dotfiles
 WORKDIR /root/dotfiles
 
-RUN make -j emacs
-#RUN vim +PlugInstall +qall
+RUN make -j
 
 ENTRYPOINT ["zsh"]
