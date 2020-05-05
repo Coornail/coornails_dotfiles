@@ -29,7 +29,7 @@ zsh: checkout_git_submodules
 	$(Q)cp .zshenv ${INSTALL_DIR}
 	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
 	$(Q)git clone https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
-	$(Q)touch ${INSTALL_DIR}/.z_cache
+	$(Q)touch ${INSTALL_DIR}/.z
 
 git:
 	$(TITLE) "Installing git config"
