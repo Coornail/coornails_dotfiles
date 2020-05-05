@@ -14,7 +14,6 @@ endif
 general_modules = ack checkout_git_submodules zsh git screen tmux vim shellscript
 # My desktop is currently osx
 desktop_modules = osx
-drupal = drush composer
 
 # Main make target, installs everything
 all: $(general_modules) $(desktop_modules)
@@ -67,16 +66,6 @@ shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
 
-inst_bin: shellscript
-	$(TITLE) "Installing bin"
-	$(Q)cp -r bin ${INSTALL_DIR}
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/drush/drush ${INSTALL_DIR}/bin/drush || true
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/ievms/ievms.sh ${INSTALL_DIR}/bin/ievms || true
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/hr/hr ${INSTALL_DIR}/bin/hr || true
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/catimg/catimg ${INSTALL_DIR}/bin/catimg || true
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/catimg/colors.png ${INSTALL_DIR}/bin/colors.png || true
-	$(Q)ln -s ${INSTALL_DIR}/shellscript/spark/spark ${INSTALL_DIR}/bin/spark || true
-
 checkout_git_submodules:
 	$(TITLE) "Checking out git submodules"
 # Todo fix me:
@@ -84,14 +73,6 @@ checkout_git_submodules:
 	$(Q)git submodule update || true
 # Remove .git directories from submodules as we don't want to copy those
 	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i/.git; done
-
-drush: checkout_git_submodules shellscript
-	$(TITLE) "Installing drush"
-	$(Q)rm -rf ${INSTALL_DIR}/shellscript/drush
-	$(Q)cp -rf shellscript/drush ${INSTALL_DIR}/shellscript/drush
-	$(Q)cp -r .drush ${INSTALL_DIR}
-# Clear cache, to make sure new commands are picked up right away
-	$(Q)rm -rf ${INSTALL_DIR}/.drush/cache
 
 # @todo: Solve if VERBOSE=true
 clean:
