@@ -1,10 +1,18 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 source ~/.zplug/init.zsh
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/z", from:oh-my-zsh
-zplug "themes/gentoo", from:oh-my-zsh
+#zplug "themes/gentoo", from:oh-my-zsh
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
@@ -13,7 +21,7 @@ zplug "MichaelAquilina/zsh-you-should-use"
 zplug check || zplug install
 zplug load
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 
 source $ZPLUG_HOME/repos/zsh-users/zaw/zaw.zsh
 
@@ -141,3 +149,6 @@ if [[ -f "/usr/local/bin/highlight" ]]; then
 fi
 
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

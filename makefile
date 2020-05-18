@@ -27,7 +27,8 @@ zsh: checkout_git_submodules
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
 	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
-	$(Q)git clone https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
+	$(Q)git clone --depth=1 https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
+	$(Q)git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${INSTALL_DIR}/.powerlevel10k
 	$(Q)touch ${INSTALL_DIR}/.z
 
 git:
