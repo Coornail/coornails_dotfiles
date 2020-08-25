@@ -60,6 +60,7 @@
   assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
   # http://caiustheory.com/git-git-git-git-git/
   git = !exec git
+  remaster = !sh -c 'git branch -D master && git checkout origin/master -b master'
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
