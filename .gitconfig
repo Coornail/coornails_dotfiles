@@ -28,6 +28,7 @@
   symlinks = false
   excludesfile = ~/.gitignore_global
 	editor = /usr/bin/vim
+	attributesfile = ~/.gitattributes
 [alias]
   fuckme = !sh -c 'git commit --amend && git push --force'
   mergemaster = !sh -c 'hub sync && git merge master'
@@ -69,6 +70,8 @@
   enabled = 1
 [diff]
   algorithm = histogram
+[diff "exif"]
+	textconv = exiftool
 [push]
   default = matching
 [commit]
