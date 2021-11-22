@@ -64,6 +64,10 @@ vim:
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
 	$(Q)curl -sfLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+emacs:
+	$(TITLE) "Installing emacs config"
+	$(Q)cp -r .emacs.d ${INSTALL_DIR}
+
 shellscript: checkout_git_submodules
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
