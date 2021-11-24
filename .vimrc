@@ -32,6 +32,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'wincent/loupe'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'w0rp/ale'
+  Plug 'jceb/vim-orgmode'
+  Plug 'tpope/vim-speeddating'
 
   if has('nvim')
     set inccommand=split
