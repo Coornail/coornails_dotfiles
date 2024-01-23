@@ -6,7 +6,6 @@ zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/z", from:oh-my-zsh
-#zplug "themes/gentoo", from:oh-my-zsh
 zplug "zdharma-continuum/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zaw", as:command
@@ -14,8 +13,6 @@ zplug "MichaelAquilina/zsh-you-should-use"
 
 zplug check || zplug install
 zplug load
-
-#ZSH_THEME="robbyrussell"
 
 source $ZPLUG_HOME/repos/zsh-users/zaw/zaw.zsh
 
@@ -90,8 +87,6 @@ zstyle ':completion:*' file-sort 'time'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select
-autoload -Uz compinit
-compinit
 
 # Zsh autosuggestions
 bindkey '^ ' autosuggest-execute
