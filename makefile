@@ -29,7 +29,6 @@ zsh: checkout_git_submodules
 	$(Q)cp .p10k.zsh ${INSTALL_DIR}
 	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
 	$(Q)git clone --depth=1 https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
-	#$(Q)git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${INSTALL_DIR}/.powerlevel10k
 	$(Q)mkdir -p ~/bin
 	$(Q)curl -sS https://starship.rs/install.sh >> /tmp/starship.sh && chmod +x /tmp/starship.sh && /tmp/starship.sh --yes --bin-dir ~/bin
 	$(Q)mkdir -p ~/.config && cp ./starship/starship.toml ~/.config/starship.toml
