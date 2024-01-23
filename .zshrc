@@ -2,7 +2,6 @@ eval "$(starship init zsh)"
 
 source ~/.zplug/init.zsh
 
-zplug "plugins/colorize", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, defer:3
 zplug "plugins/z", from:oh-my-zsh
