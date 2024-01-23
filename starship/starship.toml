@@ -21,3 +21,6 @@ disabled = true
 
 [vagrant]
 disabled = true
+
+[directory]
+fish_style_pwd_dir_length = 1
