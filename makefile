@@ -26,7 +26,6 @@ zsh: checkout_git_submodules
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
-	$(Q)cp .p10k.zsh ${INSTALL_DIR}
 	$(Q)cp dircolors-solarized/dircolors.ansi-dark ${INSTALL_DIR}
 	$(Q)git clone --depth=1 https://github.com/zplug/zplug ${INSTALL_DIR}/.zplug
 	$(Q)mkdir -p ~/bin
