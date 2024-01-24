@@ -51,3 +51,19 @@ format = '[$user]($style)@'
 #show_always = true
 style_user = 'bold blue'
 
+[git_status]
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
+
+[python]
+# Only use the `python3` binary to get the version.
+python_binary = 'python3'
