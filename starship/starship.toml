@@ -36,6 +36,18 @@ disabled = true
 
 [directory]
 fish_style_pwd_dir_length = 1
+style = 'bold blue'
 
 [status]
 disabled = false
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style):'
+#ssh_only = false
+style = 'bold blue'
+
+[username]
+format = '[$user]($style)@'
+#show_always = true
+style_user = 'bold blue'
+
