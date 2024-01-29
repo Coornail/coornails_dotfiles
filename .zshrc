@@ -24,6 +24,8 @@ if [ $KERNEL = "Linux" ]; then
   alias ack="ack-grep"
 fi
 
+eval "$(direnv hook zsh)"
+
 # ls
 LS="ls"
 if [ -f "/usr/local/bin/gls" ]; then
