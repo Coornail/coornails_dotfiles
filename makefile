@@ -11,7 +11,7 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = ack checkout_git_submodules zsh git screen tmux vim shellscript
+general_modules = ack zsh git screen tmux vim shellscript
 # My desktop is currently osx
 desktop_modules = osx
 
@@ -22,7 +22,7 @@ ack:
 	$(TITLE) "Installing .ackrc"
 	$(Q)cp .ackrc ${INSTALL_DIR}/.ackrc
 
-zsh: checkout_git_submodules
+zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
@@ -68,22 +68,9 @@ emacs:
 	$(TITLE) "Installing emacs config"
 	$(Q)cp -r .emacs.d ${INSTALL_DIR}
 
-shellscript: checkout_git_submodules
+shellscript:
 	$(TITLE) "Installing shellscripts"
 	$(Q)cp -r shellscript ${INSTALL_DIR}
-
-checkout_git_submodules:
-	$(TITLE) "Checking out git submodules"
-# Todo fix me:
-	$(Q)git submodule init || true
-	$(Q)git submodule update || true
-# Remove .git directories from submodules as we don't want to copy those
-	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i/.git; done
-
-# @todo: Solve if VERBOSE=true
-clean:
-	$(TITLE)Deleting temporary files
-	$(Q)for i in `git submodule | cut -d ' ' -f 3`; do rm -rf $i; done
 
 ssh:
 	$(TITLE)Adding ssh public keys
