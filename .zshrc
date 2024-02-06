@@ -70,7 +70,7 @@ fi
 
 $LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
 if [ "$LS_VERSION" = "gnu" ]; then
-  LS_ARGUMENTS="--color=auto --classify"
+  LS_ARGUMENTS="--color=auto --classify --group-directories-first"
 fi
 
 LS="$LS $LS_ARGUMENTS"
