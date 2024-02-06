@@ -5,14 +5,13 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git --depth=1 "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-
 zinit load "zsh-users/zsh-autosuggestions"
+
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
 
 zinit ice wait lucid
 zinit snippet OMZP::docker
-
-zinit ice wait lucid
-zinit snippet OMZP::git
 
 zinit ice wait lucid
 zinit snippet OMZP::z
