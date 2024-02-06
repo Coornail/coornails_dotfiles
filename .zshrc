@@ -27,7 +27,10 @@ if [ $KERNEL = "Linux" ]; then
   alias ack="ack-grep"
 fi
 
-eval "$(direnv hook zsh)"
+DIRENV_AVAILABLE=`which direnv >> /dev/null &> /dev/null`
+if [ $? -eq 0 ]; then
+  eval "$(direnv hook zsh)"
+fi
 
 # ls
 LS="ls"
