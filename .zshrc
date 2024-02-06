@@ -39,8 +39,23 @@ ZAW_HOME="$(dirname $ZINIT_HOME)/zaw"
 [ ! -d $ZAW_HOME/.git ] && git clone https://github.com/zsh-users/zaw.git --depth=1 "$ZAW_HOME"
 source "$ZAW_HOME/zaw.zsh"
 
+LS="ls"
+LS_ARGUMENTS="-G"
+
 if [ $KERNEL = "Darwin" ]; then
   export PATH="/opt/local/bin:/usr/local/bin:/usr/local/sbin:$HOME/go/bin:$PATH"
+  BREW_PREFIX=$(brew --prefix)
+
+  if [ -f "$BREW_PREFIX/bin/gls" ]; then
+    LS="$BREW_PREFIX/bin/gls"
+  fi
+
+  FZF_ROOT=$(brew --prefix)/opt/fzf
+  if [[ -d "$FZF_ROOT/shell" ]]; then
+    for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
+      source "$i"
+    done
+  fi
 fi
 
 if [ $KERNEL = "Linux" ]; then
@@ -53,13 +68,6 @@ if [ $? -eq 0 ]; then
   eval "$(direnv hook zsh)"
 fi
 
-# ls
-LS="ls"
-if [ -f "$(brew --prefix)/bin/gls" ]; then
-  LS="$(brew --prefix)/bin/gls"
-fi
-
-LS_ARGUMENTS="-G"
 $LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
 if [ "$LS_VERSION" = "gnu" ]; then
   LS_ARGUMENTS="--color=auto --classify"
@@ -132,8 +140,6 @@ fi
 # FZF specific stuff.
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
   # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
   fbr() {
     local branches branch
@@ -152,15 +158,6 @@ export FZF_CTRL_T_OPTS="--preview 'cat {}'"
 
 if [[ -f "/usr/local/bin/highlight" ]]; then
   export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-fi
-
-if [ $KERNEL = "Darwin" ]; then
-  FZF_ROOT=$(brew --prefix)/opt/fzf
-  if [[ -d "$FZF_ROOT/shell" ]]; then
-    for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
-      source "$i"
-    done
-  fi
 fi
 
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
