@@ -144,6 +144,13 @@ if [[ -f "/usr/local/bin/highlight" ]]; then
   export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 fi
 
+FZF_ROOT=$(brew --prefix)/opt/fzf
+if [[ -d "$FZF_ROOT/shell" ]]; then
+  for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
+    source "$i"
+  done
+fi
+
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
