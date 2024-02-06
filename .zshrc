@@ -11,9 +11,6 @@ zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 
 zinit ice wait lucid
-zinit snippet OMZP::docker
-
-zinit ice wait lucid
 zinit snippet OMZP::z
 
 zinit ice wait lucid
