@@ -47,7 +47,7 @@ if [ $KERNEL = "Darwin" ]; then
     LS="$BREW_PREFIX/bin/gls"
   fi
 
-  FZF_ROOT=$(brew --prefix)/opt/fzf
+  FZF_ROOT="$BREW_PREFIX/opt/fzf"
   if [[ -d "$FZF_ROOT/shell" ]]; then
     for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
       source "$i"
