@@ -1,19 +1,22 @@
 eval "$(starship init zsh)"
 
-source ~/.zplug/init.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git --depth=1 "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh, defer:3
-zplug "plugins/z", from:oh-my-zsh
-zplug "zdharma-continuum/fast-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zaw", as:command
-zplug "MichaelAquilina/zsh-you-should-use"
+zinit snippet OMZP::docker
+zinit snippet OMZP::git
+zinit snippet OMZP::z
+zinit load "zdharma-continuum/fast-syntax-highlighting"
+zinit load "zsh-users/zsh-autosuggestions"
+zinit load "MichaelAquilina/zsh-you-should-use"
 
-zplug check || zplug install
-zplug load
-
-source $ZPLUG_HOME/repos/zsh-users/zaw/zaw.zsh
+# ZAW
+ZAW_HOME="$(dirname $ZINIT_HOME)/zaw"
+[ ! -d $ZAW_HOME ] && mkdir -p "$(dirname $ZAW_HOME)"
+[ ! -d $ZAW_HOME/.git ] && git clone https://github.com/zsh-users/zaw.git --depth=1 "$ZAW_HOME"
+source "$ZAW_HOME/zaw.zsh"
 
 if [ $KERNEL = "Darwin" ]; then
   export PATH="/opt/local/bin:/usr/local/bin:/usr/local/sbin:$HOME/go/bin:$PATH"
