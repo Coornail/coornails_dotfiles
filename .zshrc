@@ -22,6 +22,17 @@ zinit load "zdharma-continuum/fast-syntax-highlighting"
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
 
+# dircolors
+DIRCOLORS="dircolors"
+`which gdircolors >> /dev/null &> /dev/null`
+if [ $? -eq 0 ]; then
+  DIRCOLORS="gdircolors"
+fi
+zinit ice atclone"$DIRCOLORS -b LS_COLORS > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zinit light trapd00r/LS_COLORS
+
 # ZAW
 ZAW_HOME="$(dirname $ZINIT_HOME)/zaw"
 [ ! -d $ZAW_HOME ] && mkdir -p "$(dirname $ZAW_HOME)"
@@ -58,17 +69,6 @@ LS="$LS $LS_ARGUMENTS"
 alias la="$LS -lAHh"
 alias ls=$LS
 alias l=$LS
-
-# file colors
-GDIRCOLORS=`which gdircolors >> /dev/null &> /dev/null`
-if [ $? -eq 0 ]; then
-  eval "`gdircolors ~/dircolors.ansi-dark`"
-fi
-
-DIRCOLORS=`which dircolors >> /dev/null &> /dev/null`
-if [ $? -eq 0 ]; then
-  eval "`dircolors --sh ~/dircolors.ansi-dark`"
-fi
 
 alias ..='cd ..'
 alias ...='cd ../..'
