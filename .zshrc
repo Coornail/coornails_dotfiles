@@ -55,8 +55,8 @@ fi
 
 # ls
 LS="ls"
-if [ -f "/usr/local/bin/gls" ]; then
-  LS="gls"
+if [ -f "$(brew --prefix)/bin/gls" ]; then
+  LS="$(brew --prefix)/bin/gls"
 fi
 
 LS_ARGUMENTS="-G"
