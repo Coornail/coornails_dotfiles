@@ -150,6 +150,11 @@ if [[ "$?" == "0" ]]; then
     fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
       git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
   }
+
+  # Sort using fzf
+  # Based on https://github.com/Aloxaf/fzf-tab/issues/58#issuecomment-599178492
+  zstyle ':fzf-tab:*'    fzf-flags  '--no-sort'
+  zstyle ':completion:*' sort       'false'
 fi
 
 export TERM=xterm-256color
