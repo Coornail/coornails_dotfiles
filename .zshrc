@@ -43,14 +43,13 @@ LS="ls"
 LS_ARGUMENTS="-G"
 
 if [ $KERNEL = "Darwin" ]; then
-  export PATH="/opt/local/bin:/usr/local/bin:/usr/local/sbin:$HOME/go/bin:$PATH"
-  BREW_PREFIX=$(brew --prefix)
+  eval "$(brew shellenv)"
 
-  if [ -f "$BREW_PREFIX/bin/gls" ]; then
-    LS="$BREW_PREFIX/bin/gls"
+  if [ -f "$HOMEBREW_PREFIX/bin/gls" ]; then
+    LS="$HOMEBREW_PREFIX/bin/gls"
   fi
 
-  FZF_ROOT="$BREW_PREFIX/opt/fzf"
+  FZF_ROOT="$HOMEBREW_PREFIX/opt/fzf"
   if [[ -d "$FZF_ROOT/shell" ]]; then
     for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
       source "$i"

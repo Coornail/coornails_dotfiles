@@ -1,6 +1,0 @@
-[submodule "shellscript/spark"]
-	path = shellscript/spark
-	url = https://github.com/holman/spark.git
-[submodule "dircolors-solarized"]
-	path = dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
