@@ -13,6 +13,7 @@ RUN apt-get update \
         vim\
         less\
         emacs\
+        fzf\
       && rm -rf /var/lib/apt/lists/*
 
 ENV LANG C.UTF-8
