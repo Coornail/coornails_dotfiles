@@ -23,6 +23,11 @@ which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
   zinit ice wait lucid
   zinit light Aloxaf/fzf-tab
+
+  zinit ice lucid wait'0'
+  zinit light joshskidmore/zsh-fzf-history-search
+else
+  bindkey '^R' zaw-history # Fall back to history-search
 fi
 
 # dircolors
@@ -86,7 +91,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 bindkey -v
-bindkey '^R' zaw-history
 bindkey '^B' zaw-git-branches
 zstyle ':filter-select' max-lines 5
 zstyle ':filter-select:highlight' selected bg=red
