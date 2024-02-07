@@ -19,6 +19,9 @@ zinit load "zdharma-continuum/fast-syntax-highlighting"
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
 
+zinit ice wait lucid
+zinit light Aloxaf/fzf-tab
+
 # dircolors
 DIRCOLORS="dircolors"
 `which gdircolors >> /dev/null &> /dev/null`
