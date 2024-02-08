@@ -163,6 +163,7 @@ if [[ "$?" == "0" ]]; then
   # Based on https://github.com/Aloxaf/fzf-tab/issues/58#issuecomment-599178492
   zstyle ':fzf-tab:*'    fzf-flags  '--no-sort'
   zstyle ':completion:*' sort       'false'
+  zstyle ':fzf-tab:complete:cd:*' accept-line enter
 fi
 
 export TERM=xterm-256color
