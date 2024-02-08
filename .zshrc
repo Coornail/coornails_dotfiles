@@ -164,6 +164,8 @@ if [[ "$?" == "0" ]]; then
   zstyle ':fzf-tab:*'    fzf-flags  '--no-sort'
   zstyle ':completion:*' sort       'false'
   zstyle ':fzf-tab:complete:cd:*' accept-line enter
+  zstyle ':fzf-tab:*' switch-group ',' '.'
+  zstyle ':completion:*:descriptions' format '[%d]'
 fi
 
 export TERM=xterm-256color
