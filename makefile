@@ -11,7 +11,7 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = ack zsh git screen tmux vim shellscript
+general_modules = ack zsh git screen tmux vim
 # My desktop is currently osx
 desktop_modules = osx
 
@@ -62,10 +62,6 @@ vim:
 emacs:
 	$(TITLE) "Installing emacs config"
 	$(Q)cp -r .emacs.d ${INSTALL_DIR}
-
-shellscript:
-	$(TITLE) "Installing shellscripts"
-	$(Q)cp -r shellscript ${INSTALL_DIR}
 
 ssh:
 	$(TITLE)Adding ssh public keys
