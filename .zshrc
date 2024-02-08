@@ -68,6 +68,10 @@ fi
 if [ $KERNEL = "Linux" ]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
   alias ack="ack-grep"
+
+  # https://github.com/junegunn/fzf/issues/2790
+  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 fi
 
 `which direnv >> /dev/null &> /dev/null`
