@@ -9,8 +9,8 @@ I'd be happy if you would create a merge request if I missed something or if I m
 * chsh
 * git
 * curl
+* zsh
+* fzf - Optional
 
 # Usage
-`make [all|zsh|git|nethack|osx|screen|tmux|vim|shellscript|clean]`
-
-@Coornail
+`make [ack|zsh|git|nethack|osx|screen|tmux|vim|emacs|ssh|emacs]`
