@@ -50,6 +50,8 @@ source "$ZAW_HOME/zaw.zsh"
 LS="ls"
 LS_ARGUMENTS="-G"
 
+KERNEL=`uname`
+
 if [ $KERNEL = "Darwin" ]; then
   eval "$(brew shellenv)"
 
