@@ -65,6 +65,8 @@ if [ $KERNEL = "Darwin" ]; then
       source "$i"
     done
   fi
+
+  ulimit -n 4096
 fi
 
 if [ $KERNEL = "Linux" ]; then
