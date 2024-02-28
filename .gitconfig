@@ -32,7 +32,8 @@
 	fsmonitor = true
 [alias]
   fuckme = !sh -c 'git commit --amend && git push --force'
-  mergemaster = !sh -c 'hub sync && git merge master'
+  mergemaster = !sh -c 'git fetch && git merge origin/master'
+  mergemain = !sh -c 'git fetch && git merge origin/main'
   st = status
   ci = commit
   comit = commit
