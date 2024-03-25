@@ -183,6 +183,12 @@ if [[ "$?" == "0" ]]; then
   export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 fi
 
+# Use difftastic for git diffing if available.
+if command -v difft &> /dev/null; then
+  export GIT_EXTERNAL_DIFF=difft
+  export DFT_DISPLAY=inline
+fi
+
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
