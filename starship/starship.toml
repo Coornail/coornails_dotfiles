@@ -67,3 +67,6 @@ deleted = '🗑'
 [python]
 # Only use the `python3` binary to get the version.
 python_binary = 'python3'
+
+[direnv]
+disabled = false
