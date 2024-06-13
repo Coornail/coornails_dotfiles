@@ -64,3 +64,6 @@ composer.phar
 
 # Rust
 target/
+
+# Aider
+.aider.*
