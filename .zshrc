@@ -193,6 +193,10 @@ export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
 
+# Aider
+export AIDER_VIM=true
+export AIDER_AUTO_COMMITS=false
+
 autoload -Uz compinit
 compinit
 zinit cdreplay -q
