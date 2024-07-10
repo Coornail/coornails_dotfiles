@@ -67,3 +67,7 @@ target/
 
 # Aider
 .aider.*
+
+# Python
+*.pyc
+__pycache__/*
