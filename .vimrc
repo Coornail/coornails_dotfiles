@@ -77,8 +77,8 @@ set tf
 if !isdirectory("/tmp/.vim-undo-dir")
     call mkdir("/tmp/.vim-undo-dir", "", 0700)
 endif
-set undodir=/tmp/.vim-undo-dir
 set undofile
+set undodir=~/.vim/undodir
 
 if $VIM_CRONTAB == "true"
   set nobackup
