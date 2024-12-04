@@ -40,6 +40,8 @@ style = 'bold blue'
 
 [status]
 disabled = false
+format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style):'
