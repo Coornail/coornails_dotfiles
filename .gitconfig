@@ -75,12 +75,14 @@
 	textconv = exiftool
 [push]
   default = matching
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
 [branch]
 	sort = -committerdate
 [gpg]
 	format = ssh
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[help]
+	autocorrect = prompt
