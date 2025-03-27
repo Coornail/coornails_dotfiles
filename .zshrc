@@ -54,13 +54,7 @@ if [ $KERNEL = "Darwin" ]; then
     LS="$HOMEBREW_PREFIX/bin/gls"
   fi
 
-  FZF_ROOT="$HOMEBREW_PREFIX/opt/fzf"
-  if [[ -d "$FZF_ROOT/shell" ]]; then
-    for i in $(ls -1 $FZF_ROOT/shell/*.zsh); do
-      source "$i"
-    done
-  fi
-
+  source <(fzf --zsh)
   ulimit -n 4096
 fi
 
