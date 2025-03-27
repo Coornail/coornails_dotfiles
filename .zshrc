@@ -89,8 +89,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 bindkey -v
-bindkey '^B' zaw-git-branches
-zstyle ':filter-select' max-lines 5
+zstyle ':filter-select' max-lines 10
 zstyle ':filter-select:highlight' selected bg=red
 
 # Zsh settings
@@ -144,14 +143,6 @@ fi
 # FZF specific stuff.
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
-  # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
-  fbr() {
-    local branches branch
-    branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-      branch=$(echo "$branches" |
-    fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-      git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-  }
 
   # Sort using fzf
   # Based on https://github.com/Aloxaf/fzf-tab/issues/58#issuecomment-599178492
@@ -161,22 +152,29 @@ if [[ "$?" == "0" ]]; then
   zstyle ':fzf-tab:*' switch-group ',' '.'
   zstyle ':completion:*:descriptions' format '[%d]'
 
-  export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,.venv"
   export FZF_TMUX=1
-  export FZF_CTRL_T_OPTS="--preview 'cat {}'"
+  export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv --margin=2 --reverse --preview '(hghlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+  export FZF_CTRL_T_OPTS="--preview 'cat {} || tree -C {}'"
   which highlight > /dev/null
   if [[ "$?" == "0" ]]; then
-    export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+    export FZF_CTRL_T_OPTS="--preview '(hghlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
   fi
+
+  fzf-git-add() {
+    git fza
+  }
+
+  fzf-git-branch() {
+    git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf --print0| xargs -0 -t -o git switch
+  }
+
+  zle -N fzf-git-add fzf-git-add
+  zle -N fzf-git-branch fzf-git-branch
+  bindkey '^N' fzf-git-add
+  bindkey '^B' fzf-git-branch
 fi
 
 export TERM=xterm-256color
-
-# Use difftastic for git diffing if available.
-if command -v difft &> /dev/null; then
-  #export GIT_EXTERNAL_DIFF=difft
-  #export DFT_DISPLAY=inline
-fi
 
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
 
