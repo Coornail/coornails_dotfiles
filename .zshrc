@@ -30,6 +30,7 @@ if [[ "$?" == "0" ]]; then
 
   zinit ice lucid wait'0'
   zinit light joshskidmore/zsh-fzf-history-search
+  zinit load "andrewferrier/fzf-z"
 else
   bindkey '^R' zaw-history # Fall back to history-search
 fi
@@ -159,23 +160,22 @@ if [[ "$?" == "0" ]]; then
   zstyle ':fzf-tab:complete:cd:*' accept-line enter
   zstyle ':fzf-tab:*' switch-group ',' '.'
   zstyle ':completion:*:descriptions' format '[%d]'
+
+  export FZF_DEFAULT_OPTS="--walker-skip .git,node_modules,.venv"
+  export FZF_TMUX=1
+  export FZF_CTRL_T_OPTS="--preview 'cat {}'"
+  which highlight > /dev/null
+  if [[ "$?" == "0" ]]; then
+    export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+  fi
 fi
 
 export TERM=xterm-256color
 
-# FZF customization
-export FZF_TMUX=1
-export FZF_CTRL_T_OPTS="--preview 'cat {}'"
-
-which highlight > /dev/null
-if [[ "$?" == "0" ]]; then
-  export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-fi
-
 # Use difftastic for git diffing if available.
 if command -v difft &> /dev/null; then
-  export GIT_EXTERNAL_DIFF=difft
-  export DFT_DISPLAY=inline
+  #export GIT_EXTERNAL_DIFF=difft
+  #export DFT_DISPLAY=inline
 fi
 
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
