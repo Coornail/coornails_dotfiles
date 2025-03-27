@@ -165,7 +165,7 @@ if [[ "$?" == "0" ]]; then
   }
 
   fzf-git-branch() {
-    git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf --print0| xargs -0 -t -o git switch
+    git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf --print0 --preview 'git diff --shortstat --color=always --no-ext-diff {}; echo ""; git log --oneline HEAD..{}'| xargs -0 -t -o git switch
   }
 
   zle -N fzf-git-add fzf-git-add
