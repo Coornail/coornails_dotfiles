@@ -69,6 +69,7 @@
   git = !exec git
   lfs-fix = !sh -c 'git lfs uninstall && git reset --hard && git lfs install && git lfs pull && git lfs uninstall && git reset --hard && git lfs install && git lfs pull'
   remaster = !sh -c 'git branch -D master && git checkout origin/master -b master'
+  fza = "!git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p"
 [user]
   name = Kornel Lugosi
   email = coornail@gmail.com
