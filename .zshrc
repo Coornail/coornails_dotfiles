@@ -23,10 +23,13 @@ zinit load "zdharma-continuum/fast-syntax-highlighting"
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
 
+zinit ice wait lucid
+setopt AUTO_CD
+
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
   zinit ice wait lucid
-  zinit light Aloxaf/fzf-tab
+  #zinit ftb-tmux-popup light Aloxaf/fzf-tab
 
   zinit ice lucid wait'0'
   zinit light joshskidmore/zsh-fzf-history-search
@@ -156,7 +159,7 @@ if [[ "$?" == "0" ]]; then
   export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv --margin=2 --reverse --preview 'fzf-preview.sh {}'"
 
   fzf-git-add() {
-    git fza
+    git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p && reset && git commit
   }
 
   fzf-git-branch() {
