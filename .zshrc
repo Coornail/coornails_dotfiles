@@ -91,6 +91,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+function docker-compose () {
+  docker compose $*
+}
+
 bindkey -v
 zstyle ':filter-select' max-lines 10
 zstyle ':filter-select:highlight' selected bg=red
