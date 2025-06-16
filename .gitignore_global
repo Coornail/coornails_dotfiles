@@ -72,3 +72,6 @@ target/
 # Python
 *.pyc
 __pycache__/*
+
+# Git worktrees
+trees/*
