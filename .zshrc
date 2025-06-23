@@ -163,17 +163,23 @@ if [[ "$?" == "0" ]]; then
   export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv --margin=2 --reverse --preview 'fzf-preview.sh {}'"
 
   fzf-git-add() {
-    git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p && reset && git commit
+    git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p
   }
 
   fzf-git-branch() {
     git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)' | fzf --print0 --preview 'git diff --shortstat --color=always --no-ext-diff {}; echo ""; git log --oneline HEAD..{}'| xargs -0 -t -o git switch
   }
 
+  fzf-git-worktree-change() {
+    git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf --print0 --preview 'git diff --shortstat --color=always --no-ext-diff {}; echo ""; git log --oneline HEAD..{}' | xargs -0 -t -o cd
+  }
+
   zle -N fzf-git-add fzf-git-add
   zle -N fzf-git-branch fzf-git-branch
+  zle -N fzf-git-worktree-change fzf-git-worktree-change
   bindkey '^N' fzf-git-add
   bindkey '^B' fzf-git-branch
+  bindkey '^Y' fzf-git-worktree-change
 fi
 
 export TERM=xterm-256color
