@@ -171,7 +171,7 @@ if [[ "$?" == "0" ]]; then
   }
 
   fzf-git-worktree-change() {
-    git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf --print0 --preview 'git diff --shortstat --color=always --no-ext-diff {}; echo ""; git log --oneline HEAD..{}' | xargs -0 -t -o cd
+    git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf --print0 --preview 'cd {}; git rev-parse --abbrev-ref HEAD' | xargs -0 -t -o cd
   }
 
   zle -N fzf-git-add fzf-git-add
