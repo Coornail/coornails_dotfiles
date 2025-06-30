@@ -171,7 +171,16 @@ if [[ "$?" == "0" ]]; then
   }
 
   fzf-git-worktree-change() {
-    git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf --print0 --preview 'cd {}; git rev-parse --abbrev-ref HEAD' | xargs -0 -t -o cd
+    local selected
+    selected=$(git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf \
+      --preview 'echo "Branch: $(git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")"; echo; ls -la {}' \
+      --preview-window=right:50% \
+      --prompt="Select worktree: ")
+
+    if [[ -n "$selected" ]]; then
+      echo "Changing to: $selected"
+      cd "$selected"
+    fi
   }
 
   zle -N fzf-git-add fzf-git-add
