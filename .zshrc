@@ -173,12 +173,11 @@ if [[ "$?" == "0" ]]; then
   fzf-git-worktree-change() {
     local selected
     selected=$(git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf \
-      --preview 'echo "Branch: $(git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")"; echo; ls -la {}' \
+      --preview 'BRANCH=$(git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown"); echo "Branch: $BRANCH"; echo "Dir: $(basename {})"; echo ""; git diff --shortstat --color=always --no-ext-diff HEAD..$BRANCH' \
       --preview-window=right:50% \
       --prompt="Select worktree: ")
 
     if [[ -n "$selected" ]]; then
-      echo "Changing to: $selected"
       cd "$selected"
     fi
   }
@@ -204,3 +203,10 @@ export AIDER_AUTO_COMMITS=false
 autoload -Uz compinit
 compinit
 zinit cdreplay -q
+
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+  source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
