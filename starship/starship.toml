@@ -70,5 +70,8 @@ deleted = '🗑'
 # Only use the `python3` binary to get the version.
 python_binary = 'python3'
 
+[pulumi]
+disabled = true
+
 [direnv]
 disabled = false
