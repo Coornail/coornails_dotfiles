@@ -1,63 +1,113 @@
 eval "$(starship init zsh)"
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git --depth=1 "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+# =============================================================================
+# Private config
+# =============================================================================
+if [[ -f $HOME/.zshrc_private ]]; then
+  source $HOME/.zshrc_private
+fi
 
-zinit load "kevinywlui/zlong_alert.zsh"
+# =============================================================================
+# Zcomet Plugin Manager (Fastest startup times)
+# =============================================================================
+ZCOMET_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zcomet"
+[ ! -d $ZCOMET_HOME ] && mkdir -p "$(dirname $ZCOMET_HOME)"
+[ ! -d $ZCOMET_HOME/.git ] && git clone https://github.com/agkozak/zcomet.git  --depth=1 "$ZCOMET_HOME"
+source "${ZCOMET_HOME}/zcomet.zsh"
+
+# =============================================================================
+# Plugins
+# =============================================================================
+
+# Long command alert
+zcomet load kevinywlui/zlong_alert.zsh
 zlong_duration=60
 zlong_ignore_cmds="vim ssh"
 
-zinit load "zsh-users/zsh-autosuggestions"
+# Autosuggestions
+zcomet load zsh-users/zsh-autosuggestions
 
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
+# Git plugins (OMZ snippets)
+zcomet snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/git.zsh
+zcomet snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
 
-zinit ice wait lucid
-zinit snippet OMZP::z
+# Fast syntax highlighting (deferred for performance)
+zcomet load zdharma-continuum/fast-syntax-highlighting
 
-zinit ice wait lucid
-zinit load "zdharma-continuum/fast-syntax-highlighting"
+# "You should use" alias hints - manually load for zcomet compatibility
+YSHU_HOME="${ZCOMET_HOME}/repos/you-should-use"
+[ ! -d $YSHU_HOME ] && git clone https://github.com/MichaelAquilina/zsh-you-should-use.git --depth=1 "$YSHU_HOME"
+[ -f "$YSHU_HOME/you-should-use.plugin.zsh" ] && source "$YSHU_HOME/you-should-use.plugin.zsh"
 
-zinit ice wait lucid
-zinit load "MichaelAquilina/zsh-you-should-use"
-
-zinit ice wait lucid
-setopt AUTO_CD
-
+# FZF integration
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
-  zinit ice wait lucid
-  #zinit ftb-tmux-popup light Aloxaf/fzf-tab
-
-  zinit ice lucid wait'0'
-  zinit light joshskidmore/zsh-fzf-history-search
-  zinit load "andrewferrier/fzf-z"
-else
-  bindkey '^R' zaw-history # Fall back to history-search
+  # FZF history search
+  zcomet load joshskidmore/zsh-fzf-history-search
+  # FZF-z for directory jumping (will be superseded by zoxide)
+  zcomet load andrewferrier/fzf-z
 fi
 
-zinit light trapd00r/LS_COLORS
+# LS_COLORS for better file colors
+zcomet load trapd00r/LS_COLORS
 
-# ZAW
-ZAW_HOME="$(dirname $ZINIT_HOME)/zaw"
-[ ! -d $ZAW_HOME ] && mkdir -p "$(dirname $ZAW_HOME)"
-[ ! -d $ZAW_HOME/.git ] && git clone https://github.com/zsh-users/zaw.git --depth=1 "$ZAW_HOME"
-source "$ZAW_HOME/zaw.zsh"
+# =============================================================================
+# Zoxide (Modern replacement for 'z' plugin)
+# =============================================================================
+which zoxide > /dev/null
+if [[ "$?" == "0" ]]; then
+  eval "$(zoxide init zsh)"
+fi
 
-LS="ls"
-LS_ARGUMENTS="-G"
+# =============================================================================
+# Modern LS with eza
+# =============================================================================
+which eza > /dev/null
+if [[ "$?" == "0" ]]; then
+  # Use eza if available
+  alias ls='eza --icons --group-directories-first'
+  alias la='eza -lag --icons --group-directories-first'
+  alias l='eza -lg --icons --group-directories-first'
+  alias ll='eza -l --icons --group-directories-first'
+  alias tree='eza --tree --level=2'
+else
+  # Fallback to traditional ls
+  LS="ls"
+  LS_ARGUMENTS="-G"
 
+  KERNEL=`uname`
+
+  if [ $KERNEL = "Darwin" ]; then
+    eval "$(brew shellenv)"
+
+    if [ -f "$HOMEBREW_PREFIX/bin/gls" ]; then
+      LS="$HOMEBREW_PREFIX/bin/gls"
+    fi
+  fi
+
+  if [ $KERNEL = "Linux" ]; then
+    export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+    alias ack="ack-grep"
+  fi
+
+  $LS --help 2>/dev/null | grep "GNU coreutils" && LS_VERSION="gnu" || LS_VERSION="bsd"
+  if [ "$LS_VERSION" = "gnu" ]; then
+    LS_ARGUMENTS="--color=auto --classify --group-directories-first"
+  fi
+
+  LS="$LS $LS_ARGUMENTS"
+  alias la="$LS -lAHh"
+  alias ls=$LS
+  alias l=$LS
+fi
+
+# =============================================================================
+# Platform-specific setup
+# =============================================================================
 KERNEL=`uname`
 
 if [ $KERNEL = "Darwin" ]; then
   eval "$(brew shellenv)"
-
-  if [ -f "$HOMEBREW_PREFIX/bin/gls" ]; then
-    LS="$HOMEBREW_PREFIX/bin/gls"
-  fi
-
   source <(fzf --zsh)
   ulimit -n 4096
 fi
@@ -65,41 +115,40 @@ fi
 if [ $KERNEL = "Linux" ]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
   alias ack="ack-grep"
-
-  # https://github.com/junegunn/fzf/issues/2790
-  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 fi
 
+# =============================================================================
+# Direnv (dotenv for shell)
+# =============================================================================
 `which direnv >> /dev/null &> /dev/null`
 if [ $? -eq 0 ]; then
   eval "$(direnv hook zsh)"
 fi
 
-$LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
-if [ "$LS_VERSION" = "gnu" ]; then
-  LS_ARGUMENTS="--color=auto --classify --group-directories-first"
-fi
-
-LS="$LS $LS_ARGUMENTS"
-alias la="$LS -lAHh"
-alias ls=$LS
-alias l=$LS
-
+# =============================================================================
+# Navigation aliases
+# =============================================================================
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# =============================================================================
+# Docker compose wrapper
+# =============================================================================
 function docker-compose () {
   docker compose $*
 }
 
+# =============================================================================
+# Key bindings and options
+# =============================================================================
 bindkey -v
 zstyle ':filter-select' max-lines 10
 zstyle ':filter-select:highlight' selected bg=red
 
 # Zsh settings
+setopt AUTO_CD
 setopt complete_in_word
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
@@ -128,7 +177,7 @@ bindkey '^ ' autosuggest-execute
 
 # Own strategy to complete cd commands.
 _zsh_autosuggest_strategy_match_prev_cmd_and_cd() {
-	local prefix="$1"
+  local prefix="$1"
 
   if [[ "$prefix" =~ ^cd\ .* ]]; then
   else
@@ -140,14 +189,24 @@ ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd_and_cd"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=100'
 
+# =============================================================================
+# Environment variables
+# =============================================================================
 # https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
 export TZ=":/etc/localtime"
+export TERM=xterm-256color
+export DO_NOT_TRACK=1 # https://consoledonottrack.com/
 
-if [[ -f $HOME/.zshrc_private ]]; then
-  source $HOME/.zshrc_private
-fi
+# Aider
+export AIDER_VIM=true
+export AIDER_AUTO_COMMITS=false
 
-# FZF specific stuff.
+# You should use message format
+export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+
+# =============================================================================
+# FZF Configuration
+# =============================================================================
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
 
@@ -160,7 +219,7 @@ if [[ "$?" == "0" ]]; then
   zstyle ':completion:*:descriptions' format '[%d]'
 
   export FZF_TMUX=1
-  export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv --margin=2 --reverse --preview 'fzf-preview.sh {}'"
+  export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv,target --margin=2 --reverse --preview 'fzf-preview.sh {}'"
 
   fzf-git-add() {
     git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p
@@ -190,23 +249,20 @@ if [[ "$?" == "0" ]]; then
   bindkey '^Y' fzf-git-worktree-change
 fi
 
-export TERM=xterm-256color
-
-export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
-
-export DO_NOT_TRACK=1 # https://consoledonottrack.com/
-
-# Aider
-export AIDER_VIM=true
-export AIDER_AUTO_COMMITS=false
-
-autoload -Uz compinit
-compinit
-zinit cdreplay -q
+# =============================================================================
+# Initialization
+# =============================================================================
+zcomet compinit
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
+# =============================================================================
+# Ghostty terminal integration
+# =============================================================================
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
   source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
 fi
+
+# Add LLVM to PATH
+export PATH="/usr/local/opt/llvm/bin:$PATH"
