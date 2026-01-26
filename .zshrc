@@ -58,47 +58,6 @@ if command -v zoxide &>/dev/null; then
 fi
 
 # =============================================================================
-# Modern LS with eza
-# =============================================================================
-if command -v eza &>/dev/null; then
-  # Use eza if available
-  alias ls='eza --icons --group-directories-first'
-  alias la='eza -lag --icons --group-directories-first'
-  alias l='eza -lg --icons --group-directories-first'
-  alias ll='eza -l --icons --group-directories-first'
-  alias tree='eza --tree --level=2'
-else
-  # Fallback to traditional ls
-  LS="ls"
-  LS_ARGUMENTS="-G"
-
-  KERNEL=$(uname)
-
-  if [[ $KERNEL == "Darwin" ]]; then
-    eval "$(brew shellenv)"
-
-    if [[ -f "$HOMEBREW_PREFIX/bin/gls" ]]; then
-      LS="$HOMEBREW_PREFIX/bin/gls"
-    fi
-  fi
-
-  if [[ $KERNEL == "Linux" ]]; then
-    export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
-    alias ack="ack-grep"
-  fi
-
-  $LS --help 2>/dev/null | grep "GNU coreutils" && LS_VERSION="gnu" || LS_VERSION="bsd"
-  if [[ "$LS_VERSION" == "gnu" ]]; then
-    LS_ARGUMENTS="--color=auto --classify --group-directories-first"
-  fi
-
-  LS="$LS $LS_ARGUMENTS"
-  alias la="$LS -lAHh"
-  alias ls=$LS
-  alias l=$LS
-fi
-
-# =============================================================================
 # Platform-specific setup
 # =============================================================================
 KERNEL=$(uname)
@@ -115,6 +74,26 @@ if [[ $KERNEL == "Linux" ]]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
   alias ack="ack-grep"
 fi
+
+# =============================================================================
+# LS configuration
+# =============================================================================
+LS="ls"
+LS_ARGUMENTS="-G"
+
+if [[ $KERNEL == "Darwin" ]] && [[ -f "$HOMEBREW_PREFIX/bin/gls" ]]; then
+  LS="$HOMEBREW_PREFIX/bin/gls"
+fi
+
+$LS --help 2>/dev/null | grep "GNU coreutils" && LS_VERSION="gnu" || LS_VERSION="bsd"
+if [[ "$LS_VERSION" == "gnu" ]]; then
+  LS_ARGUMENTS="--color=auto --classify --group-directories-first"
+fi
+
+LS="$LS $LS_ARGUMENTS"
+alias la="$LS -lAHh"
+alias ls=$LS
+alias l=$LS
 
 # =============================================================================
 # Direnv (dotenv for shell)
