@@ -34,10 +34,8 @@ zcomet snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/
 # Fast syntax highlighting (deferred for performance)
 zcomet load zdharma-continuum/fast-syntax-highlighting
 
-# "You should use" alias hints - manually load for zcomet compatibility
-YSHU_HOME="${ZCOMET_HOME}/repos/you-should-use"
-[ ! -d $YSHU_HOME ] && git clone https://github.com/MichaelAquilina/zsh-you-should-use.git --depth=1 "$YSHU_HOME"
-[ -f "$YSHU_HOME/you-should-use.plugin.zsh" ] && source "$YSHU_HOME/you-should-use.plugin.zsh"
+# "You should use" alias hints - specify plugin file explicitly
+zcomet load MichaelAquilina/zsh-you-should-use you-should-use.plugin.zsh
 
 # FZF integration
 if command -v fzf &>/dev/null; then
@@ -67,7 +65,8 @@ if [[ $KERNEL == "Darwin" ]]; then
   if command -v fzf &>/dev/null; then
     source <(fzf --zsh)
   fi
-  ulimit -n 4096
+  # Only increase ulimit if current limit is lower to avoid errors
+  [[ $(ulimit -n) -lt 4096 ]] && ulimit -n 4096
 fi
 
 if [[ $KERNEL == "Linux" ]]; then
@@ -85,7 +84,7 @@ if [[ $KERNEL == "Darwin" ]] && [[ -f "$HOMEBREW_PREFIX/bin/gls" ]]; then
   LS="$HOMEBREW_PREFIX/bin/gls"
 fi
 
-if { $LS --help 2>&1 | grep -q "GNU coreutils" } >&/dev/null; then
+if [[ "$($LS --version 2>/dev/null)" == *"GNU coreutils"* ]]; then
   LS_VERSION="gnu"
 else
   LS_VERSION="bsd"
@@ -232,7 +231,8 @@ fi
 # =============================================================================
 # Initialization
 # =============================================================================
-zcomet compinit
+# Cache compdump to speed up shell startup (regenerates once per day)
+zcomet compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zcompdump-${ZSH_VERSION}"
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
