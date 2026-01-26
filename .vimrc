@@ -1,4 +1,3 @@
-let base16colorspace=256
 call plug#begin('~/.vim/plugged')
  " Plug 'Coornail/vim-go-conceal', {'for': 'go'}
 
@@ -134,7 +133,6 @@ let g:lightline = {
 \   }
 \ }
 
-let base16colorspace=256
 silent! colorscheme base16-mocha
 set background=dark
 
@@ -150,9 +148,6 @@ if has("gui_running")
   set guioptions-=T  " No toolbar
   "set noantialias
 endif
-
-" autocomplete
-let g:AutoComplPop_BehaviorKeywordLength=4
 
 " visualize tabs
 set list
@@ -208,40 +203,24 @@ nmap <Leader>w :w<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_go_checkers = ['go', 'gometalinter']
-let g:syntastic_go_gometalinter_args = "-D gotype --fast -j 3"
-let g:syntastic_rust_checkers = ['rustc']
-let g:syntastic_error_symbol = "✖"
-let g:syntastic_warning_symbol = "✕"
-let g:syntastic_style_error_symbol = "△"
-let g:syntastic_style_warning_symbol = "△"
-
-" Toggle -fast flag for gometalinter.
-nnoremap <leader>f :call FastGoLint()<cr>
-let g:golintfast = 1
-function! FastGoLint()
-  if g:golintfast
-    let g:golintfast = 0
-    let g:syntastic_go_gometalinter_args = "-D gotype --deadline=30s -j 3"
-    echo "Gometalinter: Slow"
-    SyntasticCheck
-  else
-    let g:golintfast = 1
-    let g:syntastic_go_gometalinter_args = "-D gotype --fast -j 3"
-    echo "Gometalinter: Fast"
-    SyntasticCheck
-  endif
-endfunction
+" ALE (Asynchronous Lint Engine) configuration
+let g:ale_linters = {
+\   'go': ['gopls', 'golangci-lint'],
+\   'javascript': ['eslint'],
+\   'rust': ['rustc', 'analyzer'],
+\}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'go': ['gofmt', 'goimports'],
+\   'javascript': ['eslint'],
+\   'rust': ['rustfmt'],
+\}
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_sign_error = "✖"
+let g:ale_sign_warning = "✕"
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " Gotags support
 " Requires https://github.com/jstemmer/gotags
