@@ -40,8 +40,7 @@ YSHU_HOME="${ZCOMET_HOME}/repos/you-should-use"
 [ -f "$YSHU_HOME/you-should-use.plugin.zsh" ] && source "$YSHU_HOME/you-should-use.plugin.zsh"
 
 # FZF integration
-which fzf > /dev/null
-if [[ "$?" == "0" ]]; then
+if command -v fzf &>/dev/null; then
   # FZF history search
   zcomet load joshskidmore/zsh-fzf-history-search
   # FZF-z for directory jumping (will be superseded by zoxide)
@@ -54,16 +53,14 @@ zcomet load trapd00r/LS_COLORS
 # =============================================================================
 # Zoxide (Modern replacement for 'z' plugin)
 # =============================================================================
-which zoxide > /dev/null
-if [[ "$?" == "0" ]]; then
+if command -v zoxide &>/dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
 # =============================================================================
 # Modern LS with eza
 # =============================================================================
-which eza > /dev/null
-if [[ "$?" == "0" ]]; then
+if command -v eza &>/dev/null; then
   # Use eza if available
   alias ls='eza --icons --group-directories-first'
   alias la='eza -lag --icons --group-directories-first'
@@ -75,23 +72,23 @@ else
   LS="ls"
   LS_ARGUMENTS="-G"
 
-  KERNEL=`uname`
+  KERNEL=$(uname)
 
-  if [ $KERNEL = "Darwin" ]; then
+  if [[ $KERNEL == "Darwin" ]]; then
     eval "$(brew shellenv)"
 
-    if [ -f "$HOMEBREW_PREFIX/bin/gls" ]; then
+    if [[ -f "$HOMEBREW_PREFIX/bin/gls" ]]; then
       LS="$HOMEBREW_PREFIX/bin/gls"
     fi
   fi
 
-  if [ $KERNEL = "Linux" ]; then
+  if [[ $KERNEL == "Linux" ]]; then
     export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
     alias ack="ack-grep"
   fi
 
   $LS --help 2>/dev/null | grep "GNU coreutils" && LS_VERSION="gnu" || LS_VERSION="bsd"
-  if [ "$LS_VERSION" = "gnu" ]; then
+  if [[ "$LS_VERSION" == "gnu" ]]; then
     LS_ARGUMENTS="--color=auto --classify --group-directories-first"
   fi
 
@@ -104,15 +101,17 @@ fi
 # =============================================================================
 # Platform-specific setup
 # =============================================================================
-KERNEL=`uname`
+KERNEL=$(uname)
 
-if [ $KERNEL = "Darwin" ]; then
+if [[ $KERNEL == "Darwin" ]]; then
   eval "$(brew shellenv)"
-  source <(fzf --zsh)
+  if command -v fzf &>/dev/null; then
+    source <(fzf --zsh)
+  fi
   ulimit -n 4096
 fi
 
-if [ $KERNEL = "Linux" ]; then
+if [[ $KERNEL == "Linux" ]]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
   alias ack="ack-grep"
 fi
@@ -120,8 +119,7 @@ fi
 # =============================================================================
 # Direnv (dotenv for shell)
 # =============================================================================
-`which direnv >> /dev/null &> /dev/null`
-if [ $? -eq 0 ]; then
+if command -v direnv &>/dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
@@ -207,8 +205,7 @@ export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$
 # =============================================================================
 # FZF Configuration
 # =============================================================================
-which fzf > /dev/null
-if [[ "$?" == "0" ]]; then
+if command -v fzf &>/dev/null; then
 
   # Sort using fzf
   # Based on https://github.com/Aloxaf/fzf-tab/issues/58#issuecomment-599178492
@@ -219,7 +216,7 @@ if [[ "$?" == "0" ]]; then
   zstyle ':completion:*:descriptions' format '[%d]'
 
   export FZF_TMUX=1
-  export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv,target --margin=2 --reverse --preview 'fzf-preview.sh {}'"
+  export FZF_DEFAULT_OPTS="--tmux 80% -m --walker-skip .git,node_modules,.venv,target --margin=2 --reverse"
 
   fzf-git-add() {
     git ls-files -m --exclude-standard | fzf --print0 -m --preview 'git diff --color=always --no-ext-diff {}' | xargs -0 -t -o git add -p
@@ -232,7 +229,7 @@ if [[ "$?" == "0" ]]; then
   fzf-git-worktree-change() {
     local selected
     selected=$(git worktree list --porcelain | awk '/^worktree / {print $2}' | fzf \
-      --preview 'BRANCH=$(git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown"); echo "Branch: $BRANCH"; echo "Dir: $(basename {})"; echo ""; git diff --shortstat --color=always --no-ext-diff HEAD..$BRANCH' \
+      --preview 'BRANCH=$(git -C {} rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown"); echo "Branch: $BRANCH"; echo "Dir: $(basename {})"; echo ""; git -C {} diff --shortstat --color=always --no-ext-diff' \
       --preview-window=right:50% \
       --prompt="Select worktree: ")
 
