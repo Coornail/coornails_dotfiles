@@ -85,7 +85,11 @@ if [[ $KERNEL == "Darwin" ]] && [[ -f "$HOMEBREW_PREFIX/bin/gls" ]]; then
   LS="$HOMEBREW_PREFIX/bin/gls"
 fi
 
-$LS --help 2>/dev/null | grep "GNU coreutils" && LS_VERSION="gnu" || LS_VERSION="bsd"
+if { $LS --help 2>&1 | grep -q "GNU coreutils" } >&/dev/null; then
+  LS_VERSION="gnu"
+else
+  LS_VERSION="bsd"
+fi
 if [[ "$LS_VERSION" == "gnu" ]]; then
   LS_ARGUMENTS="--color=auto --classify --group-directories-first"
 fi
