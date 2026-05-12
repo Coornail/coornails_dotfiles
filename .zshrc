@@ -13,12 +13,16 @@ zinit load "zsh-users/zsh-autosuggestions"
 
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
+#zinit snippet OMZP::colorize
 
 zinit ice wait lucid
 zinit snippet OMZP::z
 
-zinit ice wait lucid
-zinit load "zdharma-continuum/fast-syntax-highlighting"
+#zinit ice wait lucid
+#zinit load "zdharma-continuum/fast-syntax-highlighting"
+
+zinit ice as"program" from"gh-r" pick"zsh-patina-*/zsh-patina" atload'eval "$(zsh-patina activate)"'
+zinit light michel-kraemer/zsh-patina
 
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
@@ -192,7 +196,8 @@ fi
 
 export TERM=xterm-256color
 
-export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+export YSU_MESSAGE_FORMA=T"$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+export YSU_HARDCORE_ALIASES=()
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
 
