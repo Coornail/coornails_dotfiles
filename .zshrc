@@ -27,15 +27,17 @@ zlong_ignore_cmds="vim ssh"
 # Autosuggestions
 zcomet load zsh-users/zsh-autosuggestions
 
-# Git plugins (OMZ snippets)
-zcomet snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/git.zsh
-zcomet snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh
-
-# Fast syntax highlighting (deferred for performance)
-zcomet load zdharma-continuum/fast-syntax-highlighting
+zinit snippet OMZL::git.zsh
+zinit snippet OMZP::git
+#zinit snippet OMZP::colorize
 
 # "You should use" alias hints - specify plugin file explicitly
 zcomet load MichaelAquilina/zsh-you-should-use you-should-use.plugin.zsh
+#zinit ice wait lucid
+#zinit load "zdharma-continuum/fast-syntax-highlighting"
+
+zinit ice as"program" from"gh-r" pick"zsh-patina-*/zsh-patina" atload'eval "$(zsh-patina activate)"'
+zinit light michel-kraemer/zsh-patina
 
 # FZF integration
 if command -v fzf &>/dev/null; then
@@ -228,11 +230,42 @@ if command -v fzf &>/dev/null; then
   bindkey '^Y' fzf-git-worktree-change
 fi
 
+<<<<<<< HEAD
 # =============================================================================
 # Initialization
 # =============================================================================
 # Cache compdump to speed up shell startup (regenerates once per day)
 zcomet compinit -d "${XDG_CACHE_HOME:-${HOME}/.cache}/zcompdump-${ZSH_VERSION}"
+||||||| a3e2454
+export TERM=xterm-256color
+
+export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+
+export DO_NOT_TRACK=1 # https://consoledonottrack.com/
+
+# Aider
+export AIDER_VIM=true
+export AIDER_AUTO_COMMITS=false
+
+autoload -Uz compinit
+compinit
+zinit cdreplay -q
+=======
+export TERM=xterm-256color
+
+export YSU_MESSAGE_FORMA=T"$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+export YSU_HARDCORE_ALIASES=()
+
+export DO_NOT_TRACK=1 # https://consoledonottrack.com/
+
+# Aider
+export AIDER_VIM=true
+export AIDER_AUTO_COMMITS=false
+
+autoload -Uz compinit
+compinit
+zinit cdreplay -q
+>>>>>>> 42aba9f1e7bd4914d28caa7cd2eaad4464b0d014
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
