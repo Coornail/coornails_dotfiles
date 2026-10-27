@@ -35,6 +35,7 @@ git:
 	$(TITLE) "Installing git config"
 	$(Q)cp .gitconfig ${INSTALL_DIR}
 	$(Q)cp .gitignore_global ${INSTALL_DIR}
+	$(Q)cp .gitattributes ${INSTALL_DIR}
 	$(Q)mkdir -p ${INSTALL_DIR}/.config/gh
 	$(Q)cp gh/config.yml ${INSTALL_DIR}/.config/gh
 

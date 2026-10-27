@@ -27,12 +27,10 @@ zinit light michel-kraemer/zsh-patina
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
 
-zinit ice wait lucid
 setopt AUTO_CD
 
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
-  zinit ice wait lucid
   #zinit ftb-tmux-popup light Aloxaf/fzf-tab
 
   zinit ice lucid wait'0'
@@ -68,7 +66,6 @@ fi
 
 if [ $KERNEL = "Linux" ]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
-  alias ack="ack-grep"
 
   # https://github.com/junegunn/fzf/issues/2790
   zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
@@ -107,7 +104,6 @@ zstyle ':filter-select:highlight' selected bg=red
 setopt complete_in_word
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
-setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt listtypes
 setopt menu_complete   # autoselect the first completion entry
@@ -130,17 +126,7 @@ zstyle ':completion:*' menu select
 # Zsh autosuggestions
 bindkey '^ ' autosuggest-execute
 
-# Own strategy to complete cd commands.
-_zsh_autosuggest_strategy_match_prev_cmd_and_cd() {
-	local prefix="$1"
-
-  if [[ "$prefix" =~ ^cd\ .* ]]; then
-  else
-    _zsh_autosuggest_strategy_match_prev_cmd $prefix
-  fi
-}
-
-ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd_and_cd"
+ZSH_AUTOSUGGEST_STRATEGY="match_prev_cmd"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=100'
 
@@ -155,12 +141,8 @@ fi
 which fzf > /dev/null
 if [[ "$?" == "0" ]]; then
 
-  # Sort using fzf
-  # Based on https://github.com/Aloxaf/fzf-tab/issues/58#issuecomment-599178492
-  zstyle ':fzf-tab:*'    fzf-flags  '--no-sort'
-  zstyle ':completion:*' sort       'false'
-  zstyle ':fzf-tab:complete:cd:*' accept-line enter
-  zstyle ':fzf-tab:*' switch-group ',' '.'
+  # Keep completion matches in insertion order.
+  zstyle ':completion:*' sort 'false'
   zstyle ':completion:*:descriptions' format '[%d]'
 
   export FZF_TMUX=1
@@ -193,8 +175,6 @@ if [[ "$?" == "0" ]]; then
   bindkey '^B' fzf-git-branch
   bindkey '^Y' fzf-git-worktree-change
 fi
-
-export TERM=xterm-256color
 
 export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
 export YSU_HARDCORE_ALIASES=()

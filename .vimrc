@@ -60,16 +60,12 @@ set directory=/tmp
 set expandtab
 set hlsearch
 set mouse=a
-set nobackup
-set nocompatible
 set nu
 set shiftwidth=2
 set showfulltag
 set smartcase
 "set spell
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [%p%%]\ [LEN=%L]\ [POS=%l,%v]
 set tabstop=2
-set tf
 
 " Use persistent history.
 " From https://advancedweb.hu/2017/09/19/vim-persistent-undo/
@@ -81,7 +77,6 @@ set undofile
 let &undodir = s:undodir
 
 if $VIM_CRONTAB == "true"
-  set nobackup
   set nowritebackup
 endif
 
@@ -103,25 +98,12 @@ au BufRead,BufNewFile *.install set omnifunc=phpcomplete#CompletePHP
 au BufRead,BufNewFile *.profile set syn=php
 au BufRead,BufNewFile *.profile set omnifunc=phpcomplete#CompletePHP
 
-" Set filetype for less
-au BufNewFile,BufRead *.less set filetype=less
-
 "remove whitespaces from the end of all lines at saving
 autocmd BufWritePre * :%s/\s\+$//e
 
 " + opens up the tag definition - closes it
 map + :pta <C-R><C-W><CR>
 map - :pc<CR>
-
-" Set code completion on
-autocmd FileType c set omnifunc=ccomplete#Complete
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType markdown set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " Replace things in selection.
 " From http://howivim.com/2016/damian-conway/
@@ -151,25 +133,14 @@ if has("gui_running")
 endif
 
 " visualize tabs
-set list
 exe "set listchars=tab:>-,trail:\xb7,eol:$,nbsp:\xb7"
 map <leader>t :set invlist<CR>
-set invlist
 
 vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
 imap <C-BS> <C-W>
 
 let g:DisableAutoPHPFolding = 1
-
-if &term =~ '256color'
-  " disable Background Color Erase (BCE) so that color schemes
-  " render properly when inside 256-color tmux and GNU screen.
-  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  " set t_ut=
-endif
-
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -186,18 +157,18 @@ map <leader>o :CtrlPTag<CR>
 map <leader>l :CtrlPLine<CR>
 
 "let g:go_fmt_command = "goimports"
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>gd :GoDef<CR>
-au FileType go nmap <Leader>gi :GoImports<CR>:w<CR>
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nnoremap <buffer> <leader>t <Plug>(go-test)
+au FileType go nnoremap <buffer> <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <buffer> <Leader>ds <Plug>(go-def-split)
+au FileType go nnoremap <buffer> <Leader>dv <Plug>(go-def-vertical)
+au FileType go nnoremap <buffer> <Leader>dt <Plug>(go-def-tab)
+au FileType go nnoremap <buffer> <Leader>gd :GoDef<CR>
+au FileType go nnoremap <buffer> <Leader>gi :GoImports<CR>:w<CR>
+au FileType go nnoremap <buffer> <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nnoremap <buffer> <Leader>gb <Plug>(go-doc-browser)
+au FileType go nnoremap <buffer> <Leader>s <Plug>(go-implements)
+au FileType go nnoremap <buffer> <Leader>i <Plug>(go-info)
+au FileType go nnoremap <buffer> <Leader>e <Plug>(go-rename)
 
 nmap <Leader>w :w<CR>
 
@@ -266,8 +237,6 @@ if exists('$ITERM_PROFILE')
 end
 
 " autocomplete
-let g:AutoComplPop_BehaviorKeywordLength=4
-"
 let g:neocomplete#enable_at_startup = 1
 
 let g:js_fmt_autosave = 0
