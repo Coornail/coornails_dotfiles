@@ -73,11 +73,12 @@ set tf
 
 " Use persistent history.
 " From https://advancedweb.hu/2017/09/19/vim-persistent-undo/
-if !isdirectory("/tmp/.vim-undo-dir")
-    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+let s:undodir = "/tmp/.vim-undo-dir"
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "", 0700)
 endif
 set undofile
-set undodir=~/.vim/undodir
+let &undodir = s:undodir
 
 if $VIM_CRONTAB == "true"
   set nobackup
