@@ -196,7 +196,7 @@ fi
 
 export TERM=xterm-256color
 
-export YSU_MESSAGE_FORMA=T"$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
 export YSU_HARDCORE_ALIASES=()
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
