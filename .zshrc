@@ -29,8 +29,7 @@ zinit load "MichaelAquilina/zsh-you-should-use"
 
 setopt AUTO_CD
 
-which fzf > /dev/null
-if [[ "$?" == "0" ]]; then
+if (( $+commands[fzf] )); then
   #zinit ftb-tmux-popup light Aloxaf/fzf-tab
 
   zinit ice lucid wait'0'
@@ -43,29 +42,28 @@ zinit light trapd00r/LS_COLORS
 LS="ls"
 LS_ARGUMENTS="-G"
 
-KERNEL=`uname`
-
-if [ $KERNEL = "Darwin" ]; then
+if [[ $OSTYPE == darwin* ]]; then
   eval "$(brew shellenv)"
 
   if [ -f "$HOMEBREW_PREFIX/bin/gls" ]; then
     LS="$HOMEBREW_PREFIX/bin/gls"
   fi
 
-  source <(fzf --zsh)
   ulimit -n 4096
 fi
 
-if [ $KERNEL = "Linux" ]; then
+if [[ $OSTYPE == linux* ]]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
-
-  # https://github.com/junegunn/fzf/issues/2790
-  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-  zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 fi
 
-`which direnv >> /dev/null &> /dev/null`
-if [ $? -eq 0 ]; then
+# fzf's own zsh integration (completion + key bindings), available since fzf
+# 0.48. It replaces the two raw-master snippets the Linux branch used to pull
+# (junegunn/fzf#2790) and gives macOS and Linux the same path.
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+fi
+
+if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
@@ -138,8 +136,7 @@ if [[ -f $HOME/.zshrc_private ]]; then
 fi
 
 # FZF specific stuff.
-which fzf > /dev/null
-if [[ "$?" == "0" ]]; then
+if (( $+commands[fzf] )); then
 
   # Keep completion matches in insertion order.
   zstyle ':completion:*' sort 'false'
