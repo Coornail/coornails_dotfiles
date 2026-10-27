@@ -176,7 +176,10 @@ if [[ "$?" == "0" ]]; then
   bindkey '^Y' fzf-git-worktree-change
 fi
 
-export YSU_MESSAGE_FORMAT="$(tput setaf 3)💡 %alias_type for %command: %alias$(tput sgr0)"
+# Literal ANSI escapes instead of tput: tput aborts on an unknown TERM (e.g.
+# xterm-ghostty over ssh to a host whose terminfo DB lacks the entry) and
+# prints "tput: unknown terminal" at every shell start. YSU only needs yellow.
+export YSU_MESSAGE_FORMAT=$'\e[33m💡 %alias_type for %command: %alias\e[0m'
 export YSU_HARDCORE_ALIASES=()
 
 export DO_NOT_TRACK=1 # https://consoledonottrack.com/
