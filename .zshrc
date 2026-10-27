@@ -1,5 +1,3 @@
-eval "$(starship init zsh)"
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git --depth=1 "$ZINIT_HOME"
@@ -55,6 +53,18 @@ fi
 if [[ $OSTYPE == linux* ]]; then
   export PATH="/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 fi
+
+# starship comes from the distro package manager. Without a working starship
+# the shell still starts with a plain prompt. This has to sit *after* the
+# Homebrew shellenv above: /opt/homebrew/bin is not on macOS's default PATH,
+# so a check before that line misses a brew-installed starship. A starship
+# that exists but fails to init falls back the same way.
+if (( $+commands[starship] )) && _starship_init="$(starship init zsh 2>/dev/null)" && [[ -n $_starship_init ]]; then
+  eval "$_starship_init"
+else
+  PROMPT='%F{blue}%~%f %(?..%F{red}[%?]%f )%# '
+fi
+unset _starship_init
 
 # fzf's own zsh integration (completion + key bindings), available since fzf
 # 0.48. It replaces the two raw-master snippets the Linux branch used to pull

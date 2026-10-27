@@ -10,6 +10,10 @@ I'd be happy if you would create a merge request if I missed something or if I m
 * git
 * curl
 * zsh
+* starship - Optional; the shell falls back to a plain prompt without it.
+  `apt install starship` on Ubuntu 25.04+ and Debian 13+, `brew install starship`
+  on macOS. On older releases neither repo has it: use the release binary from
+  https://github.com/starship/starship/releases
 * tmux
 * vim (with +python3 for UltiSnips)
 * fzf - Optional

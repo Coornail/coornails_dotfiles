@@ -20,9 +20,9 @@ zsh:
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
 	$(Q)mkdir -p ${INSTALL_DIR}/bin
-	$(Q)curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir ${INSTALL_DIR}/bin
 	$(Q)mkdir -p ${INSTALL_DIR}/.config && cp ./starship/starship.toml ${INSTALL_DIR}/.config/starship.toml
 	$(Q)touch ${INSTALL_DIR}/.z
+	command -v starship >/dev/null || [ -x "${INSTALL_DIR}/bin/starship" ] || echo '    starship not installed - using a plain prompt (apt: Ubuntu 25.04+/Debian 13+; brew: macOS)'
 
 git:
 	$(TITLE) "Installing git config"
