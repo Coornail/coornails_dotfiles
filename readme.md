@@ -13,4 +13,4 @@ I'd be happy if you would create a merge request if I missed something or if I m
 * fzf - Optional
 
 # Usage
-`make [ack|zsh|git|nethack|osx|screen|tmux|vim|emacs|ssh|emacs]`
+`make [ack|zsh|git|nethack|osx|screen|tmux|vim|ssh]`

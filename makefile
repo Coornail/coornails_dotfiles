@@ -61,11 +61,6 @@ vim:
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
 	$(Q)curl -sfLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-emacs:
-	$(TITLE) "Installing Spacemacs"
-	$(Q)git clone https://github.com/syl20bnr/spacemacs ${INSTALL_DIR}/.emacs.d || true
-	$(Q)cp .spacemacs ${INSTALL_DIR}/.spacemacs
-
 ssh:
 	$(TITLE) "Adding ssh public keys"
 	$(Q)mkdir ${INSTALL_DIR}/.ssh || true

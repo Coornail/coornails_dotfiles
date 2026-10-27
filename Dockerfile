@@ -12,7 +12,6 @@ RUN apt-get update \
         gawk\
         vim\
         less\
-        emacs\
         fzf\
       && rm -rf /var/lib/apt/lists/*
 
