@@ -36,17 +36,9 @@ if [[ "$?" == "0" ]]; then
   zinit ice lucid wait'0'
   zinit light joshskidmore/zsh-fzf-history-search
   zinit load "andrewferrier/fzf-z"
-else
-  bindkey '^R' zaw-history # Fall back to history-search
 fi
 
 zinit light trapd00r/LS_COLORS
-
-# ZAW
-ZAW_HOME="$(dirname $ZINIT_HOME)/zaw"
-[ ! -d $ZAW_HOME ] && mkdir -p "$(dirname $ZAW_HOME)"
-[ ! -d $ZAW_HOME/.git ] && git clone https://github.com/zsh-users/zaw.git --depth=1 "$ZAW_HOME"
-source "$ZAW_HOME/zaw.zsh"
 
 LS="ls"
 LS_ARGUMENTS="-G"
@@ -97,8 +89,14 @@ function docker-compose () {
 }
 
 bindkey -v
-zstyle ':filter-select' max-lines 10
-zstyle ':filter-select:highlight' selected bg=red
+# ^R is 'redisplay' in vi insert mode, so bind history search explicitly:
+# fzf's widget when it is loaded, plain reverse search otherwise.
+if (( ${+functions[fzf_history_search]} )); then
+  bindkey -M viins '^R' fzf_history_search
+  bindkey -M emacs '^R' fzf_history_search
+else
+  bindkey -M viins '^R' history-incremental-search-backward
+fi
 
 # Zsh settings
 setopt complete_in_word
