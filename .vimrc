@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'ap/vim-css-color'
   Plug 'haya14busa/vim-asterisk'
   Plug 'chriskempson/base16-vim'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'ervandew/supertab'
   Plug 'fatih/vim-go', {'for': 'go'}
   Plug 'itchyny/lightline.vim'
@@ -14,18 +13,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'justinmk/vim-sneak'
   Plug 'kshenoy/vim-signature'
   Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
-  Plug 'mephux/vim-jsfmt', {'for': 'javascript'}
-  Plug 'mileszs/ack.vim', {'on': 'Ack'}
-  Plug 'mxw/vim-jsx', {'for': 'javascript'}
-  Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-  Plug 'rhysd/committia.vim',
+  Plug 'junegunn/fzf.vim'
+  Plug 'rhysd/committia.vim'
   Plug 'romainl/vim-qf', {'for': 'qf'}
   Plug 'scrooloose/nerdcommenter'
   Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-  Plug 'spf13/PIV', {'for': 'php'}
   Plug 'terryma/vim-expand-region'
   Plug 'unblevable/quick-scope'
-  Plug 'vim-scripts/Indent-Highlight'
   Plug 'itchyny/vim-cursorword'
   Plug 'rust-lang/rust.vim', {'for': 'rust'}
   Plug 'wincent/loupe'
@@ -36,13 +30,8 @@ call plug#begin('~/.vim/plugged')
 
   if has('nvim')
     set inccommand=split
-    Plug 'benekastah/neomake'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
     Plug 'tpope/vim-sensible'
-    if has('lua')
-      Plug 'Shougo/neocomplete.vim'
-    endif
     if v:version > 703
       if has('python3')
         Plug 'SirVer/ultisnips'
@@ -87,20 +76,6 @@ autocmd BufReadPost *
 \   exe "normal g`\"" |
 \ endif
 
-" For jQuery
-au BufRead,BufNewFile *.js set ft=javascript.jquery
-
-" For drupal modules
-au BufRead,BufNewFile *.module set syn=php
-au BufRead,BufNewFile *.module set omnifunc=phpcomplete#CompletePHP
-au BufRead,BufNewFile *.install set syn=php
-au BufRead,BufNewFile *.install set omnifunc=phpcomplete#CompletePHP
-au BufRead,BufNewFile *.profile set syn=php
-au BufRead,BufNewFile *.profile set omnifunc=phpcomplete#CompletePHP
-
-"remove whitespaces from the end of all lines at saving
-autocmd BufWritePre * :%s/\s\+$//e
-
 " + opens up the tag definition - closes it
 map + :pta <C-R><C-W><CR>
 map - :pc<CR>
@@ -140,21 +115,12 @@ vmap " :s/\%V/"/<CR><ESC>:s/\%#/"/<CR>i
 
 imap <C-BS> <C-W>
 
-let g:DisableAutoPHPFolding = 1
-
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
-map <leader>o :CtrlPTag<CR>
-map <leader>l :CtrlPLine<CR>
+map <leader>o :Tags<CR>
+map <leader>l :BLines<CR>
+nnoremap <C-p> :Files<CR>
 
 "let g:go_fmt_command = "goimports"
 au FileType go nnoremap <buffer> <leader>t <Plug>(go-test)
@@ -193,6 +159,7 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_sign_error = "✖"
 let g:ale_sign_warning = "✕"
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_fix_on_save = 1
 
 " Gotags support
 " Requires https://github.com/jstemmer/gotags
@@ -225,6 +192,7 @@ let g:tagbar_type_go = {
 \ }
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:indent_guides_enable_on_vim_startup = 1
 
 if exists('$ITERM_PROFILE')
   if exists('$TMUX')
@@ -236,19 +204,12 @@ if exists('$ITERM_PROFILE')
   endif
 end
 
-" autocomplete
-let g:neocomplete#enable_at_startup = 1
-
-let g:js_fmt_autosave = 0
-
 set foldmethod=indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=2         "this is just what i use"
 let g:signify_vcs_list = [ "git" ]
 "let g:signify_line_highlight = 1
-
-let g:rustfmt_autosave = 1
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
@@ -261,9 +222,5 @@ if has('nvim')
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
 end
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 
 let g:netrw_banner=0

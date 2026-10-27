@@ -1,7 +1,6 @@
 # Install script for Coornail's dotfiles
 
 INSTALL_DIR=${HOME}
-OS=`uname -s`
 
 # Output formatting
 TITLE = @echo '[+]'
@@ -11,24 +10,18 @@ else
 	Q = @echo '  '
 endif
 
-general_modules = ack zsh git screen tmux vim
-# My desktop is currently osx
-desktop_modules = osx
+general_modules = zsh git tmux vim
 
 # Main make target, installs everything
-all: $(general_modules) $(desktop_modules)
-
-ack:
-	$(TITLE) "Installing .ackrc"
-	$(Q)cp .ackrc ${INSTALL_DIR}/.ackrc
+all: $(general_modules)
 
 zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}
 	$(Q)cp .zshenv ${INSTALL_DIR}
-	$(Q)mkdir -p ~/bin
-	$(Q)curl -sS https://starship.rs/install.sh >> /tmp/starship.sh && chmod +x /tmp/starship.sh && /tmp/starship.sh --yes --bin-dir ~/bin
-	$(Q)mkdir -p ~/.config && cp ./starship/starship.toml ~/.config/starship.toml
+	$(Q)mkdir -p ${INSTALL_DIR}/bin
+	$(Q)curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir ${INSTALL_DIR}/bin
+	$(Q)mkdir -p ${INSTALL_DIR}/.config && cp ./starship/starship.toml ${INSTALL_DIR}/.config/starship.toml
 	$(Q)touch ${INSTALL_DIR}/.z
 
 git:
@@ -39,17 +32,6 @@ git:
 	$(Q)mkdir -p ${INSTALL_DIR}/.config/gh
 	$(Q)cp gh/config.yml ${INSTALL_DIR}/.config/gh
 
-nethack:
-	$(TITLE) "Installing nethack config"
-	$(Q)cp .nethackrc ${INSTALL_DIR}
-
-osx:
-	$(TITLE) "MacOS"
-
-screen:
-	$(TITLE) "Installing screen config"
-	$(Q)cp .screenrc ${INSTALL_DIR}
-
 tmux:
 	$(TITLE) "Installing tmux config"
 	$(Q)cp .tmux.conf ${INSTALL_DIR}
@@ -57,12 +39,13 @@ tmux:
 vim:
 	$(TITLE) "Installing vim config"
 	$(Q)cp .vimrc ${INSTALL_DIR}
-	$(Q)cp -r .vim/ ${INSTALL_DIR}/.vim
+	$(Q)mkdir -p ${INSTALL_DIR}/.vim
+	$(Q)cp -R .vim/. ${INSTALL_DIR}/.vim/
 	$(TITLE) "Downloading Vim-plug"
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
 	$(Q)curl -sfLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ssh:
 	$(TITLE) "Adding ssh public keys"
-	$(Q)mkdir ${INSTALL_DIR}/.ssh || true
-	$(Q)curl https://github.com/coornail.keys >> ${INSTALL_DIR}/.ssh/authorized_keys
+	$(Q)mkdir -p ${INSTALL_DIR}/.ssh && chmod 700 ${INSTALL_DIR}/.ssh
+	$(Q)curl -fsSL https://github.com/coornail.keys | while read -r key; do grep -qxF "$$key" ${INSTALL_DIR}/.ssh/authorized_keys 2>/dev/null || echo "$$key" >> ${INSTALL_DIR}/.ssh/authorized_keys; done
