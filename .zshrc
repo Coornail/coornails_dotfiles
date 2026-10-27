@@ -69,8 +69,10 @@ if [ $? -eq 0 ]; then
   eval "$(direnv hook zsh)"
 fi
 
-$LS --help | grep "GNU coreutils" &>/dev/null 2>&1 && LS_VERSION="gnu" || LS_VERSION="bsd"
-if [ "$LS_VERSION" = "gnu" ]; then
+# GNU and uutils ls accept the long flags; BSD/macOS ls only has -G. Probe
+# the flags instead of parsing --help, which uutils ls (Ubuntu 26.04+) does
+# not label "GNU coreutils".
+if $LS --color=auto --classify --group-directories-first -d / &>/dev/null; then
   LS_ARGUMENTS="--color=auto --classify --group-directories-first"
 fi
 
