@@ -41,9 +41,8 @@ vim:
 	$(Q)cp .vimrc ${INSTALL_DIR}
 	$(Q)mkdir -p ${INSTALL_DIR}/.vim
 	$(Q)cp -R .vim/. ${INSTALL_DIR}/.vim/
-	$(TITLE) "Downloading Vim-plug"
-	$(Q)mkdir -p ${INSTALL_DIR}/.vim/autoload
-	$(Q)curl -sfLo ${INSTALL_DIR}/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# plug.vim is vendored at .vim/autoload/plug.vim, pinned in SOURCES.lock and
+# re-checked by `make verify`. The cp above installs it; nothing is downloaded.
 
 ssh:
 	$(TITLE) "Adding ssh public keys"

@@ -1,0 +1,9 @@
+# SOURCES.lock — vendored third-party sources and the exact revision each came from.
+#
+# Verified by `make verify` (scripts/verify.sh), which recomputes the sha256 of
+# every row's path and fails on drift. Update a row only through a vendor-update
+# commit; never hand-edit a hash to make `make verify` pass.
+#
+# Columns, tab-separated:
+#   name  upstream_url  ref  sha256  license  path  fetched
+plug.vim	https://github.com/junegunn/vim-plug	7e5aae5e1187842cb0b1d8def986e48d481c4410	4243c1d2a5d9a1012aca536315e69aab8549e60926b3dd80ee1f973954d77f9d	MIT	.vim/autoload/plug.vim	2026-10-27
