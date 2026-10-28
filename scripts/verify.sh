@@ -26,9 +26,9 @@ hash_stdin() {
 
 # Directory rows carry a tree hash: the sha256 of one
 # "<file sha256>  <path relative to the directory>" line per regular file,
-# sorted bytewise, with zinit's compiled *.zwc files left out (they are
-# regenerated per machine and are gitignored). Reproduce a row by hand with:
-#   (cd sources/zinit && find . -type f ! -name '*.zwc' | LC_ALL=C sort \
+# sorted bytewise, with compiled *.zwc files left out (gitignored build
+# artifacts, never committed). Reproduce a row by hand with:
+#   (cd sources/<name> && find . -type f ! -name '*.zwc' | LC_ALL=C sort \
 #      | while read -r f; do printf '%s  %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "${f#./}"; done) | sha256sum
 tree_hash() {
   (

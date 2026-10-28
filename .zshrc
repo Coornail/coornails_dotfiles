@@ -1,48 +1,30 @@
-# zinit is vendored in this repo at sources/zinit (pinned in SOURCES.lock) and
-# installed to the path below by `make zsh` -- nothing is cloned at shell start,
-# so a stale or tampered upstream cannot change what runs here. The installed
-# copy has no history and no remote, so `zinit self-update` has nothing to pull;
-# sourcing it straight out of a dotfiles checkout would instead let a stray
-# self-update pull this repo and drop compiled *.zwc files into it.
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-if [[ -r $ZINIT_HOME/zinit.zsh ]]; then
-  source "$ZINIT_HOME/zinit.zsh"
-else
-  print -u2 "zinit is not installed at $ZINIT_HOME -- run 'make zsh' in the dotfiles repo; starting without zinit plugins"
-fi
+# Shell plugins are vendored in this repo under sources/ at exact commits pinned
+# in SOURCES.lock and re-hashed by `make verify`; `make zsh` installs them to
+# ${XDG_DATA_HOME:-~/.local/share}. Nothing is cloned or downloaded at shell
+# start, so a stale or tampered upstream cannot change what runs here. A missing
+# install leaves the shell working and says so on stderr.
+_zsh_vendor="${XDG_DATA_HOME:-${HOME}/.local/share}"
 
 setopt AUTO_CD
 
-if (( $+functions[zinit] )); then
-  zinit load "kevinywlui/zlong_alert.zsh"
-  zlong_duration=60
-  zlong_ignore_cmds="vim ssh"
+# zlong_alert: warn when a command runs past $zlong_duration seconds. Set the
+# knobs before sourcing; the plugin reads them at source time only.
+zlong_duration=60
+zlong_ignore_cmds="vim ssh"
 
-  zinit load "zsh-users/zsh-autosuggestions"
-
-  zinit snippet OMZL::git.zsh
-  zinit snippet OMZP::git
-  #zinit snippet OMZP::colorize
-
-  zinit ice wait lucid
-  zinit snippet OMZP::z
-
-  #zinit ice wait lucid
-  #zinit load "zdharma-continuum/fast-syntax-highlighting"
-
-  zinit ice wait lucid
-  zinit load "MichaelAquilina/zsh-you-should-use"
-
-  if (( $+commands[fzf] )); then
-    #zinit ftb-tmux-popup light Aloxaf/fzf-tab
-
-    zinit ice lucid wait'0'
-    zinit light joshskidmore/zsh-fzf-history-search
-    zinit load "andrewferrier/fzf-z"
+for _zsh_src in \
+  "$_zsh_vendor/zsh-autosuggestions/zsh-autosuggestions.zsh" \
+  "$_zsh_vendor/zlong_alert/zlong_alert.zsh" \
+  "$_zsh_vendor/you-should-use/you-should-use.plugin.zsh" \
+  "$_zsh_vendor/LS_COLORS/lscolors.sh"
+do
+  if [[ -r $_zsh_src ]]; then
+    source "$_zsh_src"
+  else
+    print -u2 "vendored source missing: $_zsh_src -- run 'make zsh' in the dotfiles repo"
   fi
-
-  zinit light trapd00r/LS_COLORS
-fi
+done
+unset _zsh_src _zsh_vendor
 
 LS="ls"
 LS_ARGUMENTS="-G"
@@ -106,14 +88,9 @@ function docker-compose () {
 }
 
 bindkey -v
-# ^R is 'redisplay' in vi insert mode, so bind history search explicitly:
-# fzf's widget when it is loaded, plain reverse search otherwise.
-if (( ${+functions[fzf_history_search]} )); then
-  bindkey -M viins '^R' fzf_history_search
-  bindkey -M emacs '^R' fzf_history_search
-else
-  bindkey -M viins '^R' history-incremental-search-backward
-fi
+# ^R history search comes from fzf's own integration further down: `fzf --zsh`
+# binds fzf-history-widget in emacs, viins and vicmd. Without fzf, zsh's
+# default ^R binding applies.
 
 # Zsh settings
 setopt complete_in_word
@@ -204,7 +181,20 @@ export AIDER_AUTO_COMMITS=false
 
 autoload -Uz compinit
 compinit
-(( $+functions[zinit] )) && zinit cdreplay -q
+# OMZ plugins: source AFTER compinit so compdef is available.
+_zsh_vendor="${XDG_DATA_HOME:-${HOME}/.local/share}"
+for _zsh_src in \
+  "$_zsh_vendor/omz/lib/git.zsh" \
+  "$_zsh_vendor/omz/plugins/git/git.plugin.zsh" \
+  "$_zsh_vendor/omz/plugins/z/z.plugin.zsh"
+do
+  if [[ -r $_zsh_src ]]; then
+    source "$_zsh_src"
+  else
+    print -u2 "vendored source missing: $_zsh_src -- run 'make zsh' in the dotfiles repo"
+  fi
+done
+unset _zsh_src _zsh_vendor
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic

@@ -33,8 +33,8 @@ re-checks the installed release binaries listed in DOWNLOADS.lock (and fetches
 them if missing). `make zsh` runs the same fetch best-effort, so a machine
 without network still gets a working, unhighlighted shell.
 
-zinit is vendored in `sources/zinit` as well (pinned in SOURCES.lock).
-`make zsh` installs it to `${XDG_DATA_HOME:-~/.local/share}/zinit/zinit.git`,
-so no shell clones the plugin manager at startup; a machine without that
-install starts without zinit plugins and says so. The plugins zinit loads are
-still cloned on first use -- only zinit itself is vendored.
+The zsh plugins (`zsh-autosuggestions`, `zlong_alert`, `zsh-you-should-use`,
+`LS_COLORS`, and three oh-my-zsh files) are vendored under `sources/` at exact
+commits pinned in SOURCES.lock. `make zsh` installs them to
+`${XDG_DATA_HOME:-~/.local/share}`, so no shell clones anything at startup; a
+machine without that install starts without the plugins and says so.

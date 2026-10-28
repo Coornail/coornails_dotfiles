@@ -11,4 +11,8 @@
 # Columns, tab-separated:
 #   name  upstream_url  ref  sha256  license  path  fetched
 plug.vim	https://github.com/junegunn/vim-plug	7e5aae5e1187842cb0b1d8def986e48d481c4410	4243c1d2a5d9a1012aca536315e69aab8549e60926b3dd80ee1f973954d77f9d	MIT	.vim/autoload/plug.vim	2026-10-27
-zinit	https://github.com/zdharma-continuum/zinit	0616639b9577f8708ff664c2b157abfcefc42ffa	bc973bed3e3d89ba987d1bc2520d8bae32421869eedf093836dea4000b819101	MIT	sources/zinit	2026-10-28
+zsh-autosuggestions	https://github.com/zsh-users/zsh-autosuggestions	e52ee8ca55bcc56a17c828767a3f98f22a68d4eb	a613063cc402c8e31ecb102107d34b45223c1db520c8961dd39c32d312011d42	MIT	sources/zsh-autosuggestions	2026-10-28
+zlong_alert	https://github.com/kevinywlui/zlong_alert.zsh	dc2069371bd0162e43550fef1e84c4b70d81360e	5333cc2940413dd3569b152a6a0cb1722fbd90c27df567c592db422f3f23e303	MIT	sources/zlong_alert	2026-10-28
+you-should-use	https://github.com/MichaelAquilina/zsh-you-should-use	f13d39a1ae84219e4ee14e77d31bb774c91f2fe3	cc39a72374b0350b37523d46ea6f8e87ecdd00aae3538888dc033c9012abbd11	GPL-3.0	sources/you-should-use	2026-10-28
+LS_COLORS	https://github.com/trapd00r/LS_COLORS	810ce8cac886ac50e75d84fb438b549a1f9478ee	9b3c4c1aa6b352be925b9925e9eac6b86438a788c6fea36667fecb34ea4b635d	Artistic-2.0	sources/LS_COLORS	2026-10-28
+ohmyzsh	https://github.com/ohmyzsh/ohmyzsh	17a2b4c3a5855524ad4772a17ada0dc474e2fdf3	b8b6f7a5b7facaaec76662d23e123429ba6f3c9718e2e17567c90412adac7c4e	MIT	sources/omz	2026-10-28
