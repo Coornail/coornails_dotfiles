@@ -27,6 +27,21 @@ zsh:
 	$(Q)mkdir -p ${INSTALL_DIR}/bin
 	$(Q)mkdir -p ${INSTALL_DIR}/.config && cp ./starship/starship.toml ${INSTALL_DIR}/.config/starship.toml
 	$(Q)touch ${INSTALL_DIR}/.z
+# zinit is vendored at sources/zinit (pinned in SOURCES.lock) and installed to
+# the exact path .zshrc sources it from, so no shell ever clones it. The copy
+# carries no history: zinit takes BIN_DIR from wherever zinit.zsh is sourced, so
+# a checkout with a remote would let `zinit self-update` move the code under you
+# (and pull a dotfiles checkout, if you sourced it in place). The empty
+# repository created here is what makes self-update a no-op: zinit checks
+# `git rev-parse --is-inside-work-tree` and, with no upstream branch to pull,
+# stops -- without any .git at all it falls through into `git pull` and prints a
+# fatal error every time. Only this directory is replaced -- zinit's plugins and
+# snippets live next to it, in the parent dir.
+	$(Q)zinit_home="$${XDG_DATA_HOME:-${INSTALL_DIR}/.local/share}/zinit/zinit.git"; \
+	  rm -rf "$$zinit_home"; \
+	  mkdir -p "$$zinit_home"; \
+	  cp -R sources/zinit/. "$$zinit_home/"; \
+	  git -C "$$zinit_home" init -q
 # Best effort: zsh-patina is optional (the shell falls back to no highlighting),
 # so a fetch failure must not abort the rest of the install. `make downloads`
 # runs the same script strictly.

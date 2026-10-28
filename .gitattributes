@@ -2,3 +2,4 @@
 *.png binary diff=exif
 *.gif binary diff=exif
 .vim/autoload/** linguist-vendored
+sources/** linguist-vendored

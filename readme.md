@@ -32,3 +32,9 @@ I'd be happy if you would create a merge request if I missed something or if I m
 re-checks the installed release binaries listed in DOWNLOADS.lock (and fetches
 them if missing). `make zsh` runs the same fetch best-effort, so a machine
 without network still gets a working, unhighlighted shell.
+
+zinit is vendored in `sources/zinit` as well (pinned in SOURCES.lock).
+`make zsh` installs it to `${XDG_DATA_HOME:-~/.local/share}/zinit/zinit.git`,
+so no shell clones the plugin manager at startup; a machine without that
+install starts without zinit plugins and says so. The plugins zinit loads are
+still cloned on first use -- only zinit itself is vendored.

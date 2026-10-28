@@ -4,6 +4,11 @@
 # every row's path and fails on drift. Update a row only through a vendor-update
 # commit; never hand-edit a hash to make `make verify` pass.
 #
+# A row whose path is a file records that file's sha256. A row whose path is a
+# directory (a vendored tree) records a tree hash instead — the definition and a
+# copy-pasteable one-liner are at the top of scripts/verify.sh.
+#
 # Columns, tab-separated:
 #   name  upstream_url  ref  sha256  license  path  fetched
 plug.vim	https://github.com/junegunn/vim-plug	7e5aae5e1187842cb0b1d8def986e48d481c4410	4243c1d2a5d9a1012aca536315e69aab8549e60926b3dd80ee1f973954d77f9d	MIT	.vim/autoload/plug.vim	2026-10-27
+zinit	https://github.com/zdharma-continuum/zinit	0616639b9577f8708ff664c2b157abfcefc42ffa	bc973bed3e3d89ba987d1bc2520d8bae32421869eedf093836dea4000b819101	MIT	sources/zinit	2026-10-28

@@ -16,6 +16,30 @@ hash_file() {
   fi
 }
 
+hash_stdin() {
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum | cut -d' ' -f1
+  else
+    shasum -a 256 | cut -d' ' -f1
+  fi
+}
+
+# Directory rows carry a tree hash: the sha256 of one
+# "<file sha256>  <path relative to the directory>" line per regular file,
+# sorted bytewise, with zinit's compiled *.zwc files left out (they are
+# regenerated per machine and are gitignored). Reproduce a row by hand with:
+#   (cd sources/zinit && find . -type f ! -name '*.zwc' | LC_ALL=C sort \
+#      | while read -r f; do printf '%s  %s\n' "$(sha256sum "$f" | cut -d' ' -f1)" "${f#./}"; done) | sha256sum
+tree_hash() {
+  (
+    cd "$1" || exit 1
+    find . -type f ! -name '*.zwc' ! -path './.git/*' | LC_ALL=C sort |
+      while IFS= read -r f; do
+        printf '%s  %s\n' "$(hash_file "$f")" "${f#./}"
+      done
+  ) | hash_stdin
+}
+
 tab=$(printf '\t')
 checked=0
 failed=0
@@ -26,13 +50,16 @@ while IFS="$tab" read -r name url ref sha license path fetched; do
   esac
   checked=$((checked + 1))
 
-  if [ ! -f "$path" ]; then
+  if [ -d "$path" ]; then
+    actual=$(tree_hash "$path")
+  elif [ -f "$path" ]; then
+    actual=$(hash_file "$path")
+  else
     printf 'MISSING  %s (%s)\n' "$name" "$path"
     failed=$((failed + 1))
     continue
   fi
 
-  actual=$(hash_file "$path")
   if [ "$actual" != "$sha" ]; then
     printf 'DRIFT    %s (%s)\n' "$name" "$path"
     printf '         expected %s\n' "$sha"

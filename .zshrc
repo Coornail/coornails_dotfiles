@@ -1,38 +1,48 @@
+# zinit is vendored in this repo at sources/zinit (pinned in SOURCES.lock) and
+# installed to the path below by `make zsh` -- nothing is cloned at shell start,
+# so a stale or tampered upstream cannot change what runs here. The installed
+# copy has no history and no remote, so `zinit self-update` has nothing to pull;
+# sourcing it straight out of a dotfiles checkout would instead let a stray
+# self-update pull this repo and drop compiled *.zwc files into it.
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git --depth=1 "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-zinit load "kevinywlui/zlong_alert.zsh"
-zlong_duration=60
-zlong_ignore_cmds="vim ssh"
-
-zinit load "zsh-users/zsh-autosuggestions"
-
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-#zinit snippet OMZP::colorize
-
-zinit ice wait lucid
-zinit snippet OMZP::z
-
-#zinit ice wait lucid
-#zinit load "zdharma-continuum/fast-syntax-highlighting"
-
-zinit ice wait lucid
-zinit load "MichaelAquilina/zsh-you-should-use"
+if [[ -r $ZINIT_HOME/zinit.zsh ]]; then
+  source "$ZINIT_HOME/zinit.zsh"
+else
+  print -u2 "zinit is not installed at $ZINIT_HOME -- run 'make zsh' in the dotfiles repo; starting without zinit plugins"
+fi
 
 setopt AUTO_CD
 
-if (( $+commands[fzf] )); then
-  #zinit ftb-tmux-popup light Aloxaf/fzf-tab
+if (( $+functions[zinit] )); then
+  zinit load "kevinywlui/zlong_alert.zsh"
+  zlong_duration=60
+  zlong_ignore_cmds="vim ssh"
 
-  zinit ice lucid wait'0'
-  zinit light joshskidmore/zsh-fzf-history-search
-  zinit load "andrewferrier/fzf-z"
+  zinit load "zsh-users/zsh-autosuggestions"
+
+  zinit snippet OMZL::git.zsh
+  zinit snippet OMZP::git
+  #zinit snippet OMZP::colorize
+
+  zinit ice wait lucid
+  zinit snippet OMZP::z
+
+  #zinit ice wait lucid
+  #zinit load "zdharma-continuum/fast-syntax-highlighting"
+
+  zinit ice wait lucid
+  zinit load "MichaelAquilina/zsh-you-should-use"
+
+  if (( $+commands[fzf] )); then
+    #zinit ftb-tmux-popup light Aloxaf/fzf-tab
+
+    zinit ice lucid wait'0'
+    zinit light joshskidmore/zsh-fzf-history-search
+    zinit load "andrewferrier/fzf-z"
+  fi
+
+  zinit light trapd00r/LS_COLORS
 fi
-
-zinit light trapd00r/LS_COLORS
 
 LS="ls"
 LS_ARGUMENTS="-G"
@@ -194,7 +204,7 @@ export AIDER_AUTO_COMMITS=false
 
 autoload -Uz compinit
 compinit
-zinit cdreplay -q
+(( $+functions[zinit] )) && zinit cdreplay -q
 
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
