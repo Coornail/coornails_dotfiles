@@ -27,7 +27,18 @@ zsh:
 	$(Q)mkdir -p ${INSTALL_DIR}/bin
 	$(Q)mkdir -p ${INSTALL_DIR}/.config && cp ./starship/starship.toml ${INSTALL_DIR}/.config/starship.toml
 	$(Q)touch ${INSTALL_DIR}/.z
+# Best effort: zsh-patina is optional (the shell falls back to no highlighting),
+# so a fetch failure must not abort the rest of the install. `make downloads`
+# runs the same script strictly.
+	$(Q)-sh scripts/fetch-downloads.sh
+	[ -x "${INSTALL_DIR}/bin/zsh-patina" ] || echo '    zsh-patina not installed - using an unhighlighted shell (run "make downloads" for details)'
 	command -v starship >/dev/null || [ -x "${INSTALL_DIR}/bin/starship" ] || echo '    starship not installed - using a plain prompt (apt: Ubuntu 25.04+/Debian 13+; brew: macOS)'
+
+# Fetch the checksum-verified release binaries listed in DOWNLOADS.lock
+# without reinstalling the config files.
+downloads:
+	$(TITLE) "Fetching downloads"
+	$(Q)sh scripts/fetch-downloads.sh
 
 git:
 	$(TITLE) "Installing git config"

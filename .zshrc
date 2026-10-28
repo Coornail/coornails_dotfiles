@@ -19,15 +19,6 @@ zinit snippet OMZP::z
 #zinit ice wait lucid
 #zinit load "zdharma-continuum/fast-syntax-highlighting"
 
-# zsh-patina from its release assets. Pinned to release tag 1.11.0 (2026-10-08)
-# so the asset cannot silently move: zinit interpolates `ver` into
-# .../releases/expanded_assets/<ver>, and `zinit update` now re-checks out this
-# tag instead of following `latest`. This pins the *version*, not the bytes --
-# zinit's gh-r path has no checksum support, so a re-uploaded asset on the same
-# tag would still be fetched. A checksum-verified install belongs in `make zsh`.
-zinit ice as"program" from"gh-r" ver"1.11.0" pick"zsh-patina-*/zsh-patina" atload'eval "$(zsh-patina activate)"'
-zinit light michel-kraemer/zsh-patina
-
 zinit ice wait lucid
 zinit load "MichaelAquilina/zsh-you-should-use"
 
@@ -211,3 +202,16 @@ zle -N self-insert url-quote-magic
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
   source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
 fi
+
+# zsh-patina is installed by `make zsh` from the checksum-verified tarball in
+# DOWNLOADS.lock -- nothing is downloaded at shell start. The explicit path is
+# tried before a PATH lookup so a brew/distro copy cannot shadow the pinned
+# binary; a missing or broken binary leaves the shell unhighlighted, like the
+# starship fallback above. Activated last so its zle hook is installed after
+# the other plugins bind theirs.
+_patina=${HOME}/bin/zsh-patina
+[[ -x $_patina ]] || _patina=${commands[zsh-patina]}
+if [[ -n $_patina ]] && _patina_init=$("$_patina" activate 2>/dev/null) && [[ -n $_patina_init ]]; then
+  eval "$_patina_init"
+fi
+unset _patina _patina_init

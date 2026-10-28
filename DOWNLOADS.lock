@@ -1,0 +1,22 @@
+# DOWNLOADS.lock — third-party release binaries fetched by `make zsh`.
+#
+# Unlike SOURCES.lock these artifacts are not committed to the repo: they are
+# platform builds, so the repo records *what* to fetch and *what it must hash
+# to* instead of carrying the bytes. `scripts/fetch-downloads.sh` installs the
+# row matching the host and re-checks the installed binary; `make downloads`
+# does the same without reinstalling the config files.
+#
+# Two hashes per row. The archive hash pins the download. The binary hash pins
+# the file that actually runs, so an already-installed copy is verified without
+# any network access, and a row whose archive extracts to something else fails
+# instead of installing.
+#
+# Never hand-edit a hash to make a fetch pass. Update a row only through a
+# vendor-update commit, the same rule SOURCES.lock carries.
+#
+# Columns, tab-separated:
+#   name  target  version  url  archive_sha256  binary_sha256  install_path
+zsh-patina	linux-x86_64	1.11.0	https://github.com/michel-kraemer/zsh-patina/releases/download/1.11.0/zsh-patina-v1.11.0-x86_64-unknown-linux-musl.tar.gz	00ab75b59aa974fc434e63fc6225a9f5a8fd35b5d4fa2f5c36342dc56bf82005	6669e4c46b52bd41ed30573986bcaf52c96af56e90a8826ae0c0d218c3c6b321	bin/zsh-patina
+zsh-patina	linux-aarch64	1.11.0	https://github.com/michel-kraemer/zsh-patina/releases/download/1.11.0/zsh-patina-v1.11.0-aarch64-unknown-linux-musl.tar.gz	e224d055c55957c888c1d027399827553f13a08f6f856fb16cee77084fde5579	bf0e9c6ad0e348f9ded52a4841431a84dc44f2781f27b164137b6505bdc6f5bd	bin/zsh-patina
+zsh-patina	darwin-arm64	1.11.0	https://github.com/michel-kraemer/zsh-patina/releases/download/1.11.0/zsh-patina-v1.11.0-aarch64-apple-darwin.tar.gz	7284af67b60ef9c1257050d06589a43f582d89906c62a26a050b9d21226e47a8	eb4ddd0c7103244d98e879135abd2550afa76c52e7aa0108d2e463bad2eb7437	bin/zsh-patina
+zsh-patina	darwin-x86_64	1.11.0	https://github.com/michel-kraemer/zsh-patina/releases/download/1.11.0/zsh-patina-v1.11.0-x86_64-apple-darwin.tar.gz	0ada866e9c496bfa85dee71d51931e25777bd0e2ea8742999af8f4cc503460fc	437aff124ea5f779600a9a311d9afc3a3835a4193b925f8fd1ab48cdd912adb3	bin/zsh-patina

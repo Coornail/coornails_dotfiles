@@ -21,6 +21,14 @@ I'd be happy if you would create a merge request if I missed something or if I m
 * universal-ctags - for tagbar and `:Tags`
 * exiftool - for image diffs
 * urlview - for the tmux URL picker
+* zsh-patina - optional; `make zsh` fetches it from a pinned release and
+  checksum-verifies it (see DOWNLOADS.lock). Without it the shell starts
+  unhighlighted.
 
 # Usage
-`make [zsh|git|tmux|vim|ssh]`
+`make [zsh|git|tmux|vim|ssh|verify|downloads]`
+
+`verify` re-hashes the vendored sources listed in SOURCES.lock; `downloads`
+re-checks the installed release binaries listed in DOWNLOADS.lock (and fetches
+them if missing). `make zsh` runs the same fetch best-effort, so a machine
+without network still gets a working, unhighlighted shell.
