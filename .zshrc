@@ -19,7 +19,13 @@ zinit snippet OMZP::z
 #zinit ice wait lucid
 #zinit load "zdharma-continuum/fast-syntax-highlighting"
 
-zinit ice as"program" from"gh-r" pick"zsh-patina-*/zsh-patina" atload'eval "$(zsh-patina activate)"'
+# zsh-patina from its release assets. Pinned to release tag 1.11.0 (2026-10-08)
+# so the asset cannot silently move: zinit interpolates `ver` into
+# .../releases/expanded_assets/<ver>, and `zinit update` now re-checks out this
+# tag instead of following `latest`. This pins the *version*, not the bytes --
+# zinit's gh-r path has no checksum support, so a re-uploaded asset on the same
+# tag would still be fetched. A checksum-verified install belongs in `make zsh`.
+zinit ice as"program" from"gh-r" ver"1.11.0" pick"zsh-patina-*/zsh-patina" atload'eval "$(zsh-patina activate)"'
 zinit light michel-kraemer/zsh-patina
 
 zinit ice wait lucid
