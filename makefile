@@ -15,6 +15,11 @@ general_modules = zsh git tmux vim
 # Main make target, installs everything
 all: $(general_modules)
 
+# Fail when a vendored source no longer matches its SOURCES.lock row
+verify:
+	$(TITLE) "Verifying vendored sources"
+	$(Q)sh scripts/verify.sh
+
 zsh:
 	$(TITLE) "Installing zsh"
 	$(Q)cp .zshrc ${INSTALL_DIR}

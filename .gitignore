@@ -1,0 +1,2 @@
+# Compiled zsh files: zinit writes *.zwc into whatever directory it lives in.
+*.zwc
